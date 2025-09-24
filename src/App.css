@@ -56,7 +56,7 @@
   --muted-slate: #9AA3B2;
   
   /* Vectorik Spectrum Gradient */
-  --vectorik-gradient: linear-gradient(45deg, var(--electric-cyan), var(--hyper-purple), var(--magenta), var(--sunset-orange));
+  --vektar-gradient: linear-gradient(45deg, var(--electric-cyan), var(--hyper-purple), var(--magenta), var(--sunset-orange));
   
   /* Theme Variables - Dark by default */
   --background: var(--midnight-navy);
@@ -121,12 +121,12 @@
 }
 
 @layer components {
-  .vectorik-gradient {
-    background: var(--vectorik-gradient);
+  .vektar-gradient {
+    background: var(--vektar-gradient);
   }
   
-  .vectorik-gradient-text {
-    background: var(--vectorik-gradient);
+  .vektar-gradient-text {
+    background: var(--vektar-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

@@ -18,7 +18,10 @@ import {
   X,
   ChevronDown,
   Play,
-  Quote
+  Quote,
+  Calculator,
+  Wrench,
+  FileText
 } from 'lucide-react'
 import vectorikLogo from './assets/vectorik-logo.png'
 import ContactForm from './components/ContactForm.jsx'
@@ -79,8 +82,8 @@ function App() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <img src={vectorikLogo} alt="Vectorik" className="w-12 h-12 rounded-full" />
-              <span className="text-xl font-bold vectorik-gradient-text">Vectorik</span>
+              <img src={vectorikLogo} alt="Vektar" className="w-12 h-12 rounded-full" />
+              <span className="text-xl font-bold vektar-gradient-text">Vektar</span>
             </div>
 
             {/* Desktop Navigation */}
@@ -91,7 +94,7 @@ function App() {
               <NavLink href="about" isActive={activeSection === 'about'}>About</NavLink>
               <Button 
                 onClick={() => scrollToSection('contact')}
-                className="vectorik-gradient hover-glow"
+                className="vektar-gradient hover-glow"
               >
                 Book a Strategy Call
               </Button>
@@ -116,7 +119,7 @@ function App() {
                 <NavLink href="about" isActive={activeSection === 'about'}>About</NavLink>
                 <Button 
                   onClick={() => scrollToSection('contact')}
-                  className="vectorik-gradient hover-glow mt-4"
+                  className="vektar-gradient hover-glow mt-4"
                 >
                   Book a Strategy Call
                 </Button>
@@ -134,13 +137,13 @@ function App() {
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
                   Build Real ROI from{' '}
-                  <span className="vectorik-gradient-text">AI</span>
+                  <span className="vektar-gradient-text">AI</span>
                   <br />
                   Faster. Safer.{' '}
-                  <span className="vectorik-gradient-text">Beautifully Executed.</span>
+                  <span className="vektar-gradient-text">Beautifully Executed.</span>
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl">
-                  Vectorik designs, builds, and scales AI systems that convert more leads, 
+                  Vektar designs, builds, and scales AI systems that convert more leads, 
                   cut drudge-work, and unlock insights—without risking your data.
                 </p>
               </div>
@@ -148,7 +151,7 @@ function App() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg" 
-                  className="vectorik-gradient hover-glow text-lg px-8 py-6"
+                  className="vektar-gradient hover-glow text-lg px-8 py-6"
                   onClick={() => scrollToSection('contact')}
                 >
                   Book a Strategy Call
@@ -167,15 +170,15 @@ function App() {
 
               <div className="flex items-center space-x-8 pt-8">
                 <div className="text-center">
-                  <div className="text-3xl font-bold vectorik-gradient-text">30+</div>
+                  <div className="text-3xl font-bold vektar-gradient-text">150+</div>
                   <div className="text-sm text-muted-foreground">AI Projects</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold vectorik-gradient-text">95%</div>
+                  <div className="text-3xl font-bold vektar-gradient-text">95%</div>
                   <div className="text-sm text-muted-foreground">Client Satisfaction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold vectorik-gradient-text">30</div>
+                  <div className="text-3xl font-bold vektar-gradient-text">30</div>
                   <div className="text-sm text-muted-foreground">Day Pilots</div>
                 </div>
               </div>
@@ -185,11 +188,11 @@ function App() {
               <div className="relative z-10 animate-float">
                 <img 
                   src={vectorikLogo} 
-                  alt="Vectorik AI" 
+                  alt="Vektar AI" 
                   className="w-96 h-96 mx-auto animate-glow rounded-full"
                 />
               </div>
-              <div className="absolute inset-0 vectorik-gradient opacity-20 blur-3xl animate-pulse"></div>
+              <div className="absolute inset-0 vektar-gradient opacity-20 blur-3xl animate-pulse"></div>
             </div>
           </div>
         </div>
@@ -219,7 +222,7 @@ function App() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
               Building Innovative and Creative Solutions for the{' '}
-              <span className="vectorik-gradient-text">Fast-paced Digital World</span>
+              <span className="vektar-gradient-text">Fast-paced Digital World</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               With over 15 years of industry experience, we help startups and Fortune 500 companies 
@@ -230,7 +233,7 @@ function App() {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="glass-card hover-glow">
               <CardHeader>
-                <div className="w-12 h-12 vectorik-gradient rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 vektar-gradient rounded-lg flex items-center justify-center mb-4">
                   <Zap className="w-6 h-6 text-background" />
                 </div>
                 <CardTitle className="text-xl">Strategy First</CardTitle>
@@ -245,7 +248,7 @@ function App() {
 
             <Card className="glass-card hover-glow">
               <CardHeader>
-                <div className="w-12 h-12 vectorik-gradient rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 vektar-gradient rounded-lg flex items-center justify-center mb-4">
                   <Rocket className="w-6 h-6 text-background" />
                 </div>
                 <CardTitle className="text-xl">Build Fast</CardTitle>
@@ -260,7 +263,7 @@ function App() {
 
             <Card className="glass-card hover-glow">
               <CardHeader>
-                <div className="w-12 h-12 vectorik-gradient rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 vektar-gradient rounded-lg flex items-center justify-center mb-4">
                   <Shield className="w-6 h-6 text-background" />
                 </div>
                 <CardTitle className="text-xl">Scale Safely</CardTitle>
@@ -281,7 +284,7 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
-              <span className="vectorik-gradient-text">AI Solutions</span> That Drive Results
+              <span className="vektar-gradient-text">AI Solutions</span> That Drive Results
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               From sales automation to document intelligence, our AI solutions are designed 
@@ -291,26 +294,37 @@ function App() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: MessageSquare, title: 'AI Sales Chatbot', impact: '+40% lead conversion' },
-              { icon: Brain, title: 'Voice Receptionist', impact: '24/7 availability' },
-              { icon: BarChart3, title: 'Quote Copilot', impact: '-60% response time' },
-              { icon: Eye, title: 'RAG Knowledge Hub', impact: '95% accuracy' },
-              { icon: Users, title: 'Ticket Deflection', impact: '-50% support load' },
-              { icon: Zap, title: 'Field Tech Copilot', impact: '+30% efficiency' },
-              { icon: Shield, title: 'Document Intelligence', impact: '99% data extraction' },
-              { icon: BarChart3, title: 'Executive KPI Copilot', impact: 'Real-time insights' }
+              { icon: MessageSquare, title: 'AI Sales Chatbot', impact: '+40% lead conversion', demoId: 'chatbot' },
+              { icon: Brain, title: 'Voice Receptionist', impact: '95% customer satisfaction', demoId: 'voice' },
+              { icon: Calculator, title: 'Quote Copilot', impact: '-60% response time', demoId: 'quote' },
+              { icon: Eye, title: 'RAG Knowledge Hub', impact: '99% accuracy rate', demoId: 'rag' },
+              { icon: Users, title: 'Ticket Deflection', impact: '-50% support load', demoId: 'support' },
+              { icon: Wrench, title: 'Field Tech Copilot', impact: '+30% efficiency', demoId: 'fieldtech' },
+              { icon: FileText, title: 'Document Intelligence', impact: '99% data extraction', demoId: 'document' },
+              { icon: BarChart3, title: 'Executive KPI Copilot', impact: 'Real-time insights', demoId: 'kpi' }
             ].map((solution, index) => (
-              <Card key={index} className="glass-card hover-glow cursor-pointer group">
+              <Card 
+                key={index} 
+                className="glass-card hover-glow cursor-pointer group transition-all duration-300"
+                onClick={() => {
+                  setIsDemoModalOpen(true)
+                  // Auto-select the demo after modal opens
+                  setTimeout(() => {
+                    const demoCard = document.querySelector(`[data-demo-id="${solution.demoId}"]`)
+                    if (demoCard) demoCard.click()
+                  }, 100)
+                }}
+              >
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 vectorik-gradient rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 vektar-gradient rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                     <solution.icon className="w-6 h-6 text-background" />
                   </div>
                   <h3 className="font-semibold mb-2">{solution.title}</h3>
                   <Badge variant="secondary" className="mb-3">
                     {solution.impact}
                   </Badge>
-                  <div className="flex items-center justify-center text-primary text-sm">
-                    Explore <ArrowRight className="ml-1 w-4 h-4" />
+                  <div className="flex items-center justify-center text-primary text-sm font-medium">
+                    Try Interactive Demo <ArrowRight className="ml-1 w-4 h-4" />
                   </div>
                 </CardContent>
               </Card>
@@ -324,13 +338,13 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <Badge className="vectorik-gradient text-background">Featured Case Study</Badge>
+              <Badge className="vektar-gradient text-background">Featured Case Study</Badge>
               <h2 className="text-4xl font-bold">
-                G-Guard: From Reactive Support to{' '}
-                <span className="vectorik-gradient-text">24/7 AI Assistance</span>
+                Jobresume: From Reactive Support to{' '}
+                <span className="vektar-gradient-text">24/7 AI Assistance</span>
               </h2>
               <p className="text-xl text-muted-foreground">
-                How we transformed a traditional security company's customer support 
+                How we transformed a traditional company's customer support 
                 with intelligent AI agents that handle 80% of inquiries automatically.
               </p>
               
@@ -349,7 +363,7 @@ function App() {
                 </div>
               </div>
 
-              <Button className="vectorik-gradient hover-glow">
+              <Button className="vektar-gradient hover-glow">
                 Read Case Study
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
@@ -387,7 +401,7 @@ function App() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
               Redefining Industries with{' '}
-              <span className="vectorik-gradient-text">Creative AI Solutions</span>
+              <span className="vektar-gradient-text">Creative AI Solutions</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We specialize in delivering AI solutions across diverse industries, 
@@ -427,7 +441,7 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
-              What Our <span className="vectorik-gradient-text">Clients Say</span>
+              What Our <span className="vektar-gradient-text">Clients Say</span>
             </h2>
             <p className="text-xl text-muted-foreground">
               Real feedback from companies that have transformed their operations with AI
@@ -437,7 +451,7 @@ function App() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                quote: "Vectorik's AI solution increased our lead conversion by 40% in just 30 days. The team's expertise and rapid deployment exceeded our expectations.",
+                quote: "Vektar's AI solution increased our lead conversion by 40% in just 30 days. The team's expertise and rapid deployment exceeded our expectations.",
                 author: "Sarah Chen",
                 role: "VP of Operations",
                 company: "TechFlow Solutions"
@@ -449,7 +463,7 @@ function App() {
                 company: "DataCorp Industries"
               },
               {
-                quote: "Working with Vectorik felt like having an extension of our team. They understood our challenges and delivered a solution that truly works.",
+                quote: "Working with Vektar felt like having an extension of our team. They understood our challenges and delivered a solution that truly works.",
                 author: "Emily Johnson",
                 role: "CTO",
                 company: "InnovateNow"
@@ -479,8 +493,378 @@ function App() {
         </div>
       </section>
 
+      {/* Work Section */}
+      <section id="work" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">
+              Our <span className="vektar-gradient-text">Work</span> Speaks for Itself
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              From Fortune 500 enterprises to innovative startups, we've delivered AI solutions 
+              that drive real business results across industries.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                title: "E-commerce Revenue Optimization",
+                client: "RetailMax",
+                industry: "E-commerce",
+                results: ["+156% conversion rate", "$2.3M additional revenue", "3-month ROI"],
+                description: "AI-powered personalization engine that analyzes customer behavior in real-time to optimize product recommendations and pricing strategies.",
+                tech: ["Machine Learning", "Real-time Analytics", "A/B Testing"],
+                image: "🛒"
+              },
+              {
+                title: "Healthcare Patient Management",
+                client: "MedFlow Systems",
+                industry: "Healthcare",
+                results: ["-67% wait times", "94% patient satisfaction", "40% cost reduction"],
+                description: "Intelligent scheduling and triage system that optimizes patient flow and automates administrative tasks.",
+                tech: ["NLP", "Predictive Analytics", "HIPAA Compliance"],
+                image: "🏥"
+              },
+              {
+                title: "Manufacturing Quality Control",
+                client: "TechManufacturing Co.",
+                industry: "Manufacturing",
+                results: ["99.7% defect detection", "-45% inspection time", "$1.8M savings"],
+                description: "Computer vision system for automated quality inspection with real-time defect detection and classification.",
+                tech: ["Computer Vision", "Deep Learning", "IoT Integration"],
+                image: "🏭"
+              },
+              {
+                title: "Financial Risk Assessment",
+                client: "SecureBank",
+                industry: "Financial Services",
+                results: ["-78% false positives", "Real-time processing", "Regulatory compliance"],
+                description: "Advanced fraud detection system using machine learning to identify suspicious transactions and reduce false alarms.",
+                tech: ["Anomaly Detection", "Real-time Processing", "Compliance"],
+                image: "🏦"
+              },
+              {
+                title: "Legal Document Intelligence",
+                client: "LawTech Partners",
+                industry: "Legal",
+                results: ["-85% review time", "99% accuracy", "500+ hours saved/month"],
+                description: "AI-powered contract analysis and due diligence automation for large-scale legal document processing.",
+                tech: ["Document AI", "NLP", "Contract Analysis"],
+                image: "⚖️"
+              },
+              {
+                title: "Energy Grid Optimization",
+                client: "PowerGrid Solutions",
+                industry: "Energy",
+                results: ["-23% energy waste", "Predictive maintenance", "$3.2M savings"],
+                description: "Smart grid management system that optimizes energy distribution and predicts equipment failures.",
+                tech: ["Predictive Analytics", "IoT", "Time Series Analysis"],
+                image: "⚡"
+              }
+            ].map((project, index) => (
+              <Card key={index} className="glass-card hover-glow group cursor-pointer transition-all duration-300">
+                <CardHeader>
+                  <div className="text-6xl mb-4 group-hover:scale-110 transition-transform">
+                    {project.image}
+                  </div>
+                  <Badge variant="outline" className="w-fit mb-2">{project.industry}</Badge>
+                  <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
+                  <p className="text-sm text-muted-foreground font-medium">{project.client}</p>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  <div className="space-y-3">
+                    <div>
+                      <h4 className="font-semibold text-sm mb-2">Key Results:</h4>
+                      <div className="grid grid-cols-1 gap-1">
+                        {project.results.map((result, idx) => (
+                          <div key={idx} className="flex items-center space-x-2">
+                            <div className="w-2 h-2 vektar-gradient rounded-full"></div>
+                            <span className="text-sm font-medium text-green-400">{result}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-sm mb-2">Technologies:</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {project.tech.map((tech, idx) => (
+                          <Badge key={idx} variant="secondary" className="text-xs">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Card className="glass-card max-w-2xl mx-auto p-8">
+              <h3 className="text-2xl font-bold mb-4">Ready to Join Our Success Stories?</h3>
+              <p className="text-muted-foreground mb-6">
+                Every project starts with understanding your unique challenges. 
+                Let's discuss how AI can transform your business.
+              </p>
+              <Button 
+                size="lg" 
+                className="vektar-gradient hover-glow"
+                onClick={() => scrollToSection('contact')}
+              >
+                Start Your AI Journey
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-secondary/20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            {/* Hero Section */}
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4">
+                About <span className="vektar-gradient-text">Vektar</span>
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                We're not just another AI company. We're your strategic partner in building 
+                AI solutions that deliver measurable business results, not just impressive demos.
+              </p>
+            </div>
+
+            {/* Mission & Vision */}
+            <div className="grid lg:grid-cols-2 gap-12 mb-16">
+              <Card className="glass-card p-8">
+                <div className="w-16 h-16 vektar-gradient rounded-2xl flex items-center justify-center mb-6">
+                  <Rocket className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  To democratize AI by making enterprise-grade artificial intelligence accessible, 
+                  practical, and profitable for businesses of all sizes. We believe AI should solve 
+                  real problems, not create new ones.
+                </p>
+              </Card>
+
+              <Card className="glass-card p-8">
+                <div className="w-16 h-16 vektar-gradient rounded-2xl flex items-center justify-center mb-6">
+                  <Eye className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  A world where every business can harness the power of AI to unlock growth, 
+                  improve efficiency, and create exceptional customer experiences—without the 
+                  complexity or risk traditionally associated with AI implementation.
+                </p>
+              </Card>
+            </div>
+
+            {/* Our Approach */}
+            <div className="mb-16">
+              <h3 className="text-3xl font-bold text-center mb-12">
+                The <span className="vektar-gradient-text">Vektar</span> Approach
+              </h3>
+              
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="w-20 h-20 vektar-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-2xl font-bold text-white">1</span>
+                  </div>
+                  <h4 className="text-xl font-bold mb-4">Business-First Strategy</h4>
+                  <p className="text-muted-foreground">
+                    We start with your business objectives, not the technology. Every AI solution 
+                    is designed to deliver measurable ROI and solve real operational challenges.
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-20 h-20 vektar-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-2xl font-bold text-white">2</span>
+                  </div>
+                  <h4 className="text-xl font-bold mb-4">Rapid Prototyping</h4>
+                  <p className="text-muted-foreground">
+                    Our 30-day pilot programs let you see results fast. We build working prototypes 
+                    that demonstrate value before committing to full-scale implementation.
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-20 h-20 vektar-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-2xl font-bold text-white">3</span>
+                  </div>
+                  <h4 className="text-xl font-bold mb-4">Enterprise-Ready</h4>
+                  <p className="text-muted-foreground">
+                    Security, compliance, and scalability built-in from day one. Our solutions 
+                    are designed to grow with your business and meet enterprise standards.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Team & Expertise */}
+            <div className="mb-16">
+              <h3 className="text-3xl font-bold text-center mb-12">
+                World-Class <span className="vektar-gradient-text">Expertise</span>
+              </h3>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <Card className="glass-card p-6 text-center">
+                  <div className="w-16 h-16 vektar-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Brain className="w-8 h-8 text-white" />
+                  </div>
+                  <h4 className="font-bold mb-2">AI/ML Engineers</h4>
+                  <p className="text-sm text-muted-foreground">
+                    PhD-level expertise in machine learning, deep learning, and neural networks
+                  </p>
+                </Card>
+
+                <Card className="glass-card p-6 text-center">
+                  <div className="w-16 h-16 vektar-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Shield className="w-8 h-8 text-white" />
+                  </div>
+                  <h4 className="font-bold mb-2">Security Specialists</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Enterprise security, compliance, and privacy-by-design implementation
+                  </p>
+                </Card>
+
+                <Card className="glass-card p-6 text-center">
+                  <div className="w-16 h-16 vektar-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                    <BarChart3 className="w-8 h-8 text-white" />
+                  </div>
+                  <h4 className="font-bold mb-2">Business Analysts</h4>
+                  <p className="text-sm text-muted-foreground">
+                    ROI optimization, process improvement, and strategic business alignment
+                  </p>
+                </Card>
+
+                <Card className="glass-card p-6 text-center">
+                  <div className="w-16 h-16 vektar-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-8 h-8 text-white" />
+                  </div>
+                  <h4 className="font-bold mb-2">Industry Experts</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Deep domain knowledge across healthcare, finance, manufacturing, and more
+                  </p>
+                </Card>
+              </div>
+            </div>
+
+            {/* Stats & Achievements */}
+            <div className="mb-16">
+              <Card className="glass-card p-8">
+                <h3 className="text-3xl font-bold text-center mb-12">
+                  Proven <span className="vektar-gradient-text">Results</span>
+                </h3>
+                
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold vektar-gradient-text mb-2">150+</div>
+                    <div className="text-muted-foreground">AI Projects Delivered</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold vektar-gradient-text mb-2">$50M+</div>
+                    <div className="text-muted-foreground">Client ROI Generated</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold vektar-gradient-text mb-2">98%</div>
+                    <div className="text-muted-foreground">Client Satisfaction</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold vektar-gradient-text mb-2">15+</div>
+                    <div className="text-muted-foreground">Industries Served</div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Values */}
+            <div className="mb-16">
+              <h3 className="text-3xl font-bold text-center mb-12">
+                Our <span className="vektar-gradient-text">Values</span>
+              </h3>
+              
+              <div className="grid md:grid-cols-3 gap-8">
+                <Card className="glass-card p-6">
+                  <h4 className="text-xl font-bold mb-4 flex items-center">
+                    <CheckCircle className="w-6 h-6 text-green-400 mr-3" />
+                    Transparency
+                  </h4>
+                  <p className="text-muted-foreground">
+                    No black boxes. We explain how our AI works, what data it uses, 
+                    and how decisions are made. You own your data and understand your systems.
+                  </p>
+                </Card>
+
+                <Card className="glass-card p-6">
+                  <h4 className="text-xl font-bold mb-4 flex items-center">
+                    <Shield className="w-6 h-6 text-blue-400 mr-3" />
+                    Security First
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Enterprise-grade security isn't an afterthought—it's built into every 
+                    solution from the ground up. Your data stays secure and compliant.
+                  </p>
+                </Card>
+
+                <Card className="glass-card p-6">
+                  <h4 className="text-xl font-bold mb-4 flex items-center">
+                    <Zap className="w-6 h-6 text-yellow-400 mr-3" />
+                    Results-Driven
+                  </h4>
+                  <p className="text-muted-foreground">
+                    We measure success by your business outcomes, not technical metrics. 
+                    Every project is designed to deliver measurable ROI and operational impact.
+                  </p>
+                </Card>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center">
+              <Card className="glass-card max-w-3xl mx-auto p-8">
+                <h3 className="text-3xl font-bold mb-4">
+                  Ready to Transform Your Business with AI?
+                </h3>
+                <p className="text-xl text-muted-foreground mb-8">
+                  Join the companies already seeing real results from AI. Let's discuss 
+                  how we can help you achieve your business objectives.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button 
+                    size="lg" 
+                    className="vektar-gradient hover-glow"
+                    onClick={() => scrollToSection('contact')}
+                  >
+                    Book Strategy Call
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    onClick={() => setIsDemoModalOpen(true)}
+                  >
+                    <Play className="mr-2 w-5 h-5" />
+                    See Live Demos
+                  </Button>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 vectorik-gradient">
+      <section className="py-20 vektar-gradient">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-background mb-4">
             Ready to ship your first 30-day AI pilot?
@@ -505,7 +889,7 @@ function App() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4">
-                Let's Build Something <span className="vectorik-gradient-text">Amazing Together</span>
+                Let's Build Something <span className="vektar-gradient-text">Amazing Together</span>
               </h2>
               <p className="text-xl text-muted-foreground">
                 Ready to transform your business with AI? Get in touch and let's discuss your project.
@@ -540,7 +924,7 @@ function App() {
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold">Contact Information</h4>
                   <div className="space-y-2 text-muted-foreground">
-                    <p>Email: info@vectorik.com</p>
+                    <p>Email: info@vektar.com</p>
                     <p>Response time: Within 24 hours</p>
                   </div>
                 </div>
@@ -558,14 +942,14 @@ function App() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <img src={vectorikLogo} alt="Vectorik" className="w-10 h-10 rounded-full" />
-                <span className="text-xl font-bold vectorik-gradient-text">Vectorik</span>
+                <img src={vectorikLogo} alt="Vektar" className="w-10 h-10 rounded-full" />
+                <span className="text-xl font-bold vektar-gradient-text">Vektar</span>
               </div>
               <p className="text-muted-foreground">
                 AI solutions that deliver real ROI. Built with care and curiosity.
               </p>
               <p className="text-sm text-muted-foreground">
-                © 2024 Vectorik. All rights reserved.
+                © 2025 Vektar. All rights reserved.
               </p>
             </div>
 
