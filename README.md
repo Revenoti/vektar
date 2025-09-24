@@ -1,152 +1,134 @@
-# Vektar Website - Setup Instructions
+# Vektar — AI Solutions That Deliver Real ROI
 
-## 📦 Package Contents
+Vektar is a modern, responsive marketing site showcasing AI solutions, live demos, and a streamlined contact flow. It is built for performance, accessibility, and mobile-first usability.
 
-This zip file contains the complete Vektar AI Solutions website with:
+## Key Highlights
 
-- ✅ **Full React Application** - Modern, responsive website
-- ✅ **8 Interactive AI Demos** - Fully functional demo system
-- ✅ **Contact Form Integration** - Email capture with validation
-- ✅ **Professional Design** - Inspired by leading AI companies
-- ✅ **Production Build** - Ready-to-deploy optimized files
-- ✅ **Source Code** - Complete development environment
+- Responsive design with professional, balanced layout
+- Mobile UX optimizations (safe-area support, tap targets, modal sheet behavior)
+- Live demos for multiple solutions (Chatbot, Voice, RAG, KPI, Quote, Ticket, Field Tech, Document)
+- Contact form with client-side validation and enhanced mobile typing experience
 
-## 🚀 Quick Start
+## Tech Stack
 
-### 1. Extract the Files
-```bash
-unzip vectorik-website-complete.zip
-cd vectorik-website
+- **Vite + React** — Fast development and optimized builds
+- **Tailwind CSS** — Utility-first styling framework
+- **shadcn/ui components** — High-quality UI primitives
+- **Lucide icons** — Beautiful, consistent iconography
+
+## Recent Changes
+
+### Footer Enhancements
+- **Expanded Industries** to 12 items covering major business sectors
+- **Refactored layout** to a 12-column grid with balanced spans: 3/2/5/2 (Branding/Solutions/Industries/Company)
+- **Typography consistency** with hover states, max-w-7xl container, safe-area padding for iOS
+
+### Mobile Experience Optimizations
+- **Viewport safe-area support** (`viewport-fit=cover`)
+- **Added safe-area CSS helpers** (`.pad-safe-top`, `.pad-safe-bottom`) and tap-target utility
+- **Accessibility improvements** with reduced motion preference support
+- **Navigation enhancements**: safe-area top padding, better mobile tap targets, full-width CTA on mobile
+- **Hero section**: responsive H1 scaling (`text-4xl → sm:text-5xl → lg:text-7xl`), responsive hero image with proper sizing attributes, mobile CTAs are full-width
+- **Improved spacing**: reduced section padding on small screens for better scroll rhythm (`py-14 sm:py-16 lg:py-20`)
+- **Demo modal**: mobile "sheet" behavior (full height on small screens), larger close target, improved padding
+- **Contact form**: mobile input attributes (`autocomplete`, `inputMode`, `enterKeyHint`), inputs sized to avoid iOS zoom, native validation disabled in favor of React validation (`noValidate`)
+
+### Form Validation
+- Contact form uses **custom React validation** (required fields + email format)
+- **Error feedback** shown in branded, accessible banner
+- **Note**: If you see "Please enter a valid email address" ensure you provide a valid email format (e.g., name@company.com)
+
+## Project Structure
+
+```
+src/
+├── App.jsx                     # Main page layout and sections
+├── App.css                     # Theme variables, utilities, animations, safe-area support
+├── components/
+│   ├── DemoModal.jsx          # Live demos with mobile sheet behavior
+│   ├── ContactForm.jsx        # Enhanced mobile-optimized form
+│   ├── demos/                 # Individual demo components
+│   └── ui/                    # shadcn/ui primitives
+├── api/
+│   └── contact.js             # submitContactForm, requestDemo functions
+└── assets/
+    └── vectorik-logo.png      # Brand assets
 ```
 
-### 2. Install Dependencies
+## Getting Started
+
+### Prerequisites
+- Node 18+
+- pnpm (recommended)
+
+### Installation
 ```bash
-# Using pnpm (recommended)
 pnpm install
-
-# Or using npm
-npm install
 ```
 
-### 3. Development Server
+### Development
 ```bash
-# Start development server
 pnpm run dev
-
-# Or with npm
-npm run dev
 ```
+Vite will start on an available port (e.g., http://localhost:5173 or next free port)
 
-The website will be available at `http://localhost:5173`
-
-### 4. Production Build
+### Build
 ```bash
-# Build for production
 pnpm run build
-
-# Or with npm
-npm run build
 ```
 
-Production files will be in the `dist/` folder.
-
-## 📁 Project Structure
-
-```
-vectorik-website/
-├── src/
-│   ├── components/
-│   │   ├── demos/           # 8 Interactive AI demos
-│   │   ├── ContactForm.jsx  # Lead capture form
-│   │   └── DemoModal.jsx    # Demo system
-│   ├── assets/
-│   │   └── vectorik-logo.png
-│   ├── api/
-│   │   └── contact.js       # Email integration
-│   └── App.jsx              # Main application
-├── dist/                    # Production build (ready to deploy)
-├── package.json
-└── vite.config.js
-```
-
-## 🎯 Key Features
-
-### Interactive Demos
-- **AI Sales Chatbot** - Live conversation interface
-- **Voice Receptionist** - Call simulation with audio
-- **Quote Copilot** - Real-time quote generation
-- **RAG Knowledge Hub** - Document search system
-- **Ticket Deflection** - Support automation
-- **Field Tech Copilot** - Technician assistance
-- **Document Intelligence** - File processing
-- **Executive KPI Copilot** - Live dashboard
-
-### Contact Form
-- Lead capture with validation
-- File upload support
-- Email integration to info@vektar.com
-- Budget range and industry selection
-
-### Design Features
-- Responsive design (mobile, tablet, desktop)
-- Modern gradient animations
-- Glass morphism effects
-- Professional color scheme
-- Vektar branding integration
-
-## 🌐 Deployment Options
-
-### Option 1: Static Hosting (Recommended)
-Deploy the `dist/` folder to:
-- Netlify
-- Vercel
-- GitHub Pages
-- AWS S3 + CloudFront
-
-### Option 2: Traditional Web Server
-Upload `dist/` contents to your web server's public directory.
-
-### Option 3: Development Server
-For testing purposes, serve the built files:
+### Preview (after build)
 ```bash
-cd dist
-python3 -m http.server 8080
+pnpm run preview
 ```
 
-## 📧 Email Configuration
+## Environment Configuration
 
-The contact form is configured to send emails to `info@vektar.com`. To customize:
+- API functions live in `src/api/contact.js` (e.g., `submitContactForm`, `requestDemo`)
+- If connecting to a backend service, add environment variables or config as needed
+- No secrets are committed to the repository
 
-1. Edit `src/api/contact.js`
-2. Update the email endpoint or service
-3. Rebuild the application
+## Accessibility & Performance
 
-## 🛠 Customization
+- **Reduced motion support** (`prefers-reduced-motion`)
+- **44px minimum tap targets** for interactive elements on mobile
+- **Safe-area padding** for iOS notch/pill devices
+- **Responsive images** with proper `width`/`height`/`sizes`/`decoding` attributes
+- **Semantic HTML** with proper ARIA labels and navigation structure
 
-### Branding
-- Logo: Replace `src/assets/vectorik-logo.png`
-- Colors: Update CSS variables in `src/App.css`
-- Content: Edit text in `src/App.jsx`
+## Demos Included
 
-### Demos
-- Add new demos in `src/components/demos/`
-- Update demo list in `src/components/DemoModal.jsx`
-- Link demos in main solutions section
+- **AI Sales Chatbot** — Lead conversion and qualification
+- **Voice Receptionist** — 24/7 customer service automation
+- **RAG Knowledge Hub** — Document-based question answering
+- **Executive KPI Copilot** — Real-time business insights
+- **Quote Copilot** — Automated proposal generation
+- **Ticket Deflection System** — Support automation
+- **Field Tech Copilot** — Technician assistance and optimization
+- **Document Intelligence** — Automated document processing
 
-## 📞 Support
+## Available Scripts
 
-For questions about this website package:
-- Email: info@vektar.com
-- The website includes comprehensive documentation
-- All source code is included for customization
+- `pnpm run dev` — Start development server
+- `pnpm run build` — Build for production
+- `pnpm run preview` — Preview the production build
 
-## 🎉 Ready to Launch!
+## Deployment
 
-Your Vektar website is production-ready and includes:
-- World-class design and user experience
-- 8 fully interactive AI solution demos
-- Professional lead capture system
-- Complete source code for customization
-- Optimized production build
+- Output is a static build (`dist/`) suitable for:
+  - Vercel
+  - Netlify
+  - Cloudflare Pages
+  - Any static hosting provider
+- Ensure correct base path if deploying to a subpath (configure Vite if needed)
 
-Simply deploy the `dist/` folder to your hosting provider and you're live!
+## Notes
+
+- The site uses **custom client-side validation** for the contact form to provide a consistent, branded error experience
+- **Browser native validation is disabled** on forms; enter a valid email format (name@domain.tld) to submit successfully
+- All mobile optimizations maintain the existing design language while improving usability
+- The application is fully responsive and works seamlessly across desktop, tablet, and mobile devices
+
+## Support
+
+For questions or issues, please refer to the contact form on the site or check the project documentation.

@@ -78,7 +78,7 @@ function App() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border pad-safe-top">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -102,7 +102,7 @@ function App() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2"
+              className="md:hidden p-2 tap-target"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -119,7 +119,7 @@ function App() {
                 <NavLink href="about" isActive={activeSection === 'about'}>About</NavLink>
                 <Button 
                   onClick={() => scrollToSection('contact')}
-                  className="vektar-gradient hover-glow mt-4"
+                  className="vektar-gradient hover-glow mt-4 w-full sm:w-auto"
                 >
                   Book a Strategy Call
                 </Button>
@@ -135,7 +135,7 @@ function App() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
                   Build Real ROI from{' '}
                   <span className="vektar-gradient-text">AI</span>
                   <br />
@@ -151,7 +151,7 @@ function App() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg" 
-                  className="vektar-gradient hover-glow text-lg px-8 py-6"
+                  className="vektar-gradient hover-glow text-lg px-8 py-6 w-full sm:w-auto"
                   onClick={() => scrollToSection('contact')}
                 >
                   Book a Strategy Call
@@ -160,7 +160,7 @@ function App() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6"
+                  className="border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6 w-full sm:w-auto"
                   onClick={() => setIsDemoModalOpen(true)}
                 >
                   See Live Demos
@@ -189,7 +189,12 @@ function App() {
                 <img 
                   src={vectorikLogo} 
                   alt="Vektar AI" 
-                  className="w-96 h-96 mx-auto animate-glow rounded-full"
+                  className="w-64 sm:w-80 lg:w-96 h-auto mx-auto animate-glow rounded-full"
+                  loading="eager"
+                  decoding="async"
+                  width="384"
+                  height="384"
+                  sizes="(max-width: 640px) 16rem, (max-width: 1024px) 20rem, 24rem"
                 />
               </div>
               <div className="absolute inset-0 vektar-gradient opacity-20 blur-3xl animate-pulse"></div>
@@ -199,7 +204,7 @@ function App() {
       </section>
 
       {/* Trust Indicators */}
-      <section className="py-16 border-b border-border">
+      <section className="py-12 sm:py-14 lg:py-16 border-b border-border">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <p className="text-muted-foreground text-lg">Trusted by data-driven companies</p>
@@ -217,7 +222,7 @@ function App() {
       </section>
 
       {/* Value Pillars */}
-      <section className="py-20">
+      <section className="py-14 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
@@ -924,7 +929,7 @@ function App() {
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold">Contact Information</h4>
                   <div className="space-y-2 text-muted-foreground">
-                    <p>Email: info@vektar.com</p>
+                    <p>Email: info@vektar.io</p>
                     <p>Response time: Within 24 hours</p>
                   </div>
                 </div>
@@ -938,55 +943,60 @@ function App() {
 
       {/* Footer */}
       <footer className="py-16 border-t border-border">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="space-y-4">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="grid md:grid-cols-12 gap-x-12 gap-y-10">
+            <div className="space-y-4 md:col-span-3 max-w-sm">
               <div className="flex items-center space-x-2">
                 <img src={vectorikLogo} alt="Vektar" className="w-10 h-10 rounded-full" />
                 <span className="text-xl font-bold vektar-gradient-text">Vektar</span>
               </div>
-              <p className="text-muted-foreground">
+              <p className="text-sm leading-6 text-muted-foreground">
                 AI solutions that deliver real ROI. Built with care and curiosity.
               </p>
-              <p className="text-sm text-muted-foreground">
-                © 2025 Vektar. All rights reserved.
-              </p>
             </div>
 
-            <div>
-              <h4 className="font-semibold mb-4">Solutions</h4>
-              <div className="space-y-2 text-muted-foreground">
-                <div>AI Sales Chatbot</div>
-                <div>Voice Receptionist</div>
-                <div>Document Intelligence</div>
-                <div>KPI Copilot</div>
+            <div className="md:col-span-2">
+              <h4 className="text-sm font-semibold text-foreground/90 mb-3">Solutions</h4>
+              <ul className="space-y-2 text-sm leading-6 text-muted-foreground" aria-label="Solutions">
+                <li><a className="hover:text-foreground transition-colors cursor-pointer">AI Sales Chatbot</a></li>
+                <li><a className="hover:text-foreground transition-colors cursor-pointer">Voice Receptionist</a></li>
+                <li><a className="hover:text-foreground transition-colors cursor-pointer">Document Intelligence</a></li>
+                <li><a className="hover:text-foreground transition-colors cursor-pointer">KPI Copilot</a></li>
+              </ul>
+            </div>
+
+            <div className="md:col-span-5">
+              <h4 className="text-sm font-semibold text-foreground/90 mb-3">Industries</h4>
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-2 gap-x-8 text-sm leading-6 text-muted-foreground" aria-label="Industries">
+                <a className="hover:text-foreground transition-colors cursor-pointer">Home Services</a>
+                <a className="hover:text-foreground transition-colors cursor-pointer">Healthcare</a>
+                <a className="hover:text-foreground transition-colors cursor-pointer">Industrial</a>
+                <a className="hover:text-foreground transition-colors cursor-pointer">Restaurants</a>
+                <a className="hover:text-foreground transition-colors cursor-pointer">Financial Services</a>
+                <a className="hover:text-foreground transition-colors cursor-pointer">E‑commerce & Retail</a>
+                <a className="hover:text-foreground transition-colors cursor-pointer">Real Estate & PropTech</a>
+                <a className="hover:text-foreground transition-colors cursor-pointer">Transportation & Logistics</a>
+                <a className="hover:text-foreground transition-colors cursor-pointer">Manufacturing</a>
+                <a className="hover:text-foreground transition-colors cursor-pointer">Energy & Utilities</a>
+                <a className="hover:text-foreground transition-colors cursor-pointer">Government & Public Sector</a>
+                <a className="hover:text-foreground transition-colors cursor-pointer">Education & EdTech</a>
               </div>
             </div>
 
-            <div>
-              <h4 className="font-semibold mb-4">Industries</h4>
-              <div className="space-y-2 text-muted-foreground">
-                <div>Home Services</div>
-                <div>Healthcare</div>
-                <div>Industrial</div>
-                <div>Restaurants</div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <div className="space-y-2 text-muted-foreground">
-                <div>About Us</div>
-                <div>Case Studies</div>
-                <div>Blog</div>
-                <div>Contact</div>
-              </div>
+            <div className="md:col-span-2">
+              <h4 className="text-sm font-semibold text-foreground/90 mb-3">Company</h4>
+              <ul className="space-y-2 text-sm leading-6 text-muted-foreground" aria-label="Company">
+                <li><a className="hover:text-foreground transition-colors cursor-pointer">About Us</a></li>
+                <li><a className="hover:text-foreground transition-colors cursor-pointer">Case Studies</a></li>
+                <li><a className="hover:text-foreground transition-colors cursor-pointer">Blog</a></li>
+                <li><a className="hover:text-foreground transition-colors cursor-pointer">Contact</a></li>
+              </ul>
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-border text-center">
-            <p className="text-muted-foreground">
-              Privacy by design: scoped retrieval, PII redaction, audit trails, rate-limiting.
+          <div className="mt-12 pt-8 border-t border-border text-center pad-safe-bottom">
+            <p className="text-sm text-muted-foreground">
+              © 2025 Vektar. All rights reserved.
             </p>
           </div>
         </div>

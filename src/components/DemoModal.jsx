@@ -158,15 +158,15 @@ const DemoModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-background border border-border rounded-2xl max-w-7xl w-full max-h-[95vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-0 sm:p-4">
+      <div className="bg-background border-0 sm:border border-border rounded-none sm:rounded-2xl max-w-7xl w-full h-full sm:h-auto sm:max-h-[95vh] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-background border-b border-border p-6 flex items-center justify-between">
+        <div className="sticky top-0 bg-background border-b border-border p-4 sm:p-6 flex items-center justify-between pad-safe-top">
           <div>
-            <h2 className="text-3xl font-bold">
-              Live <span className="vectorik-gradient-text">AI Demos</span>
+            <h2 className="text-2xl sm:text-3xl font-bold">
+              Live <span className="vektar-gradient-text">AI Demos</span>
             </h2>
-            <p className="text-muted-foreground mt-2">
+            <p className="text-muted-foreground mt-2 text-sm sm:text-base">
               Experience our AI solutions in action. Click on any demo to see how it works.
             </p>
           </div>
@@ -174,7 +174,7 @@ const DemoModal = ({ isOpen, onClose }) => {
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="hover:bg-secondary"
+            className="hover:bg-secondary tap-target min-w-[44px] min-h-[44px]"
           >
             <X className="w-6 h-6" />
           </Button>
@@ -259,7 +259,8 @@ const DemoModal = ({ isOpen, onClose }) => {
                       placeholder="Your name *"
                       value={demoRequestForm.name}
                       onChange={handleInputChange}
-                      className="w-full p-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      autoComplete="name"
+                      className="w-full p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target"
                     />
                     <input
                       type="email"
@@ -267,7 +268,9 @@ const DemoModal = ({ isOpen, onClose }) => {
                       placeholder="Your email *"
                       value={demoRequestForm.email}
                       onChange={handleInputChange}
-                      className="w-full p-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      autoComplete="email"
+                      inputMode="email"
+                      className="w-full p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target"
                     />
                   </div>
                   <input
@@ -276,7 +279,8 @@ const DemoModal = ({ isOpen, onClose }) => {
                     placeholder="Company name (optional)"
                     value={demoRequestForm.company}
                     onChange={handleInputChange}
-                    className="w-full p-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    autoComplete="organization"
+                    className="w-full p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target"
                   />
                   <textarea
                     name="message"
@@ -284,11 +288,11 @@ const DemoModal = ({ isOpen, onClose }) => {
                     value={demoRequestForm.message}
                     onChange={handleInputChange}
                     rows="3"
-                    className="w-full p-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
+                    className="w-full p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none tap-target"
                   />
                   <Button
                     onClick={() => handleDemoRequest(selectedDemo.title)}
-                    className="vectorik-gradient hover-glow"
+                    className="vektar-gradient hover-glow w-full sm:w-auto tap-target"
                     disabled={isRequestingDemo}
                   >
                     {isRequestingDemo ? 'Requesting...' : 'Request Personal Demo'}

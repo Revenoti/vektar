@@ -76,13 +76,13 @@ const ContactForm = () => {
     }
   }
 
-  const inputClasses = "w-full p-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-foreground placeholder-muted-foreground"
+  const inputClasses = "w-full p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-foreground placeholder-muted-foreground tap-target"
   const labelClasses = "block text-sm font-medium mb-2 text-foreground"
 
   return (
     <Card className="glass-card">
       <CardContent className="p-8">
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form noValidate onSubmit={handleSubmit} className="space-y-6">
           {/* Status Message */}
           {submitStatus && (
             <div className={`p-4 rounded-lg flex items-center space-x-3 ${
@@ -113,6 +113,8 @@ const ContactForm = () => {
                 onChange={handleInputChange}
                 className={inputClasses}
                 placeholder="Your name"
+                autoComplete="name"
+                enterKeyHint="next"
                 required
                 disabled={isSubmitting}
               />
@@ -129,6 +131,9 @@ const ContactForm = () => {
                 onChange={handleInputChange}
                 className={inputClasses}
                 placeholder="your@email.com"
+                autoComplete="email"
+                inputMode="email"
+                enterKeyHint="next"
                 required
                 disabled={isSubmitting}
               />
@@ -149,6 +154,8 @@ const ContactForm = () => {
                 onChange={handleInputChange}
                 className={inputClasses}
                 placeholder="Your company"
+                autoComplete="organization"
+                enterKeyHint="next"
                 disabled={isSubmitting}
               />
             </div>
@@ -164,6 +171,9 @@ const ContactForm = () => {
                 onChange={handleInputChange}
                 className={inputClasses}
                 placeholder="https://yourwebsite.com"
+                autoComplete="url"
+                inputMode="url"
+                enterKeyHint="next"
                 disabled={isSubmitting}
               />
             </div>

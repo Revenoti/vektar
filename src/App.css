@@ -44,6 +44,10 @@
 :root {
   --radius: 0.625rem;
   
+  /* Safe Area Insets */
+  --safe-bottom: env(safe-area-inset-bottom);
+  --safe-top: env(safe-area-inset-top);
+  
   /* Vectorik Brand Colors */
   --midnight-navy: #0B1021;
   --near-black: #0E132C;
@@ -165,6 +169,18 @@
   .animate-glow {
     animation: glow 2s ease-in-out infinite alternate;
   }
+  
+  .pad-safe-top {
+    padding-top: max(1rem, var(--safe-top));
+  }
+  
+  .pad-safe-bottom {
+    padding-bottom: max(1rem, var(--safe-bottom));
+  }
+  
+  .tap-target {
+    min-height: 44px;
+  }
 }
 
 @keyframes float {
@@ -206,4 +222,11 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--aqua);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-glow, .animate-float, .animate-pulse {
+    animation: none !important;
+  }
 }

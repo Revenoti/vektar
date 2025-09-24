@@ -7,7 +7,7 @@ export const submitContactForm = async (formData) => {
     // For now, we'll simulate the email sending process
     
     const emailData = {
-      to: 'info@vektar.com',
+      to: 'info@vektar.io',
       subject: `New Contact Form Submission from ${formData.name}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -62,7 +62,7 @@ export const submitContactForm = async (formData) => {
     console.error('Error submitting contact form:', error)
     return {
       success: false,
-      message: 'There was an error sending your message. Please try again or contact us directly at info@vektar.com'
+      message: 'There was an error sending your message. Please try again or contact us directly at info@vektar.io'
     }
   }
 }
@@ -93,7 +93,7 @@ export const submitNewsletter = async (email) => {
 export const requestDemo = async (formData) => {
   try {
     const emailData = {
-      to: 'info@vektar.com',
+      to: 'info@vektar.io',
       subject: `Demo Request from ${formData.name}`,
       html: `
         <h2>Demo Request</h2>
