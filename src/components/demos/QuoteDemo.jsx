@@ -140,15 +140,15 @@ const QuoteDemo = () => {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Header */}
       <Card className="glass-card">
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Calculator className="w-5 h-5" />
+        <CardHeader className="pb-4 md:pb-6">
+          <CardTitle className="flex items-center space-x-2 text-lg md:text-xl">
+            <Calculator className="w-4 h-4 md:w-5 md:h-5" />
             <span>Quote Copilot Demo</span>
           </CardTitle>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-sm md:text-base">
             Experience how our AI generates accurate project quotes in seconds, not hours
           </p>
         </CardHeader>
@@ -157,36 +157,36 @@ const QuoteDemo = () => {
       {!selectedQuoteType ? (
         /* Project Type Selection */
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold">Select Your Project Type</h3>
-          <div className="grid md:grid-cols-2 gap-4">
+          <h3 className="text-lg md:text-xl font-semibold">Select Your Project Type</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {quoteTypes.map((type) => (
               <Card 
                 key={type.id}
                 className="glass-card hover-glow cursor-pointer transition-all duration-300"
                 onClick={() => setSelectedQuoteType(type.id)}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h4 className="font-semibold text-lg">{type.title}</h4>
-                      <p className="text-sm text-muted-foreground mt-1">
+                <CardContent className="p-4 md:p-6">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-4 mb-4">
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-base md:text-lg">{type.title}</h4>
+                      <p className="text-xs md:text-sm text-muted-foreground mt-1">
                         {type.description}
                       </p>
                     </div>
-                    <Badge variant="secondary">
+                    <Badge variant="secondary" className="text-xs md:text-sm shrink-0">
                       From ${type.basePrice.toLocaleString()}
                     </Badge>
                   </div>
                   <div className="space-y-2">
-                    <p className="text-sm font-medium">Includes:</p>
+                    <p className="text-xs md:text-sm font-medium">Includes:</p>
                     {type.features.slice(0, 3).map((feature, index) => (
                       <div key={index} className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span className="text-sm">{feature}</span>
+                        <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                        <span className="text-xs md:text-sm">{feature}</span>
                       </div>
                     ))}
                   </div>
-                  <Button className="w-full mt-4 vectorik-gradient hover-glow">
+                  <Button className="w-full mt-4 vectorik-gradient hover-glow min-h-[44px] md:min-h-[auto]">
                     Get Quote
                   </Button>
                 </CardContent>
@@ -196,33 +196,34 @@ const QuoteDemo = () => {
         </div>
       ) : !generatedQuote ? (
         /* Quote Configuration */
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
           <div className="flex items-center justify-between">
-            <Button variant="ghost" onClick={resetQuote}>
-              ← Back to Project Types
+            <Button variant="ghost" onClick={resetQuote} className="min-h-[44px] md:min-h-[auto]">
+              ← <span className="hidden sm:inline">Back to Project Types</span><span className="sm:hidden">Back</span>
             </Button>
-            <h3 className="text-xl font-semibold">
-              Configure Your {quoteTypes.find(t => t.id === selectedQuoteType)?.title}
+            <h3 className="text-base md:text-xl font-semibold text-right">
+              <span className="hidden md:inline">Configure Your </span>{quoteTypes.find(t => t.id === selectedQuoteType)?.title}
             </h3>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
             {/* Configuration Form */}
             <Card className="glass-card">
-              <CardHeader>
-                <CardTitle>Project Requirements</CardTitle>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-base md:text-lg">Project Requirements</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 md:space-y-6">
                 {/* Complexity Selection */}
                 <div>
                   <label className="block text-sm font-medium mb-3">Project Complexity</label>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                     {['Basic', 'Advanced', 'Enterprise'].map((complexity) => (
                       <Button
                         key={complexity}
                         variant={quoteInputs.complexity === complexity ? "default" : "outline"}
                         size="sm"
                         onClick={() => handleInputChange('complexity', complexity)}
+                        className="min-h-[44px] md:min-h-[auto] justify-center"
                       >
                         {complexity}
                       </Button>
@@ -233,16 +234,16 @@ const QuoteDemo = () => {
                 {/* Additional Features */}
                 <div>
                   <label className="block text-sm font-medium mb-3">Additional Features</label>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {additionalFeatures.map((feature) => (
                       <Button
                         key={feature}
                         variant={quoteInputs.features.includes(feature) ? "default" : "outline"}
                         size="sm"
-                        className="text-xs h-8 justify-start"
+                        className="text-xs md:text-sm h-10 md:h-8 justify-start min-h-[44px] md:min-h-[auto] p-2 md:p-3"
                         onClick={() => toggleFeature(feature)}
                       >
-                        {feature}
+                        <span className="truncate">{feature}</span>
                       </Button>
                     ))}
                   </div>
@@ -251,17 +252,19 @@ const QuoteDemo = () => {
                 <Button
                   onClick={generateQuote}
                   disabled={!quoteInputs.complexity || isGenerating}
-                  className="w-full vectorik-gradient hover-glow"
+                  className="w-full vectorik-gradient hover-glow min-h-[48px] md:min-h-[auto]"
                 >
                   {isGenerating ? (
                     <>
                       <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-                      Generating Quote...
+                      <span className="hidden sm:inline">Generating Quote...</span>
+                      <span className="sm:hidden">Generating...</span>
                     </>
                   ) : (
                     <>
                       <Zap className="w-4 h-4 mr-2" />
-                      Generate AI Quote
+                      <span className="hidden sm:inline">Generate AI Quote</span>
+                      <span className="sm:hidden">Generate Quote</span>
                     </>
                   )}
                 </Button>
@@ -270,8 +273,8 @@ const QuoteDemo = () => {
 
             {/* Live Preview */}
             <Card className="glass-card">
-              <CardHeader>
-                <CardTitle>Quote Preview</CardTitle>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-base md:text-lg">Quote Preview</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {quoteInputs.complexity ? (
@@ -316,65 +319,65 @@ const QuoteDemo = () => {
         </div>
       ) : (
         /* Generated Quote */
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <Button variant="ghost" onClick={resetQuote}>
-              ← Generate New Quote
+        <div className="space-y-4 md:space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <Button variant="ghost" onClick={resetQuote} className="min-h-[44px] md:min-h-[auto] self-start">
+              ← <span className="hidden sm:inline">Generate New Quote</span><span className="sm:hidden">New Quote</span>
             </Button>
             <div className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-green-500" />
-              <span className="font-semibold">Quote Generated Successfully</span>
+              <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500" />
+              <span className="font-semibold text-sm md:text-base">Quote Generated Successfully</span>
             </div>
           </div>
 
           <Card className="glass-card">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle>Project Quote #{generatedQuote.id}</CardTitle>
-                <Badge variant="default">Valid until {generatedQuote.validUntil}</Badge>
+            <CardHeader className="pb-4">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                <CardTitle className="text-base md:text-lg">Project Quote #{generatedQuote.id}</CardTitle>
+                <Badge variant="default" className="text-xs md:text-sm w-fit">Valid until {generatedQuote.validUntil}</Badge>
               </div>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-xs md:text-sm">
                 Generated on {generatedQuote.generatedAt}
               </p>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-4 md:space-y-6">
               {/* Project Details */}
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h4 className="font-semibold">Project Details</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <Building className="w-4 h-4 text-muted-foreground" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div className="space-y-3 md:space-y-4">
+                  <h4 className="font-semibold text-sm md:text-base">Project Details</h4>
+                  <div className="space-y-2 md:space-y-3">
+                    <div className="flex items-center space-x-2 md:space-x-3">
+                      <Building className="w-3 h-3 md:w-4 md:h-4 text-muted-foreground flex-shrink-0" />
                       <div>
-                        <p className="font-medium">{generatedQuote.projectType}</p>
-                        <p className="text-sm text-muted-foreground">{generatedQuote.complexity} Implementation</p>
+                        <p className="font-medium text-sm md:text-base">{generatedQuote.projectType}</p>
+                        <p className="text-xs md:text-sm text-muted-foreground">{generatedQuote.complexity} Implementation</p>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Clock className="w-4 h-4 text-muted-foreground" />
+                    <div className="flex items-center space-x-2 md:space-x-3">
+                      <Clock className="w-3 h-3 md:w-4 md:h-4 text-muted-foreground flex-shrink-0" />
                       <div>
-                        <p className="font-medium">Timeline: {generatedQuote.timeline}</p>
-                        <p className="text-sm text-muted-foreground">Including testing & deployment</p>
+                        <p className="font-medium text-sm md:text-base">Timeline: {generatedQuote.timeline}</p>
+                        <p className="text-xs md:text-sm text-muted-foreground">Including testing & deployment</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <h4 className="font-semibold">Investment Breakdown</h4>
+                <div className="space-y-3 md:space-y-4">
+                  <h4 className="font-semibold text-sm md:text-base">Investment Breakdown</h4>
                   <div className="space-y-2">
-                    <div className="flex justify-between">
+                    <div className="flex justify-between text-sm md:text-base">
                       <span>Base Implementation:</span>
                       <span className="font-medium">${generatedQuote.basePrice.toLocaleString()}</span>
                     </div>
                     {generatedQuote.additionalFeatures > 0 && (
-                      <div className="flex justify-between">
+                      <div className="flex justify-between text-sm md:text-base">
                         <span>Additional Features:</span>
                         <span className="font-medium">${generatedQuote.additionalFeatures.toLocaleString()}</span>
                       </div>
                     )}
                     <div className="border-t border-border pt-2">
-                      <div className="flex justify-between text-lg font-bold">
+                      <div className="flex justify-between text-base md:text-lg font-bold">
                         <span>Total Investment:</span>
                         <span className="text-primary">${generatedQuote.totalPrice.toLocaleString()}</span>
                       </div>
@@ -385,12 +388,12 @@ const QuoteDemo = () => {
 
               {/* Features Included */}
               <div>
-                <h4 className="font-semibold mb-3">Features Included</h4>
-                <div className="grid md:grid-cols-2 gap-2">
+                <h4 className="font-semibold mb-3 text-sm md:text-base">Features Included</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {generatedQuote.features.map((feature, index) => (
                     <div key={index} className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm">{feature}</span>
+                      <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-green-500 flex-shrink-0" />
+                      <span className="text-xs md:text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -416,46 +419,48 @@ const QuoteDemo = () => {
               </div>
 
               {/* Actions */}
-              <div className="flex space-x-3">
-                <Button className="vectorik-gradient hover-glow">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                <Button className="vectorik-gradient hover-glow min-h-[44px] md:min-h-[auto]">
                   <Send className="w-4 h-4 mr-2" />
                   Send Quote
                 </Button>
-                <Button variant="outline">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download PDF
-                </Button>
-                <Button variant="outline">
-                  <Copy className="w-4 h-4 mr-2" />
-                  Copy Link
-                </Button>
-                <Button variant="outline">
-                  <Edit className="w-4 h-4 mr-2" />
-                  Customize
-                </Button>
+                <div className="grid grid-cols-3 sm:flex gap-2 sm:gap-3">
+                  <Button variant="outline" className="min-h-[44px] md:min-h-[auto]">
+                    <Download className="w-4 h-4 sm:mr-2" />
+                    <span className="hidden sm:inline">Download PDF</span>
+                  </Button>
+                  <Button variant="outline" className="min-h-[44px] md:min-h-[auto]">
+                    <Copy className="w-4 h-4 sm:mr-2" />
+                    <span className="hidden sm:inline">Copy Link</span>
+                  </Button>
+                  <Button variant="outline" className="min-h-[44px] md:min-h-[auto]">
+                    <Edit className="w-4 h-4 sm:mr-2" />
+                    <span className="hidden sm:inline">Customize</span>
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
 
           {/* Quote Statistics */}
           <Card className="glass-card">
-            <CardContent className="p-6">
-              <h4 className="font-semibold mb-4">Quote Generation Statistics</h4>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <CardContent className="p-4 md:p-6">
+              <h4 className="font-semibold mb-3 md:mb-4 text-sm md:text-base">Quote Generation Statistics</h4>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">2.3s</div>
+                  <div className="text-xl md:text-2xl font-bold text-primary">2.3s</div>
                   <div className="text-xs text-muted-foreground">Generation Time</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-500">94%</div>
+                  <div className="text-xl md:text-2xl font-bold text-green-500">94%</div>
                   <div className="text-xs text-muted-foreground">Accuracy Rate</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-500">-60%</div>
+                  <div className="text-xl md:text-2xl font-bold text-blue-500">-60%</div>
                   <div className="text-xs text-muted-foreground">Time Saved</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-500">+40%</div>
+                  <div className="text-xl md:text-2xl font-bold text-purple-500">+40%</div>
                   <div className="text-xs text-muted-foreground">Close Rate</div>
                 </div>
               </div>

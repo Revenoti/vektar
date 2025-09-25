@@ -124,47 +124,47 @@ const ChatbotDemo = () => {
   }
 
   return (
-    <div className="flex flex-col h-[600px] bg-background border border-border rounded-lg overflow-hidden">
+    <div className="flex flex-col h-[500px] md:h-[600px] bg-background border border-border rounded-lg overflow-hidden">
       {/* Chat Header */}
-      <div className="bg-gradient-to-r from-primary to-accent p-4 text-white">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-            <Bot className="w-6 h-6" />
+      <div className="bg-gradient-to-r from-primary to-accent p-3 md:p-4 text-white">
+        <div className="flex items-center space-x-2 md:space-x-3">
+          <div className="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center">
+            <Bot className="w-4 h-4 md:w-6 md:h-6" />
           </div>
           <div>
-            <h3 className="font-semibold">AI Sales Assistant</h3>
-            <p className="text-sm opacity-90">Online • Avg response: 0.3s</p>
+            <h3 className="font-semibold text-sm md:text-base">AI Sales Assistant</h3>
+            <p className="text-xs md:text-sm opacity-90">Online • Avg response: 0.3s</p>
           </div>
         </div>
       </div>
 
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-3 md:p-4 space-y-3 md:space-y-4">
         {messages.map((message) => (
           <div
             key={message.id}
             className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
           >
-            <div className={`flex items-start space-x-2 max-w-[80%] ${
+            <div className={`flex items-start space-x-2 max-w-[85%] md:max-w-[80%] ${
               message.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''
             }`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+              <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                 message.type === 'user' 
                   ? 'bg-primary text-white' 
                   : 'bg-secondary text-foreground'
               }`}>
                 {message.type === 'user' ? (
-                  <User className="w-4 h-4" />
+                  <User className="w-3 h-3 md:w-4 md:h-4" />
                 ) : (
-                  <Bot className="w-4 h-4" />
+                  <Bot className="w-3 h-3 md:w-4 md:h-4" />
                 )}
               </div>
-              <div className={`rounded-lg p-3 ${
+              <div className={`rounded-lg p-2 md:p-3 ${
                 message.type === 'user'
                   ? 'bg-primary text-white'
                   : 'bg-secondary text-foreground'
               }`}>
-                <p className="text-sm">{message.content}</p>
+                <p className="text-sm leading-relaxed">{message.content}</p>
                 <p className="text-xs opacity-70 mt-1">
                   {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </p>
@@ -175,13 +175,13 @@ const ChatbotDemo = () => {
         
         {isTyping && (
           <div className="flex justify-start">
-            <div className="flex items-start space-x-2 max-w-[80%]">
-              <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
-                <Bot className="w-4 h-4" />
+            <div className="flex items-start space-x-2 max-w-[85%] md:max-w-[80%]">
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                <Bot className="w-3 h-3 md:w-4 md:h-4" />
               </div>
-              <div className="bg-secondary rounded-lg p-3">
+              <div className="bg-secondary rounded-lg p-2 md:p-3">
                 <div className="flex items-center space-x-1">
-                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <Loader2 className="w-3 h-3 md:w-4 md:h-4 animate-spin" />
                   <span className="text-sm">AI is typing...</span>
                 </div>
               </div>
@@ -194,37 +194,40 @@ const ChatbotDemo = () => {
       {/* Quick Questions */}
       <div className="border-t border-border p-3">
         <p className="text-xs text-muted-foreground mb-2">Quick questions:</p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1 md:gap-2">
           {quickQuestions.map((question, index) => (
             <Button
               key={index}
               variant="outline"
               size="sm"
-              className="text-xs h-7"
+              className="text-xs h-8 md:h-7 px-2 md:px-3 tap-target"
               onClick={() => handleQuickQuestion(question)}
             >
-              {question}
+              <span className="hidden sm:inline">{question}</span>
+              <span className="sm:hidden">
+                {question.split(' ').slice(0, 2).join(' ')}...
+              </span>
             </Button>
           ))}
         </div>
       </div>
 
       {/* Input Area */}
-      <div className="border-t border-border p-4">
+      <div className="border-t border-border p-3 md:p-4">
         <div className="flex space-x-2">
           <textarea
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Ask me anything about our AI solutions..."
-            className="flex-1 resize-none border border-border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-transparent"
+            className="flex-1 resize-none border border-border rounded-lg px-3 py-3 md:py-2 text-sm focus:ring-2 focus:ring-primary focus:border-transparent min-h-[44px] md:min-h-[auto]"
             rows="1"
             disabled={isTyping}
           />
           <Button
             onClick={handleSendMessage}
             disabled={!inputValue.trim() || isTyping}
-            className="px-3"
+            className="px-3 min-h-[44px] min-w-[44px] md:min-h-[auto] md:min-w-[auto]"
           >
             <Send className="w-4 h-4" />
           </Button>

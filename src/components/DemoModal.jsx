@@ -158,15 +158,15 @@ const DemoModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-0 sm:p-4">
-      <div className="bg-background border-0 sm:border border-border rounded-none sm:rounded-2xl max-w-7xl w-full h-full sm:h-auto sm:max-h-[95vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-0 md:p-4">
+      <div className="bg-background border-0 md:border border-border rounded-none md:rounded-2xl max-w-7xl w-full h-full md:h-auto md:max-h-[95vh] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-background border-b border-border p-4 sm:p-6 flex items-center justify-between pad-safe-top">
+        <div className="sticky top-0 bg-background border-b border-border p-4 md:p-6 flex items-center justify-between pad-safe-top">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold">
+            <h2 className="text-2xl md:text-3xl font-bold">
               Live <span className="vektar-gradient-text">AI Demos</span>
             </h2>
-            <p className="text-muted-foreground mt-2 text-sm sm:text-base">
+            <p className="text-muted-foreground mt-2 text-sm md:text-base">
               Experience our AI solutions in action. Click on any demo to see how it works.
             </p>
           </div>
@@ -174,16 +174,16 @@ const DemoModal = ({ isOpen, onClose }) => {
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="hover:bg-secondary tap-target min-w-[44px] min-h-[44px]"
+            className="hover:bg-secondary tap-target min-w-[44px] min-h-[44px] md:min-w-[40px] md:min-h-[40px]"
           >
             <X className="w-6 h-6" />
           </Button>
         </div>
 
         {/* Demo Content */}
-        <div className="p-6">
+        <div className="p-4 md:p-6">
           {!selectedDemo ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {demos.map((demo) => (
                 <Card 
                   key={demo.id} 
@@ -192,23 +192,24 @@ const DemoModal = ({ isOpen, onClose }) => {
                   onClick={() => setSelectedDemo(demo)}
                 >
                   <CardHeader className="pb-4">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${demo.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                      <demo.icon className="w-8 h-8 text-white" />
+                    <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br ${demo.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                      <demo.icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    <CardTitle className="text-lg md:text-xl group-hover:text-primary transition-colors">
                       {demo.title}
                     </CardTitle>
-                    <Badge variant="secondary" className="w-fit">
+                    <Badge variant="secondary" className="w-fit text-xs md:text-sm">
                       {demo.metrics}
                     </Badge>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-muted-foreground mb-4 text-sm md:text-base">
                       {demo.description}
                     </p>
                     <div className="flex items-center text-primary text-sm font-medium">
                       <Play className="w-4 h-4 mr-2" />
-                      Try Interactive Demo
+                      <span className="hidden sm:inline">Try Interactive Demo</span>
+                      <span className="sm:hidden">Try Demo</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -216,22 +217,22 @@ const DemoModal = ({ isOpen, onClose }) => {
             </div>
           ) : (
             /* Selected Demo View */
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               <div className="flex items-center justify-between">
                 <Button
                   variant="ghost"
                   onClick={() => setSelectedDemo(null)}
-                  className="hover:bg-secondary"
+                  className="hover:bg-secondary min-h-[44px] px-3 md:px-4"
                 >
-                  ← Back to Demos
+                  ← <span className="hidden sm:inline">Back to Demos</span><span className="sm:hidden">Back</span>
                 </Button>
-                <div className="flex items-center space-x-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${selectedDemo.color} flex items-center justify-center`}>
-                    <selectedDemo.icon className="w-6 h-6 text-white" />
+                <div className="flex items-center space-x-2 md:space-x-4">
+                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br ${selectedDemo.color} flex items-center justify-center`}>
+                    <selectedDemo.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold">{selectedDemo.title}</h3>
-                    <Badge variant="secondary">{selectedDemo.metrics}</Badge>
+                    <h3 className="text-lg md:text-2xl font-bold">{selectedDemo.title}</h3>
+                    <Badge variant="secondary" className="text-xs md:text-sm">{selectedDemo.metrics}</Badge>
                   </div>
                 </div>
               </div>
@@ -246,13 +247,13 @@ const DemoModal = ({ isOpen, onClose }) => {
               {/* Demo Request Form */}
               <Card className="glass-card">
                 <CardHeader>
-                  <CardTitle>Request Personal Demo</CardTitle>
-                  <p className="text-muted-foreground">
+                  <CardTitle className="text-lg md:text-xl">Request Personal Demo</CardTitle>
+                  <p className="text-muted-foreground text-sm md:text-base">
                     Want to see how this solution works with your specific data? Request a personalized demo.
                   </p>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input
                       type="text"
                       name="name"
@@ -260,7 +261,7 @@ const DemoModal = ({ isOpen, onClose }) => {
                       value={demoRequestForm.name}
                       onChange={handleInputChange}
                       autoComplete="name"
-                      className="w-full p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target"
+                      className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
                     />
                     <input
                       type="email"
@@ -270,7 +271,7 @@ const DemoModal = ({ isOpen, onClose }) => {
                       onChange={handleInputChange}
                       autoComplete="email"
                       inputMode="email"
-                      className="w-full p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target"
+                      className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
                     />
                   </div>
                   <input
@@ -280,7 +281,7 @@ const DemoModal = ({ isOpen, onClose }) => {
                     value={demoRequestForm.company}
                     onChange={handleInputChange}
                     autoComplete="organization"
-                    className="w-full p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target"
+                    className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
                   />
                   <textarea
                     name="message"
@@ -288,11 +289,11 @@ const DemoModal = ({ isOpen, onClose }) => {
                     value={demoRequestForm.message}
                     onChange={handleInputChange}
                     rows="3"
-                    className="w-full p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none tap-target"
+                    className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none tap-target min-h-[120px]"
                   />
                   <Button
                     onClick={() => handleDemoRequest(selectedDemo.title)}
-                    className="vektar-gradient hover-glow w-full sm:w-auto tap-target"
+                    className="vektar-gradient hover-glow w-full md:w-auto tap-target min-h-[44px] text-base"
                     disabled={isRequestingDemo}
                   >
                     {isRequestingDemo ? 'Requesting...' : 'Request Personal Demo'}
