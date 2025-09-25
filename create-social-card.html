@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+        .instructions {
+            max-width: 800px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .card-preview {
+            border: 2px dashed #ccc;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h1>Vektar Social Media Card Creation</h1>
+        <p><strong>IMPORTANT:</strong> You need to create a PNG image (1200x630px) for the social media card.</p>
+        
+        <h3>Quick Setup Instructions:</h3>
+        <ol>
+            <li>Open the file: <code>public/og-card-generator.html</code> in your browser</li>
+            <li>Take a screenshot of the card (exactly 1200x630px)</li>
+            <li>Save it as <code>public/vektar-social-card.png</code></li>
+            <li>Deploy to Netlify</li>
+        </ol>
+        
+        <h3>Alternative Method:</h3>
+        <p>Use any online tool to create a 1200x630px PNG with:</p>
+        <ul>
+            <li>Dark gradient background (matching your brand colors)</li>
+            <li>Vektar logo and "AI SOLUTIONS" text</li>
+            <li>Headline: "Build Real ROI from AI"</li>
+            <li>Subtext: "Faster. Safer. Beautifully Executed."</li>
+            <li>Stats: "150+ AI Projects, 95% Client Satisfaction, 30 Day Pilots"</li>
+        </ul>
+
+        <h3>Testing After Upload:</h3>
+        <p>Once you have the PNG file uploaded, test with:</p>
+        <ul>
+            <li><a href="https://developers.facebook.com/tools/debug/" target="_blank">Facebook Sharing Debugger</a></li>
+            <li><a href="https://cards-dev.twitter.com/validator" target="_blank">Twitter Card Validator</a></li>
+            <li><a href="https://www.linkedin.com/post-inspector/" target="_blank">LinkedIn Post Inspector</a></li>
+        </ul>
+    </div>
+
+    <div class="card-preview">
+        <h3>Card Preview Link:</h3>
+        <p>Preview your card design: <a href="public/og-card-generator.html" target="_blank">Open Card Generator</a></p>
+        <p>The card should be exactly 1200px wide by 630px tall for optimal social media sharing.</p>
+    </div>
+
+    <script>
+        // Function to help capture the perfect dimensions
+        function captureCard() {
+            window.open('public/og-card-generator.html', '_blank', 'width=1200,height=630');
+        }
+    </script>
+</body>
+</html>

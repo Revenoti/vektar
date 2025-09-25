@@ -13,9 +13,32 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "image/png"
+
+[[headers]]
+  for = "/vektar-social-card.png"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "image/png"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
   for = "/*"
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "interest-cohort=()"
     X-Frame-Options = "DENY"
+    X-Robots-Tag = "index, follow"
+
+# Special handling for social media crawlers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Facebook crawler headers
+    Vary = "User-Agent"
+    # WhatsApp crawler support
+    Cache-Control = "public, max-age=300"
