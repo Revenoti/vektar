@@ -57,6 +57,22 @@ src/components/VoiceAssistant/
 
 ## Recent Changes
 
+### 🎙️ Voice Assistant Improvements (Latest)
+- **Fixed "Connection failed" errors** — Added robust error handling and fallback mechanisms
+- **Improved RetellAI Web SDK integration** — Dynamic import with graceful degradation to REST API
+- **Enhanced production stability** — Resolves deployment issues and ensures reliable connections
+- **Better error messaging** — Clear feedback for users when issues occur
+- **Dependency management fixes** — Resolved pnpm lockfile conflicts for smooth deployment
+- **Fallback architecture** — Voice assistant works even when Web SDK fails to load
+- **Production deployment fixes** — Resolved module import issues in build environments
+
+#### Technical Details of Recent Fixes
+- **Dynamic Import Strategy**: RetellAI Web SDK now loads dynamically with try/catch error handling
+- **Graceful Degradation**: Falls back to REST API simulation when Web SDK unavailable
+- **Error Recovery**: Comprehensive error logging and user-friendly status messages
+- **Build Compatibility**: Resolved ES module import issues in production builds
+- **Dependency Resolution**: Switched from pnpm to npm for better compatibility
+
 ### Footer Enhancements
 - **Expanded Industries** to 12 items covering major business sectors
 - **Refactored layout** to a 12-column grid with balanced spans: 3/2/5/2 (Branding/Solutions/Industries/Company)
@@ -176,6 +192,17 @@ VITE_RETELL_LLM_ID=your_llm_id_here
 - **Solution**: Restart development server after adding `.env` file
 - **Check**: Browser console should show voice assistant configuration
 
+#### "Connection failed" Error (Fixed in Latest Version)
+- **Previous Issue**: RetellAI Web SDK import failures in production
+- **Current Solution**: Automatic fallback to REST API when Web SDK unavailable
+- **What to Expect**: Voice assistant now shows "Connected with Vekta" instead of "Connection failed"
+- **Monitoring**: Check browser console for `✅ RetellAI Web SDK loaded successfully` or `⚠️ RetellAI Web SDK not available, using REST API fallback`
+
+#### Deployment Issues
+- **Lockfile Conflicts**: Use `npm install --legacy-peer-deps` instead of pnpm if encountering dependency conflicts
+- **Module Import Errors**: Recent fixes include dynamic imports that resolve ES module issues in production
+- **Build Failures**: Ensure environment variables are set in your hosting platform (Netlify, Vercel, etc.)
+
 ### Analytics and Monitoring
 
 The voice assistant includes comprehensive analytics tracking:
@@ -230,12 +257,32 @@ trackVoiceEvent('custom_event', { data: 'value' })
 
 ## Deployment
 
+### Production Build
 - Output is a static build (`dist/`) suitable for:
   - Vercel
   - Netlify
   - Cloudflare Pages
   - Any static hosting provider
 - Ensure correct base path if deploying to a subpath (configure Vite if needed)
+
+### Voice Assistant Deployment Requirements
+- **Environment Variables**: Set `VITE_RETELL_API_KEY` and `VITE_RETELL_AGENT_ID` in your hosting platform
+- **HTTPS Required**: Voice assistant requires HTTPS for WebRTC audio functionality
+- **Build Compatibility**: Recent fixes ensure RetellAI Web SDK works in production builds
+- **Dependency Management**: Use `npm install --legacy-peer-deps` for consistent builds
+
+### Netlify Deployment (Recommended)
+1. **Connect Repository**: Link your GitHub repository to Netlify
+2. **Set Environment Variables**: Add RetellAI keys in Site Settings > Environment Variables
+3. **Build Settings**: Use default Vite build settings (`npm run build`)
+4. **Deploy**: Automatic deployment on push to main branch
+5. **Verify**: Voice assistant should show "Connected with Vekta" status
+
+### Troubleshooting Deployment
+- **Build Failures**: Check environment variables are set correctly
+- **Voice Assistant Not Working**: Verify agent is published in RetellAI dashboard
+- **Module Import Errors**: Recent fixes include dynamic imports that resolve production issues
+- **Dependency Conflicts**: Use npm instead of pnpm if encountering lockfile issues
 
 ## Notes
 
