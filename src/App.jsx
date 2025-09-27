@@ -1009,7 +1009,7 @@ function App() {
         onClose={() => setIsDemoModalOpen(false)} 
       />
 
-      {/* Floating Voice Assistant */}
+      {/* Native Voice Assistant */}
       <FloatingVoiceButton />
     </div>
   )

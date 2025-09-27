@@ -12,9 +12,19 @@ import {
   User,
   Bot,
   Loader2,
-  Phone
+  Phone,
+  AlertCircle,
+  RefreshCw,
+  Wifi,
+  WifiOff
 } from 'lucide-react'
-import { trackVoiceEvent, getCallStatus } from './RetellWebCall.js'
+import { 
+  trackVoiceEvent, 
+  startVoiceConversation, 
+  stopVoiceConversation, 
+  getCurrentClient,
+  validateConfig 
+} from './RetellWebCall.js'
 
 const VoiceCallInterface = ({ callData, onEndCall }) => {
   const [isMinimized, setIsMinimized] = useState(false)
@@ -25,119 +35,135 @@ const VoiceCallInterface = ({ callData, onEndCall }) => {
   const [isVektaSpeaking, setIsVektaSpeaking] = useState(false)
   const [isUserSpeaking, setIsUserSpeaking] = useState(false)
   const [connectionQuality, setConnectionQuality] = useState('excellent')
+  const [error, setError] = useState(null)
+  const [isRetrying, setIsRetrying] = useState(false)
+  const [retryCount, setRetryCount] = useState(0)
   
   const callStartTime = useRef(Date.now())
   const durationInterval = useRef(null)
   const retellClient = useRef(null)
+  const maxRetries = 3
 
-  // Initialize RetellAI Web Call
+  // Initialize RetellAI Voice Conversation with Enhanced Error Handling
   useEffect(() => {
-    if (!callData?.access_token) return
+    if (!callData?.access_token) {
+      setError('Invalid call data: missing access token')
+      setCallStatus('error')
+      return
+    }
 
     const initializeCall = async () => {
       try {
-        // Track call start
-        trackVoiceEvent('call_started', {
+        setCallStatus('connecting')
+        setError(null)
+        
+        console.log('🎙️ Initializing voice conversation...')
+
+        // Validate configuration before starting
+        const config = validateConfig()
+        if (!config.isValid) {
+          throw new Error(`Configuration error: ${config.errors.join(', ')}`)
+        }
+
+        // Track call initialization
+        trackVoiceEvent('call_initialization_started', {
           call_id: callData.call_id,
-          agent_id: callData.agent_id
+          agent_id: callData.agent_id,
+          retry_count: retryCount
         })
 
-        setCallStatus('connecting')
-        console.log('🎙️ Initializing RetellWebClient with access token:', callData.access_token.substring(0, 20) + '...')
-
-        // Try to dynamically import and initialize RetellAI Web SDK
-        let RetellWebClient
-        try {
-          const retellModule = await import('retell-client-js-sdk')
-          RetellWebClient = retellModule.RetellWebClient
-          console.log('✅ RetellAI Web SDK loaded successfully')
-        } catch (importError) {
-          console.warn('⚠️ RetellAI Web SDK not available, using REST API fallback:', importError)
-          // Fallback to REST API approach - simulate connection
-          setTimeout(() => {
+        // Set up event handlers for the voice conversation
+        const eventHandlers = {
+          onConversationStarted: () => {
+            console.log('🎉 Voice conversation started successfully')
             setCallStatus('connected')
+            setError(null)
+            setRetryCount(0)
             startCallTimer()
             trackVoiceEvent('call_connected', {
               call_id: callData.call_id,
-              fallback_mode: 'rest_api'
+              retry_count: retryCount
             })
-          }, 2000)
-          return
+          },
+
+          onConversationEnded: ({ code, reason }) => {
+            console.log('📞 Voice conversation ended:', { code, reason })
+            setCallStatus('ended')
+            trackVoiceEvent('call_ended', {
+              call_id: callData.call_id,
+              duration: callDuration,
+              end_code: code,
+              end_reason: reason
+            })
+          },
+
+          onError: (error) => {
+            console.error('❌ Voice conversation error:', error)
+            setCallStatus('error')
+            setError(error.message)
+            trackVoiceEvent('conversation_error', {
+              call_id: callData.call_id,
+              error: error.message,
+              retry_count: retryCount
+            })
+          },
+
+          onUpdate: (update) => {
+            console.log('📊 Conversation update:', update)
+            
+            // Handle speaking states
+            if (update.transcript) {
+              if (update.transcript.role === 'agent') {
+                setIsVektaSpeaking(true)
+                setIsUserSpeaking(false)
+              } else if (update.transcript.role === 'user') {
+                setIsUserSpeaking(true)
+                setIsVektaSpeaking(false)
+              }
+            }
+
+            // Handle audio quality indicators
+            if (update.audio) {
+              if (update.audio.volume !== undefined) {
+                const quality = update.audio.volume > 0.7 ? 'excellent' : 
+                              update.audio.volume > 0.4 ? 'good' : 'poor'
+                setConnectionQuality(quality)
+              }
+            }
+
+            // Reset speaking states after a delay
+            setTimeout(() => {
+              setIsVektaSpeaking(false)
+              setIsUserSpeaking(false)
+            }, 2000)
+          }
         }
 
-        // Initialize RetellAI Web SDK
-        retellClient.current = new RetellWebClient()
-
-        // Set up event listeners
-        retellClient.current.on('conversationStarted', () => {
-          console.log('🎉 Conversation started')
-          setCallStatus('connected')
-          startCallTimer()
-          trackVoiceEvent('call_connected', {
-            call_id: callData.call_id
-          })
-        })
-
-        retellClient.current.on('conversationEnded', ({ code, reason }) => {
-          console.log('📞 Conversation ended:', { code, reason })
-          setCallStatus('ended')
-          trackVoiceEvent('call_ended', {
-            call_id: callData.call_id,
-            duration: callDuration,
-            end_reason: reason
-          })
-        })
-
-        retellClient.current.on('error', (error) => {
-          console.error('❌ RetellWebClient error:', error)
-          setCallStatus('error')
-          trackVoiceEvent('error_occurred', {
-            call_id: callData.call_id,
-            error: error.message
-          })
-        })
-
-        retellClient.current.on('update', (update) => {
-          console.log('📊 Call update:', update)
-          
-          // Handle speaking states
-          if (update.transcript) {
-            if (update.transcript.role === 'agent') {
-              setIsVektaSpeaking(true)
-              setIsUserSpeaking(false)
-            } else if (update.transcript.role === 'user') {
-              setIsUserSpeaking(true)
-              setIsVektaSpeaking(false)
-            }
-          }
-
-          // Handle audio levels for visual feedback
-          if (update.audio) {
-            // Update connection quality based on audio metrics
-            if (update.audio.volume !== undefined) {
-              const quality = update.audio.volume > 0.7 ? 'excellent' : 
-                            update.audio.volume > 0.4 ? 'good' : 'poor'
-              setConnectionQuality(quality)
-            }
-          }
-        })
-
-        // Start the call with the access token
-        await retellClient.current.startConversation({
-          accessToken: callData.access_token,
-          sampleRate: 24000, // High quality audio
-          enableUpdate: true  // Enable real-time updates
-        })
-
-        console.log('🚀 RetellWebClient conversation started')
+        // Start the voice conversation
+        retellClient.current = await startVoiceConversation(callData, eventHandlers)
+        console.log('✅ Voice conversation initialized successfully')
 
       } catch (error) {
-        console.error('Failed to initialize call:', error)
+        console.error('❌ Failed to initialize voice conversation:', error)
         setCallStatus('error')
-        trackVoiceEvent('error_occurred', {
+        setError(error.message)
+        
+        trackVoiceEvent('call_initialization_failed', {
           call_id: callData.call_id,
-          error: error.message
+          error: error.message,
+          retry_count: retryCount
         })
+
+        // Auto-retry logic for certain errors
+        if (retryCount < maxRetries && shouldRetry(error.message)) {
+          console.log(`🔄 Auto-retrying in 3 seconds... (attempt ${retryCount + 1}/${maxRetries})`)
+          setTimeout(() => {
+            setRetryCount(prev => prev + 1)
+            setIsRetrying(true)
+            // Re-trigger initialization by updating a dependency
+            initializeCall()
+          }, 3000)
+        }
       }
     }
 
@@ -149,15 +175,25 @@ const VoiceCallInterface = ({ callData, onEndCall }) => {
         clearInterval(durationInterval.current)
       }
       
-      if (retellClient.current) {
-        try {
-          retellClient.current.stopConversation()
-        } catch (error) {
-          console.warn('Error stopping conversation:', error)
-        }
-      }
+      // Stop voice conversation
+      stopVoiceConversation()
+      retellClient.current = null
     }
-  }, [callData])
+  }, [callData, retryCount])
+
+  // Determine if an error should trigger auto-retry
+  const shouldRetry = (errorMessage) => {
+    const retryableErrors = [
+      'network',
+      'connection',
+      'timeout',
+      'temporarily unavailable',
+      'failed to load'
+    ]
+    return retryableErrors.some(keyword => 
+      errorMessage.toLowerCase().includes(keyword)
+    )
+  }
 
   const startCallTimer = () => {
     durationInterval.current = setInterval(() => {
@@ -176,6 +212,24 @@ const VoiceCallInterface = ({ callData, onEndCall }) => {
     }
     
     onEndCall()
+  }
+
+  const handleRetry = () => {
+    if (retryCount >= maxRetries) {
+      console.warn('Maximum retry attempts reached')
+      return
+    }
+
+    console.log(`🔄 Manual retry initiated (attempt ${retryCount + 1}/${maxRetries})`)
+    setIsRetrying(true)
+    setError(null)
+    setRetryCount(prev => prev + 1)
+    
+    trackVoiceEvent('manual_retry_initiated', {
+      call_id: callData.call_id,
+      retry_count: retryCount + 1,
+      error: error
+    })
   }
 
   const toggleMute = () => {
@@ -345,9 +399,18 @@ const VoiceCallInterface = ({ callData, onEndCall }) => {
           {/* Status Messages */}
           <div className="mb-6 min-h-[60px] flex items-center justify-center">
             {callStatus === 'connecting' && (
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <Loader2 className="w-4 h-4 animate-spin" />
-                <span className="text-sm">Establishing secure connection...</span>
+              <div className="text-center">
+                <div className="flex items-center justify-center space-x-2 text-muted-foreground mb-2">
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span className="text-sm">
+                    {isRetrying ? `Retrying connection... (${retryCount}/${maxRetries})` : 'Establishing secure connection...'}
+                  </span>
+                </div>
+                {isRetrying && (
+                  <p className="text-xs text-muted-foreground">
+                    Please wait while we reconnect...
+                  </p>
+                )}
               </div>
             )}
             
@@ -372,6 +435,51 @@ const VoiceCallInterface = ({ callData, onEndCall }) => {
                     Speak naturally - Vekta is listening
                   </p>
                 )}
+              </div>
+            )}
+
+            {callStatus === 'error' && (
+              <div className="text-center">
+                <div className="flex items-center justify-center space-x-2 text-red-400 mb-3">
+                  <AlertCircle className="w-5 h-5" />
+                  <span className="text-sm font-medium">Connection Failed</span>
+                </div>
+                {error && (
+                  <p className="text-xs text-muted-foreground mb-3 max-w-xs">
+                    {error}
+                  </p>
+                )}
+                <div className="flex items-center justify-center space-x-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleRetry}
+                    disabled={isRetrying || retryCount >= maxRetries}
+                    className="text-xs"
+                  >
+                    {isRetrying ? (
+                      <>
+                        <Loader2 className="w-3 h-3 mr-1 animate-spin" />
+                        Retrying...
+                      </>
+                    ) : (
+                      <>
+                        <RefreshCw className="w-3 h-3 mr-1" />
+                        Try Again
+                      </>
+                    )}
+                  </Button>
+                  {retryCount >= maxRetries && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleEndCall}
+                      className="text-xs text-muted-foreground"
+                    >
+                      Close
+                    </Button>
+                  )}
+                </div>
               </div>
             )}
           </div>
