@@ -166,7 +166,17 @@ const FloatingVoiceButton = () => {
           <span className="sr-only">Request a callback from Vektar AI</span>
         </Button>
         
-        {/* Enhanced Tooltip with Live Indicator */}
+        {/* Enhanced Green "Live" Tooltip - Always Visible */}
+        <div className="absolute -top-2 -right-2 z-10">
+          <div className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg animate-pulse">
+            <div className="flex items-center gap-1">
+              <div className="w-1.5 h-1.5 bg-white rounded-full animate-ping"></div>
+              LIVE
+            </div>
+          </div>
+        </div>
+        
+        {/* Enhanced Tooltip with Live Indicator on Hover */}
         <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           <div className="bg-card text-card-foreground px-3 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg border border-border relative">
             <div className="flex items-center gap-2">
@@ -190,7 +200,7 @@ const FloatingVoiceButton = () => {
                   </div>
                   <div>
                     <CardTitle className="text-xl font-bold flex items-center gap-2">
-                      💬 Talk to Vektar AI Expert - Live Now!
+                      Chat with Vektar Live!
                       <div className="flex items-center gap-1">
                         <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                         <span className="text-xs bg-green-400 text-green-900 px-2 py-0.5 rounded-full font-semibold animate-pulse">
