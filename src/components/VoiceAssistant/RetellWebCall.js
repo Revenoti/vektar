@@ -1,65 +1,142 @@
-// RetellAI Web Call API Integration
+// RetellAI Web Call API Integration with Enhanced Error Handling
 const RETELL_API_BASE = 'https://api.retellai.com'
 
+// Global RetellWebClient reference for proper cleanup
+let globalRetellClient = null
+
 /**
- * Create a new web call using RetellAI REST API
+ * Validate environment configuration
+ * @returns {Object} Configuration status with detailed validation
+ */
+export const validateConfig = () => {
+  const apiKey = import.meta.env.VITE_RETELL_API_KEY
+  const agentId = import.meta.env.VITE_RETELL_AGENT_ID
+  
+  const validation = {
+    isValid: false,
+    hasApiKey: !!apiKey,
+    hasAgentId: !!agentId,
+    apiKeyFormat: false,
+    environment: import.meta.env.MODE || 'development',
+    errors: [],
+    warnings: []
+  }
+
+  // Validate API key format
+  if (apiKey) {
+    validation.apiKeyFormat = apiKey.startsWith('key_') && apiKey.length > 20
+    if (!validation.apiKeyFormat) {
+      validation.warnings.push('API key format may be incorrect (should start with "key_")')
+    }
+  } else {
+    validation.errors.push('VITE_RETELL_API_KEY is missing from environment variables')
+  }
+
+  // Validate Agent ID format
+  if (agentId) {
+    const agentIdFormat = agentId.startsWith('agent_') && agentId.length > 20
+    if (!agentIdFormat) {
+      validation.warnings.push('Agent ID format may be incorrect (should start with "agent_")')
+    }
+  } else {
+    validation.errors.push('VITE_RETELL_AGENT_ID is missing from environment variables')
+  }
+
+  validation.isValid = validation.hasApiKey && validation.hasAgentId && validation.errors.length === 0
+
+  return validation
+}
+
+/**
+ * Initialize RetellAI Web SDK with proper error handling
+ * @returns {Promise<Object>} RetellWebClient instance or null
+ */
+export const initializeRetellWebSDK = async () => {
+  try {
+    console.log('🔄 Attempting to load RetellAI Web SDK...')
+    
+    // Try to import the RetellAI Web SDK
+    const retellModule = await import('retell-client-js-sdk')
+    const { RetellWebClient } = retellModule
+    
+    if (!RetellWebClient) {
+      throw new Error('RetellWebClient not found in imported module')
+    }
+    
+    console.log('✅ RetellAI Web SDK loaded successfully')
+    return RetellWebClient
+  } catch (error) {
+    console.warn('⚠️ Failed to load RetellAI Web SDK:', error.message)
+    console.warn('This may be due to:')
+    console.warn('- Network connectivity issues')
+    console.warn('- Build configuration problems')
+    console.warn('- Missing or corrupted package installation')
+    console.warn('- Browser compatibility issues')
+    return null
+  }
+}
+
+/**
+ * Create a new web call using RetellAI REST API with enhanced validation
  * @returns {Promise<Object>} Web call data including access_token and call_id
  */
 export const createWebCall = async () => {
+  // Validate configuration first
+  const config = validateConfig()
+  
+  if (!config.isValid) {
+    const errorMessage = `RetellAI Configuration Error:\n${config.errors.join('\n')}`
+    console.error('❌ Configuration validation failed:', config)
+    throw new Error(errorMessage)
+  }
+
+  if (config.warnings.length > 0) {
+    console.warn('⚠️ Configuration warnings:', config.warnings)
+  }
+
   const apiKey = import.meta.env.VITE_RETELL_API_KEY
   const agentId = import.meta.env.VITE_RETELL_AGENT_ID
 
-  console.log('RetellAI Configuration:', {
-    hasApiKey: !!apiKey,
-    apiKeyPrefix: apiKey ? apiKey.substring(0, 8) + '...' : 'missing',
-    agentId: agentId || 'missing'
+  console.log('🎙️ Creating RetellAI web call...', {
+    environment: config.environment,
+    hasApiKey: config.hasApiKey,
+    apiKeyFormat: config.apiKeyFormat,
+    agentId: agentId ? `${agentId.substring(0, 12)}...` : 'missing'
   })
 
-  if (!apiKey) {
-    throw new Error('RetellAI API key missing. Please check VITE_RETELL_API_KEY in environment variables.')
-  }
-
-  if (!agentId) {
-    throw new Error(`RetellAI Agent ID missing. Please follow these steps:
-
-1. Go to your RetellAI dashboard (https://dashboard.retellai.com)
-2. Navigate to your "Vektar AI Assistant" agent
-3. Copy the Agent ID (not the LLM ID)
-4. Add it to your .env file as: VITE_RETELL_AGENT_ID=your_agent_id_here
-5. Restart your development server
-
-Current LLM ID: ${import.meta.env.VITE_RETELL_LLM_ID || 'not found'}`)
-  }
-
   try {
-    console.log('Making RetellAI API call to:', `${RETELL_API_BASE}/v2/create-web-call`)
-    
     const requestBody = {
       agent_id: agentId,
       metadata: {
         source: 'vektar_website',
         timestamp: new Date().toISOString(),
-        user_agent: navigator.userAgent
+        user_agent: navigator.userAgent,
+        environment: config.environment,
+        sdk_version: '2.0.7'
       }
     }
-    
-    console.log('Request body:', requestBody)
+
+    console.log('📡 Making API request to:', `${RETELL_API_BASE}/v2/create-web-call`)
 
     const response = await fetch(`${RETELL_API_BASE}/v2/create-web-call`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'User-Agent': 'Vektar-Voice-Assistant/1.0'
       },
       body: JSON.stringify(requestBody)
     })
 
-    console.log('Response status:', response.status)
-    console.log('Response headers:', Object.fromEntries(response.headers.entries()))
+    console.log('📊 API Response:', {
+      status: response.status,
+      statusText: response.statusText,
+      headers: Object.fromEntries(response.headers.entries())
+    })
 
     if (!response.ok) {
       const errorText = await response.text()
-      console.error('Error response:', errorText)
+      console.error('❌ API Error Response:', errorText)
       
       let errorData
       try {
@@ -68,43 +145,239 @@ Current LLM ID: ${import.meta.env.VITE_RETELL_LLM_ID || 'not found'}`)
         errorData = { message: errorText }
       }
       
-      // More specific error handling
-      if (response.status === 404) {
-        throw new Error(`Agent not found. Please verify the agent ID: ${agentId}`)
-      } else if (response.status === 401) {
-        throw new Error('Authentication failed. Please check your API key.')
-      } else if (response.status === 402) {
-        throw new Error('Payment required. Please check your RetellAI account billing.')
-      } else if (response.status === 422) {
-        throw new Error(`Invalid request: ${errorData.message || 'Please check your agent configuration'}`)
-      } else {
-        throw new Error(errorData.message || `HTTP ${response.status}: ${response.statusText}`)
+      // Enhanced error handling with specific solutions
+      switch (response.status) {
+        case 401:
+          throw new Error('Authentication failed. Please verify your API key is correct and active.')
+        case 402:
+          throw new Error('Payment required. Please check your RetellAI account billing and subscription status.')
+        case 404:
+          throw new Error(`Agent not found. Please verify agent ID "${agentId}" exists and is published in your RetellAI dashboard.`)
+        case 422:
+          throw new Error(`Invalid request: ${errorData.message || 'Please check your agent configuration and ensure it\'s properly set up.'}`)
+        case 429:
+          throw new Error('Rate limit exceeded. Please wait a moment and try again.')
+        case 500:
+          throw new Error('RetellAI service temporarily unavailable. Please try again in a few moments.')
+        default:
+          throw new Error(errorData.message || `API Error (${response.status}): ${response.statusText}`)
       }
     }
 
     const webCallData = await response.json()
-    console.log('Successful response:', webCallData)
+    console.log('✅ Web call created successfully:', {
+      call_id: webCallData.call_id,
+      has_access_token: !!webCallData.access_token,
+      agent_id: webCallData.agent_id
+    })
     
-    // Validate required fields
+    // Validate response structure
     if (!webCallData.access_token || !webCallData.call_id) {
-      throw new Error('Invalid response from RetellAI API - missing required fields')
+      throw new Error('Invalid API response: missing required fields (access_token or call_id)')
     }
+
+    // Track successful call creation
+    trackVoiceEvent('web_call_created', {
+      call_id: webCallData.call_id,
+      agent_id: webCallData.agent_id,
+      environment: config.environment
+    })
 
     return webCallData
   } catch (error) {
-    console.error('RetellAI API Error Details:', {
+    console.error('❌ Failed to create web call:', {
       message: error.message,
       stack: error.stack,
       name: error.name
     })
     
-    // Provide user-friendly error messages
+    // Enhanced error categorization
     if (error.message.includes('Failed to fetch') || error.name === 'TypeError') {
-      throw new Error('Network error. Please check your internet connection and try again.')
+      throw new Error('Network connection failed. Please check your internet connection and try again.')
+    } else if (error.message.includes('CORS')) {
+      throw new Error('Cross-origin request blocked. This may be a browser security restriction.')
     } else {
-      throw new Error(error.message || 'Failed to create voice call')
+      // Re-throw with original message for API errors
+      throw error
     }
   }
+}
+
+/**
+ * Initialize and start a RetellAI voice conversation
+ * @param {Object} webCallData - Web call data from createWebCall
+ * @param {Object} eventHandlers - Event handlers for conversation events
+ * @returns {Promise<Object>} RetellWebClient instance
+ */
+export const startVoiceConversation = async (webCallData, eventHandlers = {}) => {
+  if (!webCallData?.access_token) {
+    throw new Error('Invalid web call data: missing access token')
+  }
+
+  // Clean up any existing client
+  if (globalRetellClient) {
+    try {
+      await globalRetellClient.stopConversation()
+    } catch (error) {
+      console.warn('⚠️ Error stopping previous conversation:', error)
+    }
+    globalRetellClient = null
+  }
+
+  // Initialize the Web SDK
+  const RetellWebClient = await initializeRetellWebSDK()
+  
+  if (!RetellWebClient) {
+    throw new Error('RetellAI Web SDK failed to load. Please check your internet connection and try again.')
+  }
+
+  try {
+    console.log('🎙️ Initializing RetellWebClient...')
+    
+    // Create new client instance
+    globalRetellClient = new RetellWebClient()
+
+    // Set up comprehensive event handlers
+    globalRetellClient.on('conversationStarted', () => {
+      console.log('🎉 Voice conversation started successfully')
+      trackVoiceEvent('conversation_started', {
+        call_id: webCallData.call_id,
+        timestamp: new Date().toISOString()
+      })
+      if (eventHandlers.onConversationStarted) {
+        eventHandlers.onConversationStarted()
+      }
+    })
+
+    globalRetellClient.on('conversationEnded', ({ code, reason }) => {
+      console.log('📞 Voice conversation ended:', { code, reason })
+      trackVoiceEvent('conversation_ended', {
+        call_id: webCallData.call_id,
+        end_code: code,
+        end_reason: reason,
+        timestamp: new Date().toISOString()
+      })
+      if (eventHandlers.onConversationEnded) {
+        eventHandlers.onConversationEnded({ code, reason })
+      }
+    })
+
+    globalRetellClient.on('error', (error) => {
+      console.error('❌ RetellWebClient error:', error)
+      trackVoiceEvent('conversation_error', {
+        call_id: webCallData.call_id,
+        error: error.message,
+        timestamp: new Date().toISOString()
+      })
+      if (eventHandlers.onError) {
+        eventHandlers.onError(error)
+      }
+    })
+
+    globalRetellClient.on('update', (update) => {
+      console.log('📊 Conversation update:', update)
+      
+      // Handle transcript updates
+      if (update.transcript) {
+        trackVoiceEvent('transcript_update', {
+          call_id: webCallData.call_id,
+          role: update.transcript.role,
+          content_length: update.transcript.content?.length || 0
+        })
+      }
+      
+      if (eventHandlers.onUpdate) {
+        eventHandlers.onUpdate(update)
+      }
+    })
+
+    // Start the conversation with optimized settings
+    console.log('🚀 Starting voice conversation...')
+    
+    // Try different method names based on RetellAI SDK version
+    try {
+      if (typeof globalRetellClient.startConversation === 'function') {
+        await globalRetellClient.startConversation({
+          accessToken: webCallData.access_token,
+          sampleRate: 24000,
+          enableUpdate: true
+        })
+      } else if (typeof globalRetellClient.startCall === 'function') {
+        await globalRetellClient.startCall({
+          accessToken: webCallData.access_token,
+          sampleRate: 24000,
+          enableUpdate: true
+        })
+      } else if (typeof globalRetellClient.connect === 'function') {
+        await globalRetellClient.connect({
+          accessToken: webCallData.access_token,
+          sampleRate: 24000,
+          enableUpdate: true
+        })
+      } else {
+        // Log available methods for debugging
+        console.log('Available RetellWebClient methods:', Object.getOwnPropertyNames(globalRetellClient))
+        console.log('Available RetellWebClient prototype methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(globalRetellClient)))
+        throw new Error('No suitable start method found on RetellWebClient. Available methods logged to console.')
+      }
+    } catch (methodError) {
+      console.error('❌ Method call failed:', methodError)
+      throw new Error(`Failed to start conversation: ${methodError.message}`)
+    }
+
+    console.log('✅ Voice conversation initialized successfully')
+    return globalRetellClient
+
+  } catch (error) {
+    console.error('❌ Failed to start voice conversation:', error)
+    
+    // Clean up on failure
+    if (globalRetellClient) {
+      try {
+        await globalRetellClient.stopConversation()
+      } catch (cleanupError) {
+        console.warn('⚠️ Error during cleanup:', cleanupError)
+      }
+      globalRetellClient = null
+    }
+
+    // Provide specific error messages
+    if (error.message.includes('access_token')) {
+      throw new Error('Invalid access token. Please try starting the call again.')
+    } else if (error.message.includes('microphone')) {
+      throw new Error('Microphone access denied. Please allow microphone permissions and try again.')
+    } else if (error.message.includes('network') || error.message.includes('connection')) {
+      throw new Error('Network connection failed. Please check your internet connection.')
+    } else {
+      throw new Error(`Voice connection failed: ${error.message}`)
+    }
+  }
+}
+
+/**
+ * Stop the current voice conversation and clean up resources
+ * @returns {Promise<void>}
+ */
+export const stopVoiceConversation = async () => {
+  if (globalRetellClient) {
+    try {
+      console.log('🛑 Stopping voice conversation...')
+      await globalRetellClient.stopConversation()
+      console.log('✅ Voice conversation stopped successfully')
+    } catch (error) {
+      console.warn('⚠️ Error stopping conversation:', error)
+    } finally {
+      globalRetellClient = null
+    }
+  }
+}
+
+/**
+ * Get the current RetellWebClient instance
+ * @returns {Object|null} Current RetellWebClient instance
+ */
+export const getCurrentClient = () => {
+  return globalRetellClient
 }
 
 /**
@@ -265,24 +538,5 @@ export const getAnalyticsSummary = () => {
   } catch (error) {
     console.warn('Failed to get analytics summary:', error)
     return { error: 'Failed to load analytics data' }
-  }
-}
-
-/**
- * Validate environment configuration
- * @returns {Object} Configuration status
- */
-export const validateConfig = () => {
-  const apiKey = import.meta.env.VITE_RETELL_API_KEY
-  const agentId = import.meta.env.VITE_RETELL_AGENT_ID
-
-  return {
-    isValid: !!(apiKey && agentId),
-    hasApiKey: !!apiKey,
-    hasAgentId: !!agentId,
-    errors: [
-      !apiKey && 'VITE_RETELL_API_KEY is missing',
-      !agentId && 'VITE_RETELL_AGENT_ID is missing'
-    ].filter(Boolean)
   }
 }
