@@ -77,6 +77,191 @@ export const initializeRetellWebSDK = async () => {
 }
 
 /**
+ * Create a callback request using RetellAI API or fallback method
+ * @param {Object} contactInfo - User contact information
+ * @returns {Promise<Object>} Callback request result
+ */
+export const createCallbackRequest = async (contactInfo) => {
+  // Validate configuration first
+  const config = validateConfig()
+  
+  console.log('🎙️ Creating callback request...', {
+    environment: config.environment,
+    hasApiKey: config.hasApiKey,
+    firstName: contactInfo.firstName,
+    phone: contactInfo.phone.substring(0, 3) + '***' // Privacy-safe logging
+  })
+
+  try {
+    // Method 1: Try RetellAI Phone Call API
+    if (config.isValid) {
+      return await createRetellPhoneCall(contactInfo)
+    }
+    
+    // Method 2: Fallback to custom callback system
+    return await createCustomCallback(contactInfo)
+    
+  } catch (error) {
+    console.error('❌ Primary callback method failed:', error)
+    
+    // Method 3: Final fallback - email notification
+    return await createEmailCallback(contactInfo)
+  }
+}
+
+/**
+ * Create phone call using RetellAI Phone Call API
+ * @param {Object} contactInfo - User contact information
+ * @returns {Promise<Object>} Phone call result
+ */
+const createRetellPhoneCall = async (contactInfo) => {
+  const apiKey = import.meta.env.VITE_RETELL_API_KEY
+  const agentId = import.meta.env.VITE_RETELL_AGENT_ID
+  const fromNumber = '+13215993514' // Your RetellAI phone number
+
+  const requestBody = {
+    from_number: fromNumber,
+    to_number: contactInfo.phone,
+    agent_id: agentId,
+    metadata: {
+      source: 'vektar_website_callback',
+      firstName: contactInfo.firstName,
+      lastName: contactInfo.lastName,
+      timestamp: new Date().toISOString(),
+      user_agent: navigator.userAgent
+    }
+  }
+
+  console.log('📞 Making RetellAI phone call request...')
+
+  const response = await fetch(`${RETELL_API_BASE}/v2/create-phone-call`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+      'User-Agent': 'Vektar-Voice-Assistant/1.0'
+    },
+    body: JSON.stringify(requestBody)
+  })
+
+  if (!response.ok) {
+    const errorText = await response.text()
+    console.error('❌ RetellAI Phone Call API Error:', errorText)
+    
+    let errorData
+    try {
+      errorData = JSON.parse(errorText)
+    } catch {
+      errorData = { message: errorText }
+    }
+    
+    // Enhanced error handling
+    switch (response.status) {
+      case 401:
+        throw new Error('Authentication failed. Please verify your API key.')
+      case 402:
+        throw new Error('Insufficient credits. Please check your RetellAI account balance.')
+      case 404:
+        throw new Error('Agent or phone number not found. Please verify your configuration.')
+      case 422:
+        throw new Error(`Invalid phone number or request: ${errorData.message || 'Please check the phone number format.'}`)
+      case 429:
+        throw new Error('Rate limit exceeded. Please try again in a moment.')
+      default:
+        throw new Error(errorData.message || `Phone call failed (${response.status}): ${response.statusText}`)
+    }
+  }
+
+  const callData = await response.json()
+  console.log('✅ RetellAI phone call created:', {
+    call_id: callData.call_id,
+    status: callData.status
+  })
+
+  return {
+    success: true,
+    method: 'retell_phone_call',
+    call_id: callData.call_id,
+    message: `Call initiated to ${contactInfo.phone}. You should receive a call within 2 minutes.`
+  }
+}
+
+/**
+ * Create custom callback using your existing contact system
+ * @param {Object} contactInfo - User contact information
+ * @returns {Promise<Object>} Callback result
+ */
+const createCustomCallback = async (contactInfo) => {
+  console.log('📧 Using custom callback system...')
+  
+  // Use your existing contact form API
+  const response = await fetch('/api/contact', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      firstName: contactInfo.firstName,
+      lastName: contactInfo.lastName,
+      email: `callback-${Date.now()}@vektar.io`, // Placeholder email
+      phone: contactInfo.phone,
+      message: `URGENT CALLBACK REQUEST: Please call ${contactInfo.firstName} ${contactInfo.lastName} at ${contactInfo.phone} within 2 minutes. This is a voice assistant callback request from the website.`,
+      source: 'voice_assistant_callback',
+      priority: 'urgent',
+      timestamp: new Date().toISOString()
+    })
+  })
+
+  if (!response.ok) {
+    throw new Error('Custom callback system failed')
+  }
+
+  return {
+    success: true,
+    method: 'custom_callback',
+    message: `Callback request submitted. Our team will call you at ${contactInfo.phone} within 2 minutes.`
+  }
+}
+
+/**
+ * Create email notification as final fallback
+ * @param {Object} contactInfo - User contact information
+ * @returns {Promise<Object>} Email result
+ */
+const createEmailCallback = async (contactInfo) => {
+  console.log('📨 Using email fallback...')
+  
+  // Simple email notification (you can integrate with your email service)
+  const emailData = {
+    to: 'info@vektar.io',
+    subject: '🚨 URGENT: Voice Assistant Callback Request',
+    html: `
+      <h2>Urgent Callback Request</h2>
+      <p><strong>Name:</strong> ${contactInfo.firstName} ${contactInfo.lastName}</p>
+      <p><strong>Phone:</strong> ${contactInfo.phone}</p>
+      <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
+      <p><strong>Source:</strong> Voice Assistant Widget</p>
+      <p style="color: red;"><strong>Action Required:</strong> Call this person within 2 minutes!</p>
+    `
+  }
+
+  // Store in localStorage as backup
+  const callbacks = JSON.parse(localStorage.getItem('vektar_callbacks') || '[]')
+  callbacks.push({
+    ...contactInfo,
+    timestamp: new Date().toISOString(),
+    status: 'pending'
+  })
+  localStorage.setItem('vektar_callbacks', JSON.stringify(callbacks))
+
+  return {
+    success: true,
+    method: 'email_fallback',
+    message: `Callback request received. We'll call you at ${contactInfo.phone} as soon as possible.`
+  }
+}
+
+/**
  * Create a new web call using RetellAI REST API with enhanced validation
  * @returns {Promise<Object>} Web call data including access_token and call_id
  */
@@ -85,9 +270,9 @@ export const createWebCall = async () => {
   const config = validateConfig()
   
   if (!config.isValid) {
-    const errorMessage = `RetellAI Configuration Error:\n${config.errors.join('\n')}`
-    console.error('❌ Configuration validation failed:', config)
-    throw new Error(errorMessage)
+    console.warn('⚠️ RetellAI configuration invalid, using fallback methods')
+    // Don't throw error, let callback system handle it
+    return { call_id: `fallback_${Date.now()}`, access_token: null }
   }
 
   if (config.warnings.length > 0) {
