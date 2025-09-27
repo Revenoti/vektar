@@ -4,10 +4,12 @@ Vektar is a modern, responsive marketing site showcasing AI solutions, live demo
 
 ## Key Highlights
 
+- **🎙️ Live AI Voice Assistant** — RetellAI-powered "Vekta" assistant for instant consultation and appointment booking
 - Responsive design with professional, balanced layout
 - Mobile UX optimizations (safe-area support, tap targets, modal sheet behavior)
 - Live demos for multiple solutions (Chatbot, Voice, RAG, KPI, Quote, Ticket, Field Tech, Document)
 - Contact form with client-side validation and enhanced mobile typing experience
+- **📊 Revenue Analytics** — Comprehensive tracking for voice assistant conversions and ROI optimization
 
 ## Tech Stack
 
@@ -15,6 +17,43 @@ Vektar is a modern, responsive marketing site showcasing AI solutions, live demo
 - **Tailwind CSS** — Utility-first styling framework
 - **shadcn/ui components** — High-quality UI primitives
 - **Lucide icons** — Beautiful, consistent iconography
+- **RetellAI** — Voice AI assistant with real-time conversation capabilities
+- **Cal.com Integration** — Automated appointment booking through voice commands
+
+## 🎙️ Voice Assistant Feature
+
+### Overview
+The Vektar website now includes a sophisticated AI voice assistant powered by RetellAI. The assistant, named "Vekta," provides instant consultation, answers questions about AI solutions, and can book appointments directly through voice interaction.
+
+### Key Features
+- **🎯 Floating Voice Button** — Beautiful gradient button with "Need help? Ask Vekta!" tooltip
+- **📞 Live Voice Conversations** — Real-time audio communication with AI assistant
+- **📅 Appointment Booking** — Direct integration with Cal.com for consultation scheduling
+- **📱 Responsive Design** — Works seamlessly on desktop and mobile devices
+- **📊 Analytics Tracking** — Comprehensive conversion and engagement monitoring
+- **🎨 Professional UI** — Matches existing Vektar design system perfectly
+
+### How It Works
+1. **Visitors see the floating voice button** in the bottom-right corner of any page
+2. **Click to start conversation** — Connects instantly to "Vekta" AI assistant
+3. **Natural voice interaction** — Ask questions about AI solutions, pricing, implementation
+4. **Appointment booking** — Voice assistant can schedule consultations through Cal.com
+5. **Revenue tracking** — All interactions are tracked for conversion optimization
+
+### Technical Implementation
+- **REST API Integration** — Uses RetellAI's web call API for session management
+- **Real-time Audio** — WebRTC-based voice communication
+- **Environment Configuration** — Secure API key and agent ID management
+- **Error Handling** — Comprehensive error messages and fallback options
+- **Analytics System** — Local storage and console-based conversion tracking
+
+### Components Added
+```
+src/components/VoiceAssistant/
+├── FloatingVoiceButton.jsx    # Main floating button with animations
+├── VoiceCallInterface.jsx     # Full-screen call interface
+└── RetellWebCall.js          # API integration and analytics
+```
 
 ## Recent Changes
 
@@ -42,11 +81,15 @@ Vektar is a modern, responsive marketing site showcasing AI solutions, live demo
 
 ```
 src/
-├── App.jsx                     # Main page layout and sections
+├── App.jsx                     # Main page layout and sections (includes voice assistant)
 ├── App.css                     # Theme variables, utilities, animations, safe-area support
 ├── components/
 │   ├── DemoModal.jsx          # Live demos with mobile sheet behavior
 │   ├── ContactForm.jsx        # Enhanced mobile-optimized form
+│   ├── VoiceAssistant/        # 🎙️ NEW: RetellAI Voice Assistant Components
+│   │   ├── FloatingVoiceButton.jsx    # Floating button with animations
+│   │   ├── VoiceCallInterface.jsx     # Full-screen call interface
+│   │   └── RetellWebCall.js          # API integration and analytics
 │   ├── demos/                 # Individual demo components
 │   └── ui/                    # shadcn/ui primitives
 ├── api/
@@ -84,9 +127,81 @@ pnpm run preview
 
 ## Environment Configuration
 
+### Voice Assistant Setup
+To enable the RetellAI voice assistant, create a `.env` file in the project root with:
+
+```bash
+# RetellAI Voice Assistant Configuration
+VITE_RETELL_API_KEY=your_retell_api_key_here
+VITE_RETELL_AGENT_ID=your_published_agent_id_here
+VITE_RETELL_LLM_ID=your_llm_id_here
+```
+
+**Required Steps:**
+1. **Get RetellAI API Key** from your [RetellAI Dashboard](https://dashboard.retellai.com)
+2. **Create and Publish Agent** in RetellAI with Cal.com integration
+3. **Copy Agent ID** (not LLM ID) from your published agent
+4. **Add environment variables** to your hosting platform (Netlify, Vercel, etc.)
+5. **Restart development server** after adding environment variables
+
+### Other Configuration
 - API functions live in `src/api/contact.js` (e.g., `submitContactForm`, `requestDemo`)
 - If connecting to a backend service, add environment variables or config as needed
 - No secrets are committed to the repository
+
+## 🔧 Voice Assistant Troubleshooting
+
+### Common Issues
+
+#### "Failed to start call - Not Found"
+- **Cause**: Agent ID is missing or incorrect
+- **Solution**: Verify `VITE_RETELL_AGENT_ID` in `.env` matches your published agent ID
+- **Check**: Ensure agent is published in RetellAI dashboard
+
+#### "Authentication failed"
+- **Cause**: Invalid or missing API key
+- **Solution**: Verify `VITE_RETELL_API_KEY` in `.env` is correct
+- **Check**: API key should start with `key_`
+
+#### No Audio During Call
+- **Cause**: Agent not published or browser permissions
+- **Solution**: 
+  1. Ensure agent is published in RetellAI dashboard
+  2. Allow microphone permissions in browser
+  3. Test on HTTPS/production environment (not localhost)
+  4. Check browser console for WebRTC errors
+
+#### Voice Button Not Visible
+- **Cause**: Environment variables not loaded
+- **Solution**: Restart development server after adding `.env` file
+- **Check**: Browser console should show voice assistant configuration
+
+### Analytics and Monitoring
+
+The voice assistant includes comprehensive analytics tracking:
+
+```javascript
+// View analytics summary in browser console
+console.log(getAnalyticsSummary())
+
+// Track custom events
+trackVoiceEvent('custom_event', { data: 'value' })
+```
+
+**Tracked Events:**
+- `voice_button_viewed` — Button visibility
+- `call_started` — User initiates call
+- `call_connected` — Successful connection
+- `appointment_booked` — Conversion event
+- `call_ended` — Call completion with duration
+- `error_occurred` — Error tracking for optimization
+
+### Performance Optimization
+
+- **Production Environment**: Voice assistant works best on HTTPS
+- **Mobile Optimization**: Responsive design with touch-friendly controls
+- **Error Recovery**: Automatic retry logic for failed connections
+- **Analytics Storage**: Local storage with 100-event limit for performance
 
 ## Accessibility & Performance
 
