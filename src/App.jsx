@@ -26,6 +26,7 @@ import {
 import vectorikLogo from './assets/vectorik-logo.png'
 import ContactForm from './components/ContactForm.jsx'
 import DemoModal from './components/DemoModal.jsx'
+import FloatingVoiceButton from './components/VoiceAssistant/FloatingVoiceButton.jsx'
 import './App.css'
 
 function App() {
@@ -1007,6 +1008,9 @@ function App() {
         isOpen={isDemoModalOpen} 
         onClose={() => setIsDemoModalOpen(false)} 
       />
+
+      {/* Floating Voice Assistant */}
+      <FloatingVoiceButton />
     </div>
   )
 }
