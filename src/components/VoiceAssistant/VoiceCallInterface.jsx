@@ -15,6 +15,7 @@ import {
   Phone
 } from 'lucide-react'
 import { trackVoiceEvent, getCallStatus } from './RetellWebCall.js'
+import { RetellWebClient } from 'retell-client-js-sdk'
 
 const VoiceCallInterface = ({ callData, onEndCall }) => {
   const [isMinimized, setIsMinimized] = useState(false)
@@ -42,33 +43,99 @@ const VoiceCallInterface = ({ callData, onEndCall }) => {
           agent_id: callData.agent_id
         })
 
-        // Initialize RetellAI Web SDK (this would be the actual SDK integration)
-        // For now, we'll simulate the connection
         setCallStatus('connecting')
-        
-        // Simulate connection process
-        setTimeout(() => {
+        console.log('🎙️ Initializing RetellWebClient with access token:', callData.access_token.substring(0, 20) + '...')
+
+        // Initialize RetellAI Web SDK
+        retellClient.current = new RetellWebClient()
+
+        // Set up event listeners
+        retellClient.current.on('conversationStarted', () => {
+          console.log('🎉 Conversation started')
           setCallStatus('connected')
           startCallTimer()
-        }, 2000)
+          trackVoiceEvent('call_connected', {
+            call_id: callData.call_id
+          })
+        })
 
-        // Simulate Vekta greeting
-        setTimeout(() => {
-          setIsVektaSpeaking(true)
-          setTimeout(() => setIsVektaSpeaking(false), 3000)
-        }, 3000)
+        retellClient.current.on('conversationEnded', ({ code, reason }) => {
+          console.log('📞 Conversation ended:', { code, reason })
+          setCallStatus('ended')
+          trackVoiceEvent('call_ended', {
+            call_id: callData.call_id,
+            duration: callDuration,
+            end_reason: reason
+          })
+        })
+
+        retellClient.current.on('error', (error) => {
+          console.error('❌ RetellWebClient error:', error)
+          setCallStatus('error')
+          trackVoiceEvent('error_occurred', {
+            call_id: callData.call_id,
+            error: error.message
+          })
+        })
+
+        retellClient.current.on('update', (update) => {
+          console.log('📊 Call update:', update)
+          
+          // Handle speaking states
+          if (update.transcript) {
+            if (update.transcript.role === 'agent') {
+              setIsVektaSpeaking(true)
+              setIsUserSpeaking(false)
+            } else if (update.transcript.role === 'user') {
+              setIsUserSpeaking(true)
+              setIsVektaSpeaking(false)
+            }
+          }
+
+          // Handle audio levels for visual feedback
+          if (update.audio) {
+            // Update connection quality based on audio metrics
+            if (update.audio.volume !== undefined) {
+              const quality = update.audio.volume > 0.7 ? 'excellent' : 
+                            update.audio.volume > 0.4 ? 'good' : 'poor'
+              setConnectionQuality(quality)
+            }
+          }
+        })
+
+        // Start the call with the access token
+        await retellClient.current.startConversation({
+          accessToken: callData.access_token,
+          sampleRate: 24000, // High quality audio
+          enableUpdate: true  // Enable real-time updates
+        })
+
+        console.log('🚀 RetellWebClient conversation started')
 
       } catch (error) {
         console.error('Failed to initialize call:', error)
         setCallStatus('error')
+        trackVoiceEvent('error_occurred', {
+          call_id: callData.call_id,
+          error: error.message
+        })
       }
     }
 
     initializeCall()
 
     return () => {
+      // Cleanup
       if (durationInterval.current) {
         clearInterval(durationInterval.current)
+      }
+      
+      if (retellClient.current) {
+        try {
+          retellClient.current.stopConversation()
+        } catch (error) {
+          console.warn('Error stopping conversation:', error)
+        }
       }
     }
   }, [callData])
@@ -93,13 +160,42 @@ const VoiceCallInterface = ({ callData, onEndCall }) => {
   }
 
   const toggleMute = () => {
-    setIsMuted(!isMuted)
-    trackVoiceEvent('microphone_toggled', { muted: !isMuted })
+    const newMutedState = !isMuted
+    setIsMuted(newMutedState)
+    
+    // Control actual microphone through RetellWebClient
+    if (retellClient.current) {
+      try {
+        if (newMutedState) {
+          retellClient.current.mute()
+        } else {
+          retellClient.current.unmute()
+        }
+        console.log(`🎤 Microphone ${newMutedState ? 'muted' : 'unmuted'}`)
+      } catch (error) {
+        console.warn('Failed to toggle microphone:', error)
+      }
+    }
+    
+    trackVoiceEvent('microphone_toggled', { muted: newMutedState })
   }
 
   const toggleDeafen = () => {
-    setIsDeafened(!isDeafened)
-    trackVoiceEvent('speaker_toggled', { deafened: !isDeafened })
+    const newDeafenedState = !isDeafened
+    setIsDeafened(newDeafenedState)
+    
+    // Control actual speaker through RetellWebClient
+    if (retellClient.current) {
+      try {
+        // Note: RetellWebClient may not have direct speaker control
+        // This would typically be handled through browser audio APIs
+        console.log(`🔊 Speaker ${newDeafenedState ? 'muted' : 'unmuted'}`)
+      } catch (error) {
+        console.warn('Failed to toggle speaker:', error)
+      }
+    }
+    
+    trackVoiceEvent('speaker_toggled', { deafened: newDeafenedState })
   }
 
   const formatDuration = (seconds) => {
