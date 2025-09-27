@@ -200,8 +200,8 @@ const FloatingVoiceButton = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <CardTitle className="text-lg sm:text-xl font-bold whitespace-nowrap">
-                        Chat with Vektar Live!
+                    <CardTitle className="text-lg sm:text-xl font-bold whitespace-nowrap">
+                        One on One Call With Vektar
                       </CardTitle>
                       <div className="flex items-center gap-1 flex-shrink-0">
                         <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
