@@ -29,9 +29,9 @@ The Vektar website now includes a sophisticated AI voice assistant powered by Re
 - **🎯 Floating Voice Button** — Beautiful gradient button with "Need help? Ask Vekta!" tooltip
 - **📞 Live Voice Conversations** — Real-time audio communication with AI assistant
 - **📅 Appointment Booking** — Direct integration with Cal.com for consultation scheduling
-- **📱 Responsive Design** — Works seamlessly on desktop and mobile devices
+- **📱 Responsive Design** — Works seamlessly on desktop and mobile devices of all kinds
 - **📊 Analytics Tracking** — Comprehensive conversion and engagement monitoring
-- **🎨 Professional UI** — Matches existing Vektar design system perfectly
+- **🎨 Professional UI** — Matches existing Vektar design system perfectly with more options in the works
 
 ### How It Works
 1. **Visitors see the floating voice button** in the bottom-right corner of any page
