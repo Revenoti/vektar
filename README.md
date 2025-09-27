@@ -33,6 +33,7 @@ The Vektar website now includes a sophisticated AI voice assistant powered by Re
 - **🚀 Multi-Tier Callback System** — RetellAI phone calls, custom callbacks, and email fallbacks
 - **📞 Instant Voice Conversations** — Real-time audio communication with AI assistant
 - **📅 Appointment Booking** — Direct integration with Cal.com for consultation scheduling
+
 - **📱 Mobile Optimized** — Perfect responsive design with touch-friendly interactions
 - **📊 Advanced Analytics** — Comprehensive conversion tracking and revenue optimization
 - **🎨 Native Vektar Design** — Seamlessly integrated with brand colors, gradients, and animations
