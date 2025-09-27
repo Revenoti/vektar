@@ -204,22 +204,91 @@ function App() {
         </div>
       </section>
 
-      {/* Trust Indicators */}
-      <section className="py-12 sm:py-14 lg:py-16 border-b border-border">
+      {/* Trust Indicators - Enhanced Company Showcase */}
+      <section className="py-12 sm:py-14 lg:py-16 border-b border-border overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <p className="text-muted-foreground text-lg">Trusted by data-driven companies</p>
+            <p className="text-muted-foreground text-lg font-medium">Native AI data-driven companies</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">
-            {['TechCorp', 'InnovateLabs', 'DataFlow', 'AIVentures'].map((company) => (
-              <div key={company} className="text-center">
-                <div className="h-16 bg-muted/20 rounded-lg flex items-center justify-center">
-                  <span className="text-lg font-semibold text-muted-foreground">{company}</span>
+          
+          {/* Infinite Scroll Company Carousel */}
+          <div className="relative">
+            <div className="flex animate-scroll space-x-8">
+              {[
+                { name: 'TechCorp', gradient: 'from-blue-500 to-purple-600' },
+                { name: 'InnovateLabs', gradient: 'from-green-500 to-teal-600' },
+                { name: 'DataFlow', gradient: 'from-orange-500 to-red-600' },
+                { name: 'AIVentures', gradient: 'from-purple-500 to-pink-600' },
+                { name: 'ManageCall', gradient: 'from-cyan-500 to-blue-600' },
+                { name: 'PrayerLove', gradient: 'from-rose-500 to-pink-600' },
+                { name: 'Ureka', gradient: 'from-amber-500 to-orange-600' },
+                { name: 'Myspirit', gradient: 'from-violet-500 to-purple-600' },
+                { name: 'Jobresume', gradient: 'from-emerald-500 to-green-600' },
+                { name: 'HFMG', gradient: 'from-indigo-500 to-blue-600' },
+                { name: 'Tickerscroll', gradient: 'from-teal-500 to-cyan-600' },
+                { name: 'Racle', gradient: 'from-red-500 to-rose-600' },
+                { name: 'QRCG', gradient: 'from-yellow-500 to-amber-600' },
+                { name: 'Casaout', gradient: 'from-lime-500 to-green-600' }
+              ].concat([
+                { name: 'TechCorp', gradient: 'from-blue-500 to-purple-600' },
+                { name: 'InnovateLabs', gradient: 'from-green-500 to-teal-600' },
+                { name: 'DataFlow', gradient: 'from-orange-500 to-red-600' },
+                { name: 'AIVentures', gradient: 'from-purple-500 to-pink-600' },
+                { name: 'ManageCall', gradient: 'from-cyan-500 to-blue-600' },
+                { name: 'PrayerLove', gradient: 'from-rose-500 to-pink-600' },
+                { name: 'Ureka', gradient: 'from-amber-500 to-orange-600' },
+                { name: 'Myspirit', gradient: 'from-violet-500 to-purple-600' },
+                { name: 'Jobresume', gradient: 'from-emerald-500 to-green-600' },
+                { name: 'HFMG', gradient: 'from-indigo-500 to-blue-600' },
+                { name: 'Tickerscroll', gradient: 'from-teal-500 to-cyan-600' },
+                { name: 'Racle', gradient: 'from-red-500 to-rose-600' },
+                { name: 'QRCG', gradient: 'from-yellow-500 to-amber-600' },
+                { name: 'Casaout', gradient: 'from-lime-500 to-green-600' }
+              ]).map((company, index) => (
+                <div
+                  key={`${company.name}-${index}`}
+                  className="flex-shrink-0 group cursor-pointer"
+                >
+                  <div className={`
+                    h-20 w-48 bg-gradient-to-r ${company.gradient} 
+                    rounded-xl flex items-center justify-center 
+                    shadow-lg hover:shadow-xl transition-all duration-300 
+                    group-hover:scale-105 group-hover:-translate-y-1
+                    glass-card border border-white/20
+                  `}>
+                    <span className="text-white font-bold text-lg tracking-wide">
+                      {company.name}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            
+            {/* Gradient Overlays for Seamless Loop Effect */}
+            <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10"></div>
+            <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10"></div>
           </div>
         </div>
+        
+        {/* Custom CSS for Infinite Scroll Animation */}
+        <style jsx>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          
+          .animate-scroll {
+            animation: scroll 40s linear infinite;
+          }
+          
+          .animate-scroll:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
       </section>
 
       {/* Value Pillars */}
