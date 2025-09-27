@@ -64,18 +64,43 @@ src/components/VoiceAssistant/
 
 ## Recent Changes
 
-### 🎙️ Voice Assistant Major Enhancements (Latest - v2.0)
+### 🎙️ Voice Assistant Major Enhancements (Latest - v3.0)
 - **🎯 Native Vektar Design Integration** — Completely redesigned with stunning Vektar brand colors and animations
-- **🔥 Live Marketing Features** — Added compelling "Live AI Expert" messaging with animated indicators
+- **🔥 Live Marketing Features** — Enhanced "Chat with Vektar Live!" messaging with persistent green LIVE tooltip
 - **✨ Premium Visual Effects** — Pulse rings, bounce animations, and gradient effects for maximum engagement
-- **📱 Enhanced User Experience** — Professional tooltip, live status badges, and smooth interactions
+- **📱 Mobile-First Responsive Design** — Optimized single-line title display across all screen sizes
 - **🚀 Multi-Tier Callback System** — RetellAI phone calls, custom callbacks, and email fallbacks
 - **📊 Advanced Analytics** — Comprehensive conversion tracking and revenue optimization
 - **🎨 Brand Consistency** — Fixed all "Vekta" references to "Vektar" throughout the interface
 - **💎 Production Ready** — Robust error handling, fallback mechanisms, and enterprise-grade reliability
 
-#### What's New in v2.0
-- **"💬 Talk to Vektar AI Expert - Live Now!"** — Compelling header with animated LIVE indicator
+#### What's New in v3.0
+- **"Chat with Vektar Live!"** — Clean, professional CTA title without emoji for better readability
+- **Always-visible green "LIVE" tooltip** — Persistent animated indicator positioned at top-right of floating button
+- **Mobile responsive optimization** — Single-line title display with responsive typography (text-lg sm:text-xl)
+- **Enhanced company showcase** — Beautiful infinite scroll carousel with colorful gradients
+- **"Native AI data-driven companies"** — Updated trust indicators section with 14 client companies
+- **Infinite loop animation** — Smooth 40-second scroll with hover-pause functionality
+- **Professional gradient cards** — Each company features unique color gradients with hover effects
+- **CRO-optimized design** — Enhanced visual hierarchy and engagement elements
+
+#### Company Showcase Enhancement
+- **New Title**: "Native AI data-driven companies" (updated from "Trusted by data-driven companies")
+- **Enhanced Visual Design**: Colorful gradient cards with glass morphism effects
+- **Infinite Scroll Animation**: Seamless 40-second loop with smooth transitions
+- **14 Featured Companies**: TechCorp, InnovateLabs, DataFlow, AIVentures, ManageCall, PrayerLove, Ureka, Myspirit, Jobresume, HFMG, Tickerscroll, Racle, QRCG, Casaout
+- **Interactive Elements**: Hover effects with scale and shadow animations
+- **Mobile Optimized**: Responsive design with gradient fade overlays
+
+#### Voice Assistant Mobile Optimization
+- **Single-line title guarantee** — Responsive typography ensures "Chat with Vektar Live!" stays on one line
+- **Flexible layout structure** — Optimized flex containers with proper min-width constraints
+- **Enhanced positioning** — Strategic use of flex-shrink-0 and whitespace-nowrap classes
+- **Professional appearance** — Clean, modern design that works across all device sizes
+- **Improved user experience** — Better touch targets and interaction feedback
+
+#### What's New in v2.0 (Previous)
+- **"💬 Talk to Vektar AI Expert - Live Now!"** — Previous compelling header with animated LIVE indicator
 - **Pulsing animations** — Attention-grabbing pulse rings and bounce effects on the floating button
 - **Enhanced tooltip** — "🔥 Live AI Expert Available - Click to Connect!" with live status dot
 - **Professional success states** — Beautiful confirmation screens with gradient checkmarks
