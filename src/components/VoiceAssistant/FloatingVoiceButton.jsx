@@ -193,21 +193,23 @@ const FloatingVoiceButton = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
           <Card className="glass-card w-full max-w-md mx-auto animate-in fade-in-0 zoom-in-95 duration-300">
             <CardHeader className="relative">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 vektar-gradient rounded-full flex items-center justify-center">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-start space-x-3 flex-1 min-w-0">
+                  <div className="w-12 h-12 vektar-gradient rounded-full flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
-                  <div>
-                    <CardTitle className="text-xl font-bold flex items-center gap-2">
-                      Chat with Vektar Live!
-                      <div className="flex items-center gap-1">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <CardTitle className="text-lg sm:text-xl font-bold whitespace-nowrap">
+                        Chat with Vektar Live!
+                      </CardTitle>
+                      <div className="flex items-center gap-1 flex-shrink-0">
                         <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                        <span className="text-xs bg-green-400 text-green-900 px-2 py-0.5 rounded-full font-semibold animate-pulse">
+                        <span className="text-xs bg-green-400 text-green-900 px-2 py-0.5 rounded-full font-semibold animate-pulse whitespace-nowrap">
                           LIVE
                         </span>
                       </div>
-                    </CardTitle>
+                    </div>
                     <p className="text-sm text-muted-foreground">Get instant answers in under 2 minutes</p>
                   </div>
                 </div>
@@ -215,7 +217,7 @@ const FloatingVoiceButton = () => {
                   variant="ghost"
                   size="sm"
                   onClick={handleClose}
-                  className="h-8 w-8 p-0 hover:bg-secondary/50"
+                  className="h-8 w-8 p-0 hover:bg-secondary/50 flex-shrink-0"
                 >
                   <X className="w-4 h-4" />
                 </Button>
