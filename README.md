@@ -64,7 +64,33 @@ src/components/VoiceAssistant/
 
 ## Recent Changes
 
-### 🎙️ Voice Assistant Major Enhancements (Latest - v3.0)
+### 📝 Contact Form Enhancement (v3.2 - Current)
+- **💰 Expanded Budget Range Options** — Added new "$500 - $5k" budget range option to accommodate smaller projects and provide more comprehensive budget selection
+- **🎯 Improved Lead Qualification** — Enhanced budget range dropdown now covers projects from $500 to $100k+ for better lead segmentation and project matching
+- **📊 Better User Experience** — Clients can now more accurately represent their project scope with granular budget options
+
+#### Technical Details - v3.2
+- **New Budget Option**: Added `<option value="500-5k">$500 - $5k</option>` to ContactForm.jsx
+- **Positioning**: Inserted as first budget range option (after "Select budget") to maintain logical ascending order
+- **Integration**: Seamlessly integrates with existing form validation, submission, and state management logic
+- **Updated Budget Range Sequence**: $500-$5k → $5k-$15k → $15k-$30k → $30k-$50k → $50k-$100k → $100k+ → Let's discuss
+
+### 🎙️ Voice Assistant Latest Updates (v3.1)
+- **🎯 CTA Title Enhancement** — Updated modal title from "Chat with Vektar Live!" to "One on One Call With Vektar" for clearer messaging about the personalized consultation experience
+- **📱 Mobile LIVE Badge Optimization** — Fixed positioning and sizing issues on mobile devices to ensure the "LIVE" indicator is always visible and properly contained
+- **🔧 Responsive Design Improvements** — Enhanced mobile experience with optimized font sizes, spacing, and positioning for better usability across all screen sizes
+
+#### Technical Details - v3.1
+- **CTA Title Update**: Changed `CardTitle` text in `FloatingVoiceButton.jsx` to emphasize one-on-one consultation experience
+- **Mobile LIVE Badge Fixes**:
+  - Repositioned from `absolute -top-2 -right-2` to `absolute -top-1 -right-1` to prevent clipping
+  - Responsive font sizing: `text-[10px] sm:text-xs` for better mobile readability
+  - Responsive padding: `px-1.5 py-0.5` on mobile, `px-2 py-1` on desktop
+  - Responsive dot indicator: `w-1 h-1 sm:w-1.5 sm:h-1.5` for proper scaling
+  - Mobile-optimized tooltip with `max-w-[280px] sm:max-w-none` constraint
+- **Enhanced User Experience**: Ensures professional appearance and functionality across all device sizes
+
+### 🎙️ Voice Assistant Major Enhancements (v3.0)
 - **🎯 Native Vektar Design Integration** — Completely redesigned with stunning Vektar brand colors and animations
 - **🔥 Live Marketing Features** — Enhanced "Chat with Vektar Live!" messaging with persistent green LIVE tooltip
 - **✨ Premium Visual Effects** — Pulse rings, bounce animations, and gradient effects for maximum engagement

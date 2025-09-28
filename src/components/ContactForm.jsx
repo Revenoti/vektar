@@ -220,6 +220,7 @@ const ContactForm = () => {
                 disabled={isSubmitting}
               >
                 <option value="">Select budget</option>
+                <option value="500-5k">$500 - $5k</option>
                 <option value="5k-15k">$5k - $15k</option>
                 <option value="15k-30k">$15k - $30k</option>
                 <option value="30k-50k">$30k - $50k</option>
