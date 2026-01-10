@@ -59,7 +59,7 @@ const ChatbotDemo = () => {
     if (lowerInput.includes('support') || lowerInput.includes('help') || lowerInput.includes('maintenance')) {
       return predefinedResponses.support
     }
-    if (lowerInput.includes('security') || lowerInput.includes('safe') || lowerInput.includes('privacy')) {
+    if (lowerInput.includes('security') || lowerInput.includes('secure') || lowerInput.includes('privacy')) {
       return predefinedResponses.security
     }
     

@@ -89,7 +89,7 @@ export const createCallbackRequest = async (contactInfo) => {
     environment: config.environment,
     hasApiKey: config.hasApiKey,
     firstName: contactInfo.firstName,
-    phone: contactInfo.phone.substring(0, 3) + '***' // Privacy-safe logging
+    phone: contactInfo.phone.substring(0, 3) + '***' // Privacy-secure logging
   })
 
   try {
