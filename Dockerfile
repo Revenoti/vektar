@@ -8,8 +8,8 @@ WORKDIR /app
 # Copy package files
 COPY package.json package-lock.json ./
 
-# Install dependencies with npm
-RUN npm ci
+# Install dependencies with npm (--legacy-peer-deps for date-fns/react-day-picker conflict)
+RUN npm ci --legacy-peer-deps
 
 # Copy source code
 COPY . .
