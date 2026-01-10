@@ -6,12 +6,8 @@ export const useTheme = () => {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('vektar-theme')
       if (stored) return stored
-      
-      // Check system preference
-      if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-        return 'light'
-      }
     }
+    // Default to dark theme
     return 'dark'
   })
 

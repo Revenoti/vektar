@@ -1112,7 +1112,7 @@ function App() {
 
           <div className="mt-12 pt-8 border-t border-border text-center pad-safe-bottom">
             <p className="text-sm text-muted-foreground">
-              © 2025 Vektar. All rights reserved.
+              © 2026 Vektar. All rights reserved.
             </p>
           </div>
         </div>
