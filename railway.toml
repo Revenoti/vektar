@@ -1,0 +1,16 @@
+# Railway Deployment Configuration for Vektar
+# https://docs.railway.app/reference/config-as-code
+
+[build]
+builder = "nixpacks"
+buildCommand = "npm ci && npm run build"
+
+[deploy]
+startCommand = "npx serve -s dist -l $PORT"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 5
+
+# Number of instances
+numReplicas = 1

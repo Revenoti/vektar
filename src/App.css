@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is(.light *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -48,7 +49,7 @@
   --safe-bottom: env(safe-area-inset-bottom);
   --safe-top: env(safe-area-inset-top);
   
-  /* Vectorik Brand Colors */
+  /* Vektar Brand Colors */
   --midnight-navy: #0B1021;
   --near-black: #0E132C;
   --electric-cyan: #00E5FF;
@@ -59,8 +60,20 @@
   --off-white: #EAF0FF;
   --muted-slate: #9AA3B2;
   
-  /* Vectorik Spectrum Gradient */
-  --vektar-gradient: linear-gradient(45deg, var(--electric-cyan), var(--hyper-purple), var(--magenta), var(--sunset-orange));
+  /* Light Theme Brand Colors */
+  --light-bg: #F8FAFD;
+  --light-card: #FFFFFF;
+  --light-secondary: #F1F5F9;
+  --light-muted: #E2E8F0;
+  --light-text: #0F172A;
+  --light-text-muted: #64748B;
+  --light-purple: #6B4EE6;
+  --light-cyan: #00B8C4;
+  --light-border: rgba(107, 78, 230, 0.12);
+  
+  /* Vektar Spectrum Gradient */
+  --vektar-gradient: linear-gradient(135deg, var(--electric-cyan), var(--hyper-purple), var(--magenta), var(--sunset-orange));
+  --vektar-gradient-light: linear-gradient(135deg, var(--light-purple), var(--magenta), var(--sunset-orange));
   
   /* Theme Variables - Dark by default */
   --background: var(--midnight-navy);
@@ -86,26 +99,57 @@
   --chart-3: var(--magenta);
   --chart-4: var(--sunset-orange);
   --chart-5: var(--aqua);
+  
+  /* Dark mode glass effect */
+  --glass-bg: rgba(14, 19, 44, 0.6);
+  --glass-border: rgba(42, 224, 230, 0.1);
+  --glow-color: rgba(0, 229, 255, 0.3);
+  --glow-color-hover: rgba(0, 229, 255, 0.5);
 }
 
+/* ============================================
+   COMPREHENSIVE LIGHT THEME
+   ============================================ */
 .light {
-  --background: var(--off-white);
-  --foreground: var(--midnight-navy);
-  --card: #ffffff;
-  --card-foreground: var(--midnight-navy);
-  --popover: #ffffff;
-  --popover-foreground: var(--midnight-navy);
-  --primary: var(--hyper-purple);
-  --primary-foreground: var(--off-white);
-  --secondary: #f1f5f9;
-  --secondary-foreground: var(--midnight-navy);
-  --muted: #f1f5f9;
-  --muted-foreground: var(--muted-slate);
-  --accent: var(--electric-cyan);
-  --accent-foreground: var(--midnight-navy);
-  --border: rgba(11, 16, 33, 0.1);
-  --input: rgba(11, 16, 33, 0.1);
-  --ring: var(--hyper-purple);
+  /* Core Colors */
+  --background: var(--light-bg);
+  --foreground: var(--light-text);
+  --card: var(--light-card);
+  --card-foreground: var(--light-text);
+  --popover: var(--light-card);
+  --popover-foreground: var(--light-text);
+  
+  /* Brand Colors adjusted for light */
+  --primary: var(--light-purple);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--light-secondary);
+  --secondary-foreground: var(--light-text);
+  --muted: var(--light-muted);
+  --muted-foreground: var(--light-text-muted);
+  --accent: var(--light-cyan);
+  --accent-foreground: #FFFFFF;
+  
+  /* Interactive */
+  --destructive: #DC2626;
+  --border: var(--light-border);
+  --input: var(--light-border);
+  --ring: var(--light-purple);
+  
+  /* Charts - Adjusted for light backgrounds */
+  --chart-1: var(--light-purple);
+  --chart-2: var(--light-cyan);
+  --chart-3: var(--magenta);
+  --chart-4: var(--sunset-orange);
+  --chart-5: #10B981;
+  
+  /* Light mode glass effect */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(107, 78, 230, 0.12);
+  --glow-color: rgba(107, 78, 230, 0.15);
+  --glow-color-hover: rgba(107, 78, 230, 0.25);
+  
+  /* Gradient for light mode */
+  --vektar-gradient: linear-gradient(135deg, var(--light-purple), var(--magenta), var(--sunset-orange));
 }
 
 @layer base {
@@ -116,6 +160,7 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -125,6 +170,9 @@
 }
 
 @layer components {
+  /* ============================================
+     VEKTAR GRADIENT
+     ============================================ */
   .vektar-gradient {
     background: var(--vektar-gradient);
   }
@@ -136,14 +184,43 @@
     background-clip: text;
   }
   
+  /* ============================================
+     GLASS CARD - DARK MODE (Default)
+     ============================================ */
   .glass-card {
-    background: rgba(14, 19, 44, 0.6);
+    background: var(--glass-bg);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(42, 224, 230, 0.1);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
   }
   
+  /* ============================================
+     GLASS CARD - LIGHT MODE
+     ============================================ */
+  .light .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(107, 78, 230, 0.1);
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.05),
+      0 2px 4px -2px rgba(0, 0, 0, 0.05),
+      0 0 0 1px rgba(107, 78, 230, 0.05);
+  }
+  
+  .light .glass-card:hover {
+    box-shadow: 
+      0 10px 15px -3px rgba(0, 0, 0, 0.08),
+      0 4px 6px -4px rgba(0, 0, 0, 0.05),
+      0 0 0 1px rgba(107, 78, 230, 0.1);
+  }
+  
+  /* ============================================
+     GLOW EFFECTS
+     ============================================ */
   .glow-ring {
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+    box-shadow: 0 0 20px var(--glow-color);
   }
   
   .hover-glow {
@@ -151,10 +228,21 @@
   }
   
   .hover-glow:hover {
-    box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+    box-shadow: 0 0 30px var(--glow-color-hover);
     transform: translateY(-2px);
   }
   
+  /* Light mode hover - softer shadow instead of glow */
+  .light .hover-glow:hover {
+    box-shadow: 
+      0 20px 25px -5px rgba(107, 78, 230, 0.15),
+      0 8px 10px -6px rgba(107, 78, 230, 0.1);
+    transform: translateY(-3px);
+  }
+  
+  /* ============================================
+     CIRCUIT PATTERN BACKGROUND
+     ============================================ */
   .circuit-pattern {
     background-image: 
       radial-gradient(circle at 20% 50%, rgba(42, 224, 230, 0.1) 1px, transparent 1px),
@@ -162,6 +250,16 @@
     background-size: 100px 100px;
   }
   
+  .light .circuit-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(107, 78, 230, 0.08) 1px, transparent 1px),
+      radial-gradient(circle at 80% 50%, rgba(255, 61, 154, 0.06) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+  
+  /* ============================================
+     ANIMATIONS
+     ============================================ */
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -170,6 +268,13 @@
     animation: glow 2s ease-in-out infinite alternate;
   }
   
+  .light .animate-glow {
+    animation: glow-light 2s ease-in-out infinite alternate;
+  }
+  
+  /* ============================================
+     SAFE AREAS & TAP TARGETS
+     ============================================ */
   .pad-safe-top {
     padding-top: max(1rem, var(--safe-top));
   }
@@ -181,8 +286,98 @@
   .tap-target {
     min-height: 44px;
   }
+  
+  /* ============================================
+     THEME TOGGLE BUTTON
+     ============================================ */
+  .theme-toggle {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--secondary);
+    border: 1px solid var(--border);
+  }
+  
+  .theme-toggle:hover {
+    background: var(--muted);
+    transform: scale(1.05);
+  }
+  
+  .theme-toggle svg {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .theme-toggle:active svg {
+    transform: rotate(30deg);
+  }
+  
+  /* ============================================
+     NAVIGATION - LIGHT MODE ENHANCEMENTS
+     ============================================ */
+  .light nav {
+    background: rgba(248, 250, 253, 0.9);
+    border-bottom-color: rgba(107, 78, 230, 0.1);
+  }
+  
+  /* ============================================
+     BUTTONS - LIGHT MODE
+     ============================================ */
+  .light .vektar-gradient {
+    background: linear-gradient(135deg, #6B4EE6, #FF3D9A, #FF8A3D);
+  }
+  
+  .light .vektar-gradient:hover {
+    box-shadow: 0 10px 25px -5px rgba(107, 78, 230, 0.4);
+  }
+  
+  /* ============================================
+     BADGES - LIGHT MODE
+     ============================================ */
+  .light [data-slot="badge"] {
+    border-color: rgba(107, 78, 230, 0.2);
+  }
+  
+  /* ============================================
+     INPUTS - LIGHT MODE
+     ============================================ */
+  .light input,
+  .light textarea,
+  .light select {
+    background: #FFFFFF;
+    border-color: rgba(107, 78, 230, 0.15);
+  }
+  
+  .light input:focus,
+  .light textarea:focus,
+  .light select:focus {
+    border-color: var(--light-purple);
+    box-shadow: 0 0 0 3px rgba(107, 78, 230, 0.1);
+  }
+  
+  /* ============================================
+     SECONDARY BACKGROUNDS - LIGHT MODE
+     ============================================ */
+  .light .bg-secondary\/20,
+  .light .bg-secondary\/30,
+  .light .bg-secondary\/50 {
+    background-color: rgba(241, 245, 249, 0.8);
+  }
+  
+  .light .bg-primary\/10,
+  .light .bg-primary\/20 {
+    background-color: rgba(107, 78, 230, 0.08);
+  }
 }
 
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
@@ -201,14 +396,49 @@
   }
 }
 
-/* Smooth scrolling */
+@keyframes glow-light {
+  from {
+    box-shadow: 0 0 20px rgba(107, 78, 230, 0.2);
+  }
+  to {
+    box-shadow: 0 0 35px rgba(107, 78, 230, 0.35);
+  }
+}
+
+/* ============================================
+   SMOOTH SCROLLING & TRANSITIONS
+   ============================================ */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Theme transition for all elements */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Exclude certain elements from the transition */
+button,
+a,
+input,
+textarea,
+.animate-float,
+.animate-glow,
+.animate-pulse,
+.animate-scroll {
+  transition-property: background-color, border-color, box-shadow, transform, opacity;
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR - DARK MODE
+   ============================================ */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -224,9 +454,89 @@ html {
   background: var(--aqua);
 }
 
-/* Respect reduced motion preference */
+/* ============================================
+   CUSTOM SCROLLBAR - LIGHT MODE
+   ============================================ */
+.light::-webkit-scrollbar-track,
+.light ::-webkit-scrollbar-track {
+  background: var(--light-secondary);
+}
+
+.light::-webkit-scrollbar-thumb,
+.light ::-webkit-scrollbar-thumb {
+  background: var(--light-purple);
+  border-radius: 4px;
+}
+
+.light::-webkit-scrollbar-thumb:hover,
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #5A3FD4;
+}
+
+/* ============================================
+   RESPECT REDUCED MOTION PREFERENCE
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
-  .animate-glow, .animate-float, .animate-pulse {
+  .animate-glow, 
+  .animate-float, 
+  .animate-pulse,
+  .animate-scroll {
     animation: none !important;
   }
+  
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   COMPANY CAROUSEL - LIGHT MODE
+   ============================================ */
+.light .animate-scroll .glass-card {
+  background: linear-gradient(135deg, var(--from-color, #6B4EE6), var(--to-color, #FF3D9A));
+}
+
+/* ============================================
+   MODAL BACKDROP - LIGHT MODE
+   ============================================ */
+.light .bg-black\/80 {
+  background-color: rgba(15, 23, 42, 0.6);
+}
+
+/* ============================================
+   STAT CARDS - LIGHT MODE ENHANCEMENTS
+   ============================================ */
+.light .text-green-400,
+.light .text-green-500 {
+  color: #059669;
+}
+
+.light .text-blue-400,
+.light .text-blue-500 {
+  color: #2563EB;
+}
+
+.light .text-purple-400,
+.light .text-purple-500 {
+  color: #7C3AED;
+}
+
+.light .text-yellow-400,
+.light .text-yellow-500 {
+  color: #D97706;
+}
+
+.light .text-red-400,
+.light .text-red-500 {
+  color: #DC2626;
+}
+
+.light .text-orange-500 {
+  color: #EA580C;
+}
+
+.light .text-cyan-500 {
+  color: #0891B2;
 }
