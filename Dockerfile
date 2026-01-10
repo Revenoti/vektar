@@ -28,8 +28,8 @@ RUN npm install -g serve
 # Copy built assets from builder
 COPY --from=builder /app/dist ./dist
 
-# Expose port (Railway will override with $PORT)
-EXPOSE 3000
+# Expose port (Railway uses dynamic $PORT)
+EXPOSE ${PORT:-3000}
 
-# Start the server
-CMD ["serve", "-s", "dist", "-l", "3000"]
+# Start the server using Railway's PORT or default to 3000
+CMD ["sh", "-c", "serve -s dist -l ${PORT:-3000}"]
