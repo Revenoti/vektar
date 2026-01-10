@@ -14,7 +14,11 @@ import {
   ArrowRight,
   ExternalLink,
   Calculator,
-  Wrench
+  Wrench,
+  Cloud,
+  Cog,
+  Headphones,
+  Database
 } from 'lucide-react'
 import { requestDemo } from '../api/contact.js'
 import ChatbotDemo from './demos/ChatbotDemo.jsx'
@@ -25,6 +29,10 @@ import KPIDemo from './demos/KPIDemo.jsx'
 import TicketDemo from './demos/TicketDemo.jsx'
 import QuoteDemo from './demos/QuoteDemo.jsx'
 import FieldTechDemo from './demos/FieldTechDemo.jsx'
+import SaaSDemo from './demos/SaaSDemo.jsx'
+import AutomationDemo from './demos/AutomationDemo.jsx'
+import CallCenterDemo from './demos/CallCenterDemo.jsx'
+import CRMDemo from './demos/CRMDemo.jsx'
 
 const DemoModal = ({ isOpen, onClose }) => {
   const [selectedDemo, setSelectedDemo] = useState(null)
@@ -116,6 +124,46 @@ const DemoModal = ({ isOpen, onClose }) => {
       metrics: 'Real-time insights',
       component: KPIDemo,
       color: 'from-indigo-500 to-purple-500'
+    },
+    {
+      id: 'saas',
+      title: 'SaaS AI Application Development',
+      description: 'Build custom AI-powered SaaS applications with intelligent features and scalable architecture',
+      icon: Cloud,
+      features: ['AI Feature Builder', 'Tech Stack Config', 'Timeline Planning', 'Cost Calculator'],
+      metrics: 'Custom SaaS solutions',
+      component: SaaSDemo,
+      color: 'from-sky-500 to-indigo-600'
+    },
+    {
+      id: 'automation',
+      title: 'Custom AI Business Automation',
+      description: 'Watch intelligent workflows automate complex business processes in real-time',
+      icon: Cog,
+      features: ['Visual Workflow Builder', 'AI Decision Nodes', '200+ Integrations', 'Live Execution'],
+      metrics: 'Tailored automation',
+      component: AutomationDemo,
+      color: 'from-violet-500 to-purple-600'
+    },
+    {
+      id: 'callcenter',
+      title: 'AI Call Center',
+      description: 'Experience real-time AI-powered call center with sentiment analysis and live transcription',
+      icon: Headphones,
+      features: ['Live Call Monitoring', 'Sentiment Analysis', 'AI vs Human Metrics', 'Smart Routing'],
+      metrics: '24/7 AI support',
+      component: CallCenterDemo,
+      color: 'from-emerald-500 to-teal-600'
+    },
+    {
+      id: 'crm',
+      title: 'CRM Development',
+      description: 'AI-enhanced CRM with predictive lead scoring, pipeline analytics, and smart automation',
+      icon: Database,
+      features: ['AI Lead Scoring', 'Deal Pipeline', 'Revenue Forecast', 'Smart Insights'],
+      metrics: 'Unified customer data',
+      component: CRMDemo,
+      color: 'from-amber-500 to-orange-600'
     }
   ]
 

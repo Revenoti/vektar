@@ -21,18 +21,26 @@ import {
   Quote,
   Calculator,
   Wrench,
-  FileText
+  FileText,
+  Cloud,
+  Cog,
+  Headphones,
+  Database,
+  Sun,
+  Moon
 } from 'lucide-react'
 import vectorikLogo from './assets/vectorik-logo.png'
 import ContactForm from './components/ContactForm.jsx'
 import DemoModal from './components/DemoModal.jsx'
 import FloatingVoiceButton from './components/VoiceAssistant/FloatingVoiceButton.jsx'
+import { useTheme } from './hooks/useTheme.js'
 import './App.css'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+  const { theme, toggleTheme, isDark } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,6 +101,21 @@ function App() {
               <NavLink href="industries" isActive={activeSection === 'industries'}>Industries</NavLink>
               <NavLink href="work" isActive={activeSection === 'work'}>Work</NavLink>
               <NavLink href="about" isActive={activeSection === 'about'}>About</NavLink>
+              
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className="theme-toggle"
+                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {isDark ? (
+                  <Sun className="w-5 h-5 text-yellow-500" />
+                ) : (
+                  <Moon className="w-5 h-5 text-purple-500" />
+                )}
+              </button>
+              
               <Button 
                 onClick={() => scrollToSection('contact')}
                 className="vektar-gradient hover-glow"
@@ -118,6 +141,25 @@ function App() {
                 <NavLink href="industries" isActive={activeSection === 'industries'}>Industries</NavLink>
                 <NavLink href="work" isActive={activeSection === 'work'}>Work</NavLink>
                 <NavLink href="about" isActive={activeSection === 'about'}>About</NavLink>
+                
+                {/* Mobile Theme Toggle */}
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-secondary/50 transition-colors"
+                >
+                  {isDark ? (
+                    <>
+                      <Sun className="w-5 h-5 text-yellow-500" />
+                      <span className="text-muted-foreground">Light Mode</span>
+                    </>
+                  ) : (
+                    <>
+                      <Moon className="w-5 h-5 text-purple-500" />
+                      <span className="text-muted-foreground">Dark Mode</span>
+                    </>
+                  )}
+                </button>
+                
                 <Button 
                   onClick={() => scrollToSection('contact')}
                   className="vektar-gradient hover-glow mt-4 w-full sm:w-auto"
@@ -138,13 +180,13 @@ function App() {
               <div className="space-y-4">
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
                   Build Real ROI from{' '}
-                  <span className="vektar-gradient-text">AI</span>
+                  <span className="vektar-gradient-text">AI Solutions</span>
                   <br />
                   Faster. Safer.{' '}
                   <span className="vektar-gradient-text">Beautifully Executed.</span>
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl">
-                  Vektar designs, builds, and scales AI systems that convert more leads, 
+                  Vektar designs, builds, and scales AI systems that automates business processes, 
                   cut drudge-work, and unlock insights—without risking your data.
                 </p>
               </div>
@@ -376,7 +418,11 @@ function App() {
               { icon: Users, title: 'Ticket Deflection', impact: '-50% support load', demoId: 'support' },
               { icon: Wrench, title: 'Field Tech Copilot', impact: '+30% efficiency', demoId: 'fieldtech' },
               { icon: FileText, title: 'Document Intelligence', impact: '99% data extraction', demoId: 'document' },
-              { icon: BarChart3, title: 'Executive KPI Copilot', impact: 'Real-time insights', demoId: 'kpi' }
+              { icon: BarChart3, title: 'Executive KPI Copilot', impact: 'Real-time insights', demoId: 'kpi' },
+              { icon: Cloud, title: 'SaaS AI Application Development', impact: 'Custom SaaS solutions', demoId: 'saas' },
+              { icon: Cog, title: 'Custom AI Business Automation', impact: 'Tailored automation', demoId: 'automation' },
+              { icon: Headphones, title: 'AI Call Center', impact: '24/7 AI support', demoId: 'callcenter' },
+              { icon: Database, title: 'CRM Development', impact: 'Unified customer data', demoId: 'crm' }
             ].map((solution, index) => (
               <Card 
                 key={index} 
@@ -1066,7 +1112,7 @@ function App() {
 
           <div className="mt-12 pt-8 border-t border-border text-center pad-safe-bottom">
             <p className="text-sm text-muted-foreground">
-              © 2025 Vektar. All rights reserved.
+              © 2026 Vektar. All rights reserved.
             </p>
           </div>
         </div>
