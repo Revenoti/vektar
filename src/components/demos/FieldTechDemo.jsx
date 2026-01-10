@@ -90,7 +90,7 @@ const FieldTechDemo = () => {
       address: '5678 Industrial Blvd, Zone 3',
       priority: 'High',
       estimatedTime: '3 hours',
-      description: 'Annual electrical safety inspection for manufacturing facility. Check panel boards, grounding systems, and safety equipment.',
+      description: 'Annual electrical security inspection for manufacturing facility. Check panel boards, grounding systems, and security equipment.',
       equipment: ['Digital Multimeter', 'Insulation Tester', 'Ground Fault Tester', 'Thermal Camera'],
       checklist: [
         'Inspect main electrical panels',

@@ -27,7 +27,8 @@ import {
   Headphones,
   Database,
   Sun,
-  Moon
+  Moon,
+  Phone
 } from 'lucide-react'
 import vectorikLogo from './assets/vectorik-logo.png'
 import ContactForm from './components/ContactForm.jsx'
@@ -102,6 +103,15 @@ function App() {
               <NavLink href="work" isActive={activeSection === 'work'}>Work</NavLink>
               <NavLink href="about" isActive={activeSection === 'about'}>About</NavLink>
               
+              {/* Phone Number */}
+              <a 
+                href="tel:+13215995514" 
+                className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-secondary/50 transition-colors"
+              >
+                <Phone className="w-4 h-4 text-primary" />
+                <span className="text-sm font-semibold vektar-gradient-text">321-599-5514</span>
+              </a>
+              
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
@@ -120,7 +130,7 @@ function App() {
                 onClick={() => scrollToSection('contact')}
                 className="vektar-gradient hover-glow"
               >
-                Book a Strategy Call
+                Book a Free Strategy Call
               </Button>
             </div>
 
@@ -164,7 +174,7 @@ function App() {
                   onClick={() => scrollToSection('contact')}
                   className="vektar-gradient hover-glow mt-4 w-full sm:w-auto"
                 >
-                  Book a Strategy Call
+                  Book a Free Strategy Call
                 </Button>
               </div>
             </div>
@@ -182,8 +192,7 @@ function App() {
                   Build Real ROI from{' '}
                   <span className="vektar-gradient-text">AI Solutions</span>
                   <br />
-                  Faster. Safer.{' '}
-                  <span className="vektar-gradient-text">Beautifully Executed.</span>
+                  Faster. Securely.
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl">
                   Vektar designs, builds, and scales AI systems that automates business processes, 
@@ -197,7 +206,7 @@ function App() {
                   className="vektar-gradient hover-glow text-lg px-8 py-6 w-full sm:w-auto"
                   onClick={() => scrollToSection('contact')}
                 >
-                  Book a Strategy Call
+                  Book a Free Strategy Call
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
                 <Button 
@@ -250,7 +259,7 @@ function App() {
       <section className="py-12 sm:py-14 lg:py-16 border-b border-border overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <p className="text-muted-foreground text-lg font-medium">Native AI data-driven companies</p>
+            <p className="text-muted-foreground text-lg font-medium">AI Native companies</p>
           </div>
           
           {/* Infinite Scroll Company Carousel */}
@@ -338,8 +347,7 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
-              Building Innovative and Creative Solutions for the{' '}
-              <span className="vektar-gradient-text">Fast-paced Digital World</span>
+              <span className="vektar-gradient-text">Building Innovative and Creative Solutions</span> for the Fast-paced Digital World
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               With over 15 years of industry experience, we help startups and Fortune 500 companies 
@@ -383,7 +391,7 @@ function App() {
                 <div className="w-12 h-12 vektar-gradient rounded-lg flex items-center justify-center mb-4">
                   <Shield className="w-6 h-6 text-background" />
                 </div>
-                <CardTitle className="text-xl">Scale Safely</CardTitle>
+                <CardTitle className="text-xl">Scale Securely</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
@@ -521,8 +529,7 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
-              Redefining Industries with{' '}
-              <span className="vektar-gradient-text">Creative AI Solutions</span>
+              <span className="vektar-gradient-text">Redefining Industries</span> with Creative AI Solutions
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We specialize in delivering AI solutions across diverse industries, 
@@ -966,7 +973,7 @@ function App() {
                     className="vektar-gradient hover-glow"
                     onClick={() => scrollToSection('contact')}
                   >
-                    Book Strategy Call
+                    Book Free Strategy Call
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                   <Button 
@@ -998,7 +1005,7 @@ function App() {
             className="bg-background text-foreground hover:bg-background/90 text-lg px-8 py-6"
             onClick={() => scrollToSection('contact')}
           >
-            Book a Strategy Call
+            Book a Free Strategy Call
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
         </div>
@@ -1044,9 +1051,25 @@ function App() {
 
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold">Contact Information</h4>
-                  <div className="space-y-2 text-muted-foreground">
-                    <p>Email: info@vektar.io</p>
-                    <p>Response time: Within 24 hours</p>
+                  <div className="space-y-4">
+                    {/* Prominent Phone Number */}
+                    <div className="flex items-center space-x-3 p-4 bg-primary/10 rounded-xl border border-primary/20">
+                      <Phone className="w-6 h-6 text-primary" />
+                      <div>
+                        <a 
+                          href="tel:+13215995514" 
+                          className="text-2xl font-bold vektar-gradient-text hover:opacity-80 transition-opacity"
+                        >
+                          321-599-5514
+                        </a>
+                        <p className="text-sm text-muted-foreground">Call for immediate assistance</p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2 text-muted-foreground">
+                      <p>Email: info@vektar.io</p>
+                      <p>Response time: Within 24 hours</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1069,6 +1092,18 @@ function App() {
               <p className="text-sm leading-6 text-muted-foreground">
                 AI solutions that deliver real ROI. Built with care and curiosity.
               </p>
+              
+              {/* Contact Info */}
+              <div className="space-y-2">
+                <a 
+                  href="tel:+13215995514" 
+                  className="flex items-center space-x-2 text-sm hover:text-primary transition-colors"
+                >
+                  <Phone className="w-4 h-4 text-primary" />
+                  <span className="font-semibold vektar-gradient-text">321-599-5514</span>
+                </a>
+                <p className="text-sm text-muted-foreground">Free consultation available</p>
+              </div>
             </div>
 
             <div className="md:col-span-2">

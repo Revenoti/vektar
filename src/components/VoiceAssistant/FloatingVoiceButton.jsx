@@ -83,7 +83,7 @@ const FloatingVoiceButton = () => {
       trackVoiceEvent('callback_request_started', {
         firstName: formData.firstName,
         lastName: formData.lastName,
-        phone: formData.phone.substring(0, 3) + '***', // Privacy-safe logging
+        phone: formData.phone.substring(0, 3) + '***', // Privacy-secure logging
         timestamp: new Date().toISOString()
       })
 
