@@ -131,52 +131,52 @@ const SolutionsPage = () => {
 
   return (
     <>
-      <section className="py-16 circuit-pattern">
+      <section className="py-10 sm:py-16 circuit-pattern">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               <span className="text-foreground">AI Solutions</span> That Drive Results
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto">
               From sales automation to document intelligence, our AI solutions are designed 
               to integrate seamlessly into your existing workflows and deliver measurable ROI.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {solutions.map((solution, index) => (
               <Card 
                 key={index} 
                 className="glass-card hover-glow group transition-all duration-300"
               >
-                <CardHeader>
+                <CardHeader className="pb-2 sm:pb-4">
                   <div className="flex items-start justify-between">
-                    <div className="w-14 h-14 vektar-gradient rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <solution.icon className="w-7 h-7 text-white" />
+                    <div className="w-10 h-10 sm:w-14 sm:h-14 vektar-gradient rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <solution.icon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                     </div>
-                    <Badge className="vektar-gradient text-white border-0">
+                    <Badge className="vektar-gradient text-white border-0 text-xs sm:text-sm">
                       {solution.impact}
                     </Badge>
                   </div>
-                  <CardTitle className="text-xl mt-4">{solution.title}</CardTitle>
+                  <CardTitle className="text-lg sm:text-xl mt-3 sm:mt-4">{solution.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                <CardContent className="space-y-3 sm:space-y-4">
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                     {solution.description}
                   </p>
                   
-                  <div className="space-y-2">
+                  <div className="space-y-1.5 sm:space-y-2">
                     {solution.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
-                        <div className="w-1.5 h-1.5 vektar-gradient rounded-full"></div>
-                        <span className="text-sm text-muted-foreground">{feature}</span>
+                        <div className="w-1.5 h-1.5 vektar-gradient rounded-full flex-shrink-0"></div>
+                        <span className="text-xs sm:text-sm text-muted-foreground">{feature}</span>
                       </div>
                     ))}
                   </div>
                   
                   <Button 
                     variant="outline" 
-                    className="w-full border-primary text-primary hover:bg-primary/10 mt-4"
+                    className="w-full border-primary text-primary hover:bg-primary/10 mt-3 sm:mt-4 text-sm sm:text-base"
                     onClick={() => openDemo(solution.demoId)}
                   >
                     <Play className="w-4 h-4 mr-2" />
@@ -189,16 +189,16 @@ const SolutionsPage = () => {
         </div>
       </section>
 
-      <section className="py-16 vektar-gradient">
+      <section className="py-10 sm:py-16 vektar-gradient">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Need a Custom Solution?
           </h2>
-          <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-white/80 mb-6 sm:mb-8 max-w-2xl mx-auto">
             We build bespoke AI solutions tailored to your unique business challenges and workflows.
           </p>
           <Link to="/contact">
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
+            <Button size="lg" variant="secondary" className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6">
               Discuss Your Project
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>

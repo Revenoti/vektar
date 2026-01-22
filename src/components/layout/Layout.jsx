@@ -22,9 +22,9 @@ const Layout = ({ children }) => {
     return (
       <Link
         to={to}
-        className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+        className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium ${
           isActive 
-            ? 'bg-primary/20 text-primary border border-primary/30' 
+            ? 'vektar-gradient text-white shadow-md' 
             : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
         }`}
         onClick={() => setIsMenuOpen(false)}

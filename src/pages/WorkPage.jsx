@@ -85,25 +85,26 @@ const WorkPage = () => {
 
   return (
     <>
-      <section className="py-16 circuit-pattern">
+      <section className="py-10 sm:py-16 circuit-pattern">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               Our <span className="text-foreground">Work</span> Speaks for Itself
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto">
               From Fortune 500 enterprises to innovative startups, we've delivered AI solutions 
               that drive real business results across industries.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-            <Filter className="w-5 h-5 text-muted-foreground" />
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
+            <Filter className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
             {industries.map((industry) => (
               <Button
                 key={industry}
                 variant={selectedIndustry === industry ? "default" : "outline"}
-                className={selectedIndustry === industry ? "vektar-gradient" : "border-primary text-primary hover:bg-primary/10"}
+                size="sm"
+                className={`text-xs sm:text-sm ${selectedIndustry === industry ? "vektar-gradient" : "border-primary text-primary hover:bg-primary/10"}`}
                 onClick={() => setSelectedIndustry(industry)}
               >
                 {industry === 'all' ? 'All Industries' : industry}
@@ -111,41 +112,41 @@ const WorkPage = () => {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
             {filteredCaseStudies.map((project, index) => (
               <Card key={index} className="glass-card hover-glow overflow-hidden">
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-36 sm:h-48 overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="vektar-gradient text-white border-0">{project.industry}</Badge>
+                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
+                    <Badge className="vektar-gradient text-white border-0 text-xs">{project.industry}</Badge>
                   </div>
                 </div>
                 
-                <CardHeader>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <p className="text-sm text-muted-foreground font-medium">{project.client}</p>
+                <CardHeader className="pb-2 sm:pb-4">
+                  <CardTitle className="text-lg sm:text-xl">{project.title}</CardTitle>
+                  <p className="text-xs sm:text-sm text-muted-foreground font-medium">{project.client}</p>
                 </CardHeader>
                 
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-4 sm:space-y-6">
                   <div>
-                    <h4 className="font-semibold text-sm mb-2 text-red-500">The Problem</h4>
-                    <p className="text-sm text-muted-foreground">{project.problem}</p>
+                    <h4 className="font-semibold text-xs sm:text-sm mb-1 sm:mb-2 text-red-500">The Problem</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{project.problem}</p>
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold text-sm mb-2 text-blue-500">Our Process</h4>
-                    <p className="text-sm text-muted-foreground">{project.process}</p>
+                    <h4 className="font-semibold text-xs sm:text-sm mb-1 sm:mb-2 text-blue-500">Our Process</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{project.process}</p>
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold text-sm mb-2 text-green-500">The Payoff</h4>
-                    <div className="flex flex-wrap gap-2">
+                    <h4 className="font-semibold text-xs sm:text-sm mb-1 sm:mb-2 text-green-500">The Payoff</h4>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {project.results.map((result, idx) => (
-                        <Badge key={idx} variant="secondary" className="bg-green-500/10 text-green-600 border-green-500/20">
+                        <Badge key={idx} variant="secondary" className="bg-green-500/10 text-green-600 border-green-500/20 text-xs">
                           {result}
                         </Badge>
                       ))}
@@ -153,8 +154,8 @@ const WorkPage = () => {
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold text-sm mb-2">Technologies Used</h4>
-                    <div className="flex flex-wrap gap-2">
+                    <h4 className="font-semibold text-xs sm:text-sm mb-1 sm:mb-2">Technologies Used</h4>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {project.tech.map((tech, idx) => (
                         <Badge key={idx} variant="outline" className="text-xs">
                           {tech}
@@ -169,18 +170,18 @@ const WorkPage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-secondary/20">
+      <section className="py-10 sm:py-16 bg-secondary/20">
         <div className="container mx-auto px-4">
-          <Card className="glass-card max-w-3xl mx-auto p-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Join Our Success Stories?</h2>
-            <p className="text-muted-foreground mb-8 text-lg">
+          <Card className="glass-card max-w-3xl mx-auto p-4 sm:p-8 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Ready to Join Our Success Stories?</h2>
+            <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-lg">
               Every project starts with understanding your unique challenges. 
               Let's discuss how AI can transform your business.
             </p>
             <Link to="/contact">
-              <Button size="lg" className="vektar-gradient hover-glow">
+              <Button size="lg" className="vektar-gradient hover-glow text-sm sm:text-base">
                 Start Your AI Journey
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </Button>
             </Link>
           </Card>

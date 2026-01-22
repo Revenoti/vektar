@@ -29,10 +29,20 @@ A professional AI consulting website for Vektar AI Solutions featuring multi-pag
 - `dist/` - Production build output
 
 ## Design Decisions
-- **Light theme as default** (user can toggle to dark)
+- **Light theme as default** (class="light" added to HTML element for immediate loading)
 - **Gradient colors** only on buttons, icons, and badges (not on text)
 - **Hero logo** sized at 192px for better visual hierarchy
 - **Case studies** follow Problem-Process-Payoff structure with colored sections
+- **Navigation** - Active links use vektar-gradient background with white text
+- **Mobile-first** - All pages optimized with responsive typography, spacing, and grids
+
+## HomePage Section Flow
+1. Hero Section - Main headline with stats and CTA buttons
+2. What We Do - "Building Innovative Solutions for the Fast-paced AI & Digital World" (6 capability cards)
+3. AI Solutions - "AI Solutions That Drive Results" (8 solution preview cards)
+4. Social Proof - "Trusted by innovative companies" carousel
+5. Testimonials - Client quotes with photos
+6. CTA - Final call-to-action section
 
 ## Development
 - Port: 5000 (configured for Replit)
