@@ -11,7 +11,8 @@ A professional AI consulting website for Vektar AI Solutions featuring multi-pag
 - **Charts**: Recharts
 - **Voice Assistant**: RetellAI integration
 
-## AI Solutions (8 Total - Synced Between HomePage & SolutionsPage)
+## AI Solutions (16 Total - Synced Between HomePage & SolutionsPage)
+### Core Business Solutions
 1. AI Sales Chatbot (violet-purple) - Lead qualification, CRM integration
 2. Voice Receptionist (pink-rose) - Call routing, appointment booking
 3. RAG Knowledge Hub (cyan-blue) - Document ingestion, semantic search
@@ -20,10 +21,20 @@ A professional AI consulting website for Vektar AI Solutions featuring multi-pag
 6. Customer Support Bot (blue-indigo) - Ticket deflection, multi-channel
 7. Data Enrichment (amber-orange) - Data cleaning, quality improvement
 8. Predictive Analytics (fuchsia-purple) - AI forecasting, trend analysis
+9. Business Automation (violet-purple) - Visual workflow builder, app integrations
+
+### Industry-Specific Solutions
+10. AI Dispatch & Logistics (emerald-teal) - Route optimization, GPS tracking, driver scheduling
+11. 24/7 Healthcare Receptionist (rose-pink) - Appointment booking, symptom triage, insurance verification
+12. 24/7 Education Counselor (blue-indigo) - Course recommendations, enrollment, schedule planning
+13. 24/7 Mobile Auto Mechanic (orange-red) - Vehicle diagnostics, service scheduling, technician tracking
+14. 24/7 Mobile Tech Service (cyan-blue) - Device diagnostics, repair booking, status tracking
+15. 24/7 Mobile HVAC Service (sky-indigo) - Emergency dispatch, maintenance scheduling
+16. 24/7 Plumber & Landscaping (blue-cyan) - Service booking, project quotes, emergency plumbing
 
 ## Pages (Multi-Page Architecture)
 - **Home** (`/`) - Hero, stats, solutions preview, testimonials, social proof
-- **Solutions** (`/solutions`) - 12 AI solutions with interactive demos
+- **Solutions** (`/solutions`) - 16 AI solutions with interactive demos
 - **Work** (`/work`) - Filterable case studies with Problem-Process-Payoff structure
 - **About** (`/about`) - Mission, Vision, Values, Team expertise, Vektar Approach
 - **Industries** (`/industries`) - 10 industry-specific challenges and solutions
@@ -33,7 +44,7 @@ A professional AI consulting website for Vektar AI Solutions featuring multi-pag
 - `src/` - Source code
   - `src/pages/` - Page components (HomePage, SolutionsPage, WorkPage, AboutPage, IndustriesPage, ContactPage)
   - `src/components/layout/` - Shared Layout component with header/footer
-  - `src/components/demos/` - 8 interactive AI demo components (ChatbotDemo, VoiceDemo, RAGDemo, DocumentDemo, TranscriptionDemo, SupportBotDemo, DataEnrichmentDemo, PredictiveAnalyticsDemo)
+  - `src/components/demos/` - 16 interactive AI demo components (ChatbotDemo, VoiceDemo, RAGDemo, DocumentDemo, TranscriptionDemo, SupportBotDemo, DataEnrichmentDemo, PredictiveAnalyticsDemo, BusinessAutomationDemo, DispatchLogisticsDemo, HealthcareReceptionistDemo, EducationCounselorDemo, AutoMechanicDemo, TechServiceDemo, HVACServiceDemo, PlumberLandscapingDemo)
   - `src/components/VoiceAssistant/` - RetellAI voice integration
 - `public/` - Static assets
 - `dist/` - Production build output
