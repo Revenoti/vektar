@@ -129,32 +129,30 @@ const Layout = ({ children }) => {
 
       <footer className="py-12 border-t border-border bg-secondary/20">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="mb-6">
+            <Link to="/" className="flex items-center space-x-2 mb-3">
+              <img src={vectorikLogo} alt="Vektar" className="w-8 h-8 rounded-full" />
+              <span className="text-lg font-bold text-foreground">Vektar</span>
+            </Link>
+            <p className="text-sm text-muted-foreground">
+              Building enterprise-grade AI solutions that deliver measurable ROI.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             <div>
-              <Link to="/" className="flex items-center space-x-2 mb-4">
-                <img src={vectorikLogo} alt="Vektar" className="w-8 h-8 rounded-full" />
-                <span className="text-lg font-bold text-foreground">Vektar</span>
-              </Link>
-              <p className="text-sm text-muted-foreground">
-                Building enterprise-grade AI solutions that deliver measurable ROI.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Solutions</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h4 className="font-semibold mb-3">Solutions</h4>
+              <ul className="space-y-1.5 text-sm text-muted-foreground">
                 <li><Link to="/solutions#chatbot" className="hover:text-foreground transition-colors">AI Sales Chatbot</Link></li>
                 <li><Link to="/solutions#voice" className="hover:text-foreground transition-colors">Voice Receptionist</Link></li>
-                <li><Link to="/solutions#document" className="hover:text-foreground transition-colors">Document Intelligence</Link></li>
+                <li><Link to="/solutions#analytics" className="hover:text-foreground transition-colors">Predictive Analytics</Link></li>
                 <li><Link to="/solutions#automation" className="hover:text-foreground transition-colors">Business Automation</Link></li>
-                <li><Link to="/solutions#dispatch" className="hover:text-foreground transition-colors">AI Dispatch & Logistics</Link></li>
-                <li><Link to="/solutions#healthcare" className="hover:text-foreground transition-colors">Healthcare Receptionist</Link></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h4 className="font-semibold mb-3">Company</h4>
+              <ul className="space-y-1.5 text-sm text-muted-foreground">
                 <li><Link to="/about" className="hover:text-foreground transition-colors">About Us</Link></li>
                 <li><Link to="/work" className="hover:text-foreground transition-colors">Case Studies</Link></li>
                 <li><Link to="/industries" className="hover:text-foreground transition-colors">Industries</Link></li>
@@ -163,8 +161,18 @@ const Layout = ({ children }) => {
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h4 className="font-semibold mb-3">Industries</h4>
+              <ul className="space-y-1.5 text-sm text-muted-foreground">
+                <li><Link to="/solutions#dispatch" className="hover:text-foreground transition-colors">Dispatch & Logistics</Link></li>
+                <li><Link to="/solutions#healthcare" className="hover:text-foreground transition-colors">Healthcare</Link></li>
+                <li><Link to="/solutions#education" className="hover:text-foreground transition-colors">Education</Link></li>
+                <li><Link to="/solutions#plumbing" className="hover:text-foreground transition-colors">Home Services</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-3">Contact</h4>
+              <ul className="space-y-1.5 text-sm text-muted-foreground">
                 <li>
                   <a href="tel:+13215995514" className="hover:text-foreground transition-colors flex items-center space-x-2">
                     <Phone className="w-4 h-4" />
