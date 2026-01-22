@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
+import SEO from '@/components/SEO.jsx'
 import { 
   ArrowRight, 
   Home, 
@@ -203,6 +204,11 @@ const IndustriesPage = () => {
 
   return (
     <>
+      <SEO 
+        title="Industries We Serve - AI Solutions by Sector"
+        description="AI solutions for Healthcare, Home Services, Manufacturing, Retail, Financial Services, Education, Legal, Logistics and more. Industry-specific challenges solved with AI."
+        canonical="https://vektar.io/industries"
+      />
       <section className="py-8 sm:py-12 circuit-pattern">
         <div className="container mx-auto px-4">
           <div className="text-center mb-6 sm:mb-10">

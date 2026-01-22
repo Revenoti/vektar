@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { ArrowRight, Filter } from 'lucide-react'
+import SEO from '@/components/SEO.jsx'
 
 const WorkPage = () => {
   const [selectedIndustry, setSelectedIndustry] = useState('all')
@@ -85,6 +86,11 @@ const WorkPage = () => {
 
   return (
     <>
+      <SEO 
+        title="Case Studies - AI Project Success Stories"
+        description="See real results from our AI implementations. Case studies featuring +156% conversion rates, -67% wait times, and millions in ROI across healthcare, e-commerce, and manufacturing."
+        canonical="https://vektar.io/work"
+      />
       <section className="py-8 sm:py-12 circuit-pattern">
         <div className="container mx-auto px-4">
           <div className="text-center mb-6 sm:mb-10">

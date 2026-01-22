@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
+import SEO from '@/components/SEO.jsx'
 import { 
   ArrowRight, 
   Zap, 
@@ -154,6 +155,11 @@ const HomePage = () => {
 
   return (
     <>
+      <SEO 
+        title="Vektar - AI Solutions That Deliver Real ROI"
+        description="Build Real ROI from AI. Vektar designs, builds, and scales AI systems that convert more leads, cut drudge-work, and unlock insights. 150+ projects delivered with 95% satisfaction."
+        canonical="https://vektar.io/"
+      />
       {/* Hero Section with Background Image */}
       <section 
         className="relative pt-8 sm:pt-12 pb-10 sm:pb-16 min-h-[500px] sm:min-h-[600px] flex items-center"

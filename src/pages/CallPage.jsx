@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
+import SEO from '@/components/SEO.jsx'
 import { 
   Phone, 
   Mic, 
@@ -63,8 +64,14 @@ const CallPage = () => {
   ]
 
   return (
-    <div className="min-h-screen circuit-pattern relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none"></div>
+    <>
+      <SEO 
+        title="Talk to Vektar AI Agent - Free Strategy Call"
+        description="Skip the wait! Get instant answers about AI solutions through a real-time voice conversation. Book a free strategy call with Vektar's AI agent. Available 24/7."
+        canonical="https://vektar.io/call"
+      />
+      <div className="min-h-screen circuit-pattern relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none"></div>
       
       <div className="container mx-auto px-4 py-8 md:py-16 relative z-10">
         <div className="max-w-5xl mx-auto">
@@ -237,6 +244,7 @@ const CallPage = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent } from '@/components/ui/card.jsx'
+import SEO from '@/components/SEO.jsx'
 import { 
   ArrowRight, 
   Rocket, 
@@ -18,6 +19,11 @@ import {
 const AboutPage = () => {
   return (
     <>
+      <SEO 
+        title="About Vektar - Your Strategic AI Partner"
+        description="We're not just another AI company. Vektar is your strategic partner in building AI solutions that deliver measurable business results, not just impressive demos."
+        canonical="https://vektar.io/about"
+      />
       <section className="py-8 sm:py-12 circuit-pattern">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12">

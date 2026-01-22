@@ -4,10 +4,16 @@ import { Card } from '@/components/ui/card.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Phone, Mail, MapPin, Clock, Sparkles, MessageSquare, ArrowRight } from 'lucide-react'
+import SEO from '@/components/SEO.jsx'
 
 const ContactPage = () => {
   return (
     <>
+      <SEO 
+        title="Contact Vektar - Let's Talk AI"
+        description="Ready to transform your business with AI? Contact Vektar for a free strategy call. Phone: 321-599-5514 or talk to our AI agent instantly."
+        canonical="https://vektar.io/contact"
+      />
       <section className="py-8 sm:py-12 circuit-pattern">
         <div className="container mx-auto px-4">
           <div className="text-center mb-6 sm:mb-10">

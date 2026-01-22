@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
+import SEO from '@/components/SEO.jsx'
 import { 
   ArrowRight, 
   MessageSquare, 
@@ -132,6 +133,11 @@ const SolutionsPage = () => {
 
   return (
     <>
+      <SEO 
+        title="AI Solutions - Chatbots, Voice Agents, Analytics & Automation"
+        description="Explore 8 AI solutions: Sales Chatbots, Voice Receptionists, Predictive Analytics, Business Automation, and industry-specific AI agents. Live demos available."
+        canonical="https://vektar.io/solutions"
+      />
       <section className="py-8 sm:py-12 lg:py-16 circuit-pattern relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none"></div>
         
