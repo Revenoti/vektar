@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
                 )}
               </button>
               
-              <Link to="/contact">
+              <Link to="/call">
                 <Button className="vektar-gradient hover-glow">
                   Book a Free Strategy Call
                 </Button>
@@ -112,7 +112,7 @@ const Layout = ({ children }) => {
                   )}
                 </button>
                 
-                <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                <Link to="/call" onClick={() => setIsMenuOpen(false)}>
                   <Button className="vektar-gradient hover-glow mt-4 w-full">
                     Book a Free Strategy Call
                   </Button>

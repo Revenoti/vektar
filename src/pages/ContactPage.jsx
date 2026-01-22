@@ -1,6 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Card } from '@/components/ui/card.jsx'
-import { Phone, Mail, MapPin, Clock } from 'lucide-react'
+import { Button } from '@/components/ui/button.jsx'
+import { Badge } from '@/components/ui/badge.jsx'
+import { Phone, Mail, MapPin, Clock, Sparkles, MessageSquare, ArrowRight } from 'lucide-react'
 import ContactForm from '@/components/ContactForm.jsx'
 
 const ContactPage = () => {
@@ -17,6 +20,32 @@ const ContactPage = () => {
               and discuss how we can help.
             </p>
           </div>
+
+          <Card className="max-w-4xl mx-auto mb-8 sm:mb-12 bg-gradient-to-br from-primary/10 via-purple-500/10 to-pink-500/10 border-primary/30 overflow-hidden">
+            <div className="p-6 sm:p-8 text-center">
+              <Badge className="bg-green-500/20 text-green-400 border-green-500/30 mb-4">
+                <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                AI Agent Online
+              </Badge>
+              <h2 className="text-xl sm:text-2xl font-bold mb-3">
+                <Sparkles className="w-5 h-5 inline-block mr-2 text-primary" />
+                Talk to Vektar AI Instantly
+              </h2>
+              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+                Skip the wait! Get instant answers about our AI solutions through a real-time voice conversation with our AI assistant.
+              </p>
+              <Link to="/call">
+                <Button className="vektar-gradient hover-glow px-8 py-6 text-lg font-semibold">
+                  <MessageSquare className="w-5 h-5 mr-2" />
+                  Start AI Conversation
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+              <p className="text-xs text-muted-foreground mt-4">
+                Average call duration: 3-5 minutes | Available 24/7
+              </p>
+            </div>
+          </Card>
 
           <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
             <div className="lg:col-span-2 order-2 lg:order-1">

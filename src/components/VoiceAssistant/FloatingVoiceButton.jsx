@@ -165,6 +165,12 @@ const FloatingVoiceButton = () => {
           <Phone className="w-6 h-6 text-white relative z-10 animate-pulse" />
           <span className="sr-only">Request a callback from Vektar AI</span>
         </Button>
+        <button 
+          data-voice-button 
+          onClick={() => setIsOpen(true)} 
+          className="hidden"
+          aria-hidden="true"
+        />
         
         {/* Enhanced Green "Live" Tooltip - Always Visible - Mobile Optimized */}
         <div className="absolute -top-1 -right-1 z-10">

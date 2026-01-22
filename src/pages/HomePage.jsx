@@ -182,7 +182,7 @@ const HomePage = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Link to="/contact" className="w-full sm:w-auto">
+                <Link to="/call" className="w-full sm:w-auto">
                   <Button 
                     size="lg" 
                     className="vektar-gradient hover-glow text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 w-full"

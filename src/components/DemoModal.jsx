@@ -25,7 +25,6 @@ import {
   Thermometer,
   Droplets
 } from 'lucide-react'
-import { requestDemo } from '../api/contact.js'
 import ChatbotDemo from './demos/ChatbotDemo.jsx'
 import VoiceDemo from './demos/VoiceDemo.jsx'
 import RAGDemo from './demos/RAGDemo.jsx'
@@ -45,13 +44,6 @@ import PlumberLandscapingDemo from './demos/PlumberLandscapingDemo.jsx'
 
 const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
   const [selectedDemo, setSelectedDemo] = useState(null)
-  const [isRequestingDemo, setIsRequestingDemo] = useState(false)
-  const [demoRequestForm, setDemoRequestForm] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  })
 
   useEffect(() => {
     if (initialDemo && isOpen) {
@@ -225,42 +217,6 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
     }
   ]
 
-  const handleDemoRequest = async (demoType) => {
-    if (!demoRequestForm.name || !demoRequestForm.email) {
-      alert('Please fill in your name and email to request a demo.')
-      return
-    }
-
-    setIsRequestingDemo(true)
-    
-    try {
-      const result = await requestDemo({
-        ...demoRequestForm,
-        demoType: demoType
-      })
-      
-      if (result.success) {
-        alert(result.message)
-        setDemoRequestForm({ name: '', email: '', company: '', message: '' })
-        onClose()
-      } else {
-        alert(result.message)
-      }
-    } catch (error) {
-      alert('There was an error submitting your demo request. Please try again.')
-    } finally {
-      setIsRequestingDemo(false)
-    }
-  }
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setDemoRequestForm(prev => ({
-      ...prev,
-      [name]: value
-    }))
-  }
-
   const handleClose = () => {
     setSelectedDemo(null)
     onClose()
@@ -367,58 +323,27 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
 
               <Card className="bg-gradient-to-br from-primary/5 to-purple-500/5 border-primary/20">
                 <CardHeader>
-                  <CardTitle className="text-lg md:text-xl">Request Personal Demo</CardTitle>
+                  <CardTitle className="text-lg md:text-xl flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-primary" />
+                    Want a Personal Demo?
+                  </CardTitle>
                   <p className="text-muted-foreground text-sm md:text-base">
-                    Want to see how this solution works with your specific data? Request a personalized demo.
+                    Skip the forms! Talk directly to our AI assistant to discuss how this solution can work for your business.
                   </p>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Your name *"
-                      value={demoRequestForm.name}
-                      onChange={handleInputChange}
-                      autoComplete="name"
-                      className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Your email *"
-                      value={demoRequestForm.email}
-                      onChange={handleInputChange}
-                      autoComplete="email"
-                      inputMode="email"
-                      className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    name="company"
-                    placeholder="Company name (optional)"
-                    value={demoRequestForm.company}
-                    onChange={handleInputChange}
-                    autoComplete="organization"
-                    className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
-                  />
-                  <textarea
-                    name="message"
-                    placeholder="Tell us about your specific use case..."
-                    value={demoRequestForm.message}
-                    onChange={handleInputChange}
-                    rows="3"
-                    className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent resize-none tap-target min-h-[120px]"
-                  />
-                  <Button
-                    onClick={() => handleDemoRequest(selectedDemo.title)}
-                    className="vektar-gradient hover-glow w-full md:w-auto tap-target min-h-[44px] text-base font-semibold"
-                    disabled={isRequestingDemo}
-                  >
-                    {isRequestingDemo ? 'Requesting...' : 'Request Personal Demo'}
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
+                <CardContent>
+                  <a href="/call">
+                    <Button
+                      className="vektar-gradient hover-glow w-full tap-target min-h-[52px] text-base font-semibold"
+                    >
+                      <Play className="w-5 h-5 mr-2" />
+                      Talk to Vektar AI
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </a>
+                  <p className="text-xs text-muted-foreground text-center mt-3">
+                    Real-time AI conversation - No waiting, instant answers
+                  </p>
                 </CardContent>
               </Card>
             </div>
