@@ -8,9 +8,9 @@ import { Phone, Mail, MapPin, Clock, Sparkles, MessageSquare, ArrowRight } from 
 const ContactPage = () => {
   return (
     <>
-      <section className="py-10 sm:py-16 circuit-pattern">
+      <section className="py-8 sm:py-12 circuit-pattern">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-6 sm:mb-10">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               Let's <span className="text-foreground">Talk</span>
             </h1>
@@ -20,7 +20,7 @@ const ContactPage = () => {
             </p>
           </div>
 
-          <Card className="max-w-4xl mx-auto mb-8 sm:mb-12 bg-gradient-to-br from-primary/10 via-purple-500/10 to-pink-500/10 border-primary/30 overflow-hidden">
+          <Card className="max-w-4xl mx-auto mb-6 sm:mb-10 bg-gradient-to-br from-primary/10 via-purple-500/10 to-pink-500/10 border-primary/30 overflow-hidden">
             <div className="p-6 sm:p-8 text-center">
               <Badge className="bg-green-500/20 text-green-400 border-green-500/30 mb-4">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
@@ -119,10 +119,10 @@ const ContactPage = () => {
         </div>
       </section>
 
-      <section className="py-10 sm:py-16 bg-secondary/20">
+      <section className="py-8 sm:py-12 bg-secondary/20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">What Happens Next?</h2>
-          <div className="grid sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto mt-6 sm:mt-8">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3">What Happens Next?</h2>
+          <div className="grid sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto mt-4 sm:mt-6">
             <div>
               <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <span className="text-white font-bold text-sm sm:text-base">1</span>

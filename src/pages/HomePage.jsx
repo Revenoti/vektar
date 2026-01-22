@@ -164,10 +164,10 @@ const HomePage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pb-12 sm:pb-16 min-h-[85vh] sm:min-h-[90vh] flex items-center circuit-pattern">
+      <section className="pt-6 sm:pt-10 pb-8 sm:pb-12 circuit-pattern">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="space-y-6 sm:space-y-8">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+            <div className="space-y-4 sm:space-y-6">
               <div className="space-y-4">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   Unlock Real ROI with{' '}
@@ -202,7 +202,7 @@ const HomePage = () => {
                 </Button>
               </div>
 
-              <div className="flex items-center justify-start gap-6 sm:gap-8 pt-4 sm:pt-8">
+              <div className="flex items-center justify-start gap-6 sm:gap-8 pt-2 sm:pt-4">
                 <div className="text-center">
                   <div className="text-2xl sm:text-3xl font-bold text-primary">150+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">AI Projects</div>
@@ -234,9 +234,9 @@ const HomePage = () => {
       </section>
 
       {/* What We Do / Capabilities Section - Moved UP */}
-      <section className="py-12 sm:py-16 lg:py-20">
+      <section className="py-8 sm:py-12 lg:py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-6 sm:mb-10">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
               <span className="text-foreground">Building Innovative Solutions</span> for the Fast-paced AI & Digital World
             </h2>
@@ -274,11 +274,11 @@ const HomePage = () => {
       </section>
 
       {/* AI Solutions Section - Now shows 8 cards */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-secondary/20 relative overflow-hidden">
+      <section className="py-8 sm:py-12 lg:py-16 bg-secondary/20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none"></div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-6 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4 sm:mb-6">
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary">Live AI Demos</span>
@@ -346,9 +346,9 @@ const HomePage = () => {
       </section>
 
       {/* Trusted by Companies Section - Moved DOWN */}
-      <section className="py-10 sm:py-12 border-b border-border overflow-hidden">
+      <section className="py-6 sm:py-10 border-b border-border overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-6 sm:mb-8">
+          <div className="text-center mb-4 sm:mb-6">
             <p className="text-muted-foreground text-base sm:text-lg font-medium">Trusted by innovative companies</p>
           </div>
           
@@ -369,9 +369,9 @@ const HomePage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-12 sm:py-16">
+      <section className="py-8 sm:py-12">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-6 sm:mb-10">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
               What Our <span className="text-foreground">Clients Say</span>
             </h2>
@@ -407,12 +407,12 @@ const HomePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 vektar-gradient">
+      <section className="py-8 sm:py-12 vektar-gradient">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
             Ready to ship your first 30-day AI pilot?
           </h2>
-          <p className="text-lg sm:text-xl text-white/80 mb-6 sm:mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 mb-5 sm:mb-6 max-w-2xl mx-auto">
             Let's talk about how AI can transform your business operations and drive measurable ROI.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">

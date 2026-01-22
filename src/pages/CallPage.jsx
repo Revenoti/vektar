@@ -66,24 +66,24 @@ const CallPage = () => {
     <div className="min-h-screen circuit-pattern relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none"></div>
       
-      <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
+      <div className="container mx-auto px-4 py-8 md:py-16 relative z-10">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+          <div className="text-center mb-8 md:mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary">AI-Powered Conversations</span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-foreground">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 text-foreground">
               Talk to Vektar AI Agent
             </h1>
             
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-6">
               Skip the forms and long wait times. Have a real-time conversation with your Vektar AI Agent 
               to explore how we can transform your business with AI solutions.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="flex flex-wrap justify-center gap-3 mb-6">
               {stats.map((stat, index) => (
                 <div key={index} className="flex items-center gap-2 px-4 py-2 bg-secondary/50 rounded-full">
                   <span className="text-xl font-bold text-primary">{stat.value}</span>

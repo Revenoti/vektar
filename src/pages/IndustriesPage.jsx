@@ -203,10 +203,10 @@ const IndustriesPage = () => {
 
   return (
     <>
-      <section className="py-10 sm:py-16 circuit-pattern">
+      <section className="py-8 sm:py-12 circuit-pattern">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-12">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <div className="text-center mb-6 sm:mb-10">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
               <span className="text-foreground">Redefining Industries</span> with AI
             </h1>
             <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -261,7 +261,7 @@ const IndustriesPage = () => {
         </div>
       </section>
 
-      <section className="py-10 sm:py-16 vektar-gradient">
+      <section className="py-8 sm:py-12 vektar-gradient">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Don't See Your Industry?

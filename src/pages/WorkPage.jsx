@@ -85,10 +85,10 @@ const WorkPage = () => {
 
   return (
     <>
-      <section className="py-10 sm:py-16 circuit-pattern">
+      <section className="py-8 sm:py-12 circuit-pattern">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-12">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <div className="text-center mb-6 sm:mb-10">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
               Our <span className="text-foreground">Work</span> Speaks for Itself
             </h1>
             <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -97,7 +97,7 @@ const WorkPage = () => {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-10">
             <Filter className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
             {industries.map((industry) => (
               <Button

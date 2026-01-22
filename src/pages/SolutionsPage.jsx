@@ -212,16 +212,16 @@ const SolutionsPage = () => {
 
   return (
     <>
-      <section className="py-10 sm:py-16 lg:py-20 circuit-pattern relative overflow-hidden">
+      <section className="py-8 sm:py-12 lg:py-16 circuit-pattern relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none"></div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-10 sm:mb-14 lg:mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+          <div className="text-center mb-8 sm:mb-10 lg:mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary">Live AI Demos</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4">
               <span className="text-foreground">AI Solutions</span> That Drive Results
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

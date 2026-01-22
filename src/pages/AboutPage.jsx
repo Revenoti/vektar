@@ -18,10 +18,10 @@ import {
 const AboutPage = () => {
   return (
     <>
-      <section className="py-10 sm:py-16 circuit-pattern">
+      <section className="py-8 sm:py-12 circuit-pattern">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+          <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
               About <span className="text-foreground">Vektar</span>
             </h1>
             <p className="text-base sm:text-xl text-muted-foreground">
@@ -30,7 +30,7 @@ const AboutPage = () => {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-16">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
             <Card className="glass-card p-4 sm:p-8">
               <div className="w-12 h-12 sm:w-16 sm:h-16 vektar-gradient rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
                 <Rocket className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
@@ -58,9 +58,9 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="py-10 sm:py-16 bg-secondary/20">
+      <section className="py-8 sm:py-12 bg-secondary/20">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-10">
             The <span className="text-foreground">Vektar</span> Approach
           </h2>
           
@@ -101,9 +101,9 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="py-10 sm:py-16">
+      <section className="py-8 sm:py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-10">
             World-Class <span className="text-foreground">Expertise</span>
           </h2>
           
@@ -151,10 +151,10 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="py-10 sm:py-16 bg-secondary/20">
+      <section className="py-8 sm:py-12 bg-secondary/20">
         <div className="container mx-auto px-4">
           <Card className="glass-card p-4 sm:p-8 max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-10">
               Proven <span className="text-foreground">Results</span>
             </h2>
             
@@ -180,9 +180,9 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-8 sm:py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-10">
             Our <span className="text-foreground">Values</span>
           </h2>
           
@@ -223,12 +223,12 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="py-16 vektar-gradient">
+      <section className="py-8 sm:py-12 vektar-gradient">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
             Ready to Transform Your Business with AI?
           </h2>
-          <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 mb-5 sm:mb-6 max-w-2xl mx-auto">
             Join the companies already seeing real results from AI. Let's discuss 
             how we can help you achieve your business objectives.
           </p>
