@@ -53,13 +53,15 @@ A professional AI consulting website for Vektar AI Solutions featuring multi-pag
 ## Design Decisions
 - **Light theme as default** (class="light" added to HTML element for immediate loading)
 - **Gradient colors** only on buttons, icons, and badges (not on text)
-- **Hero logo** sized at 192px for better visual hierarchy
+- **Hero background image** - Professional AI team collaboration scene with gradient overlay for text contrast
+- **Hero text colors** - White text with cyan/purple gradient accent on "AI Solutions" for high visibility
 - **Case studies** follow Problem-Process-Payoff structure with colored sections
 - **Navigation** - Active links use vektar-gradient background with white text
 - **Mobile-first** - All pages optimized with responsive typography, spacing, and grids
+- **Compact spacing** - Reduced whitespace across all pages for better mobile engagement (py-8/py-12 pattern)
 
 ## HomePage Section Flow
-1. Hero Section - Main headline with stats and CTA buttons
+1. Hero Section - Full-width background image with AI team scene, white text overlay, stats, and CTA buttons
 2. What We Do - "Building Innovative Solutions for the Fast-paced AI & Digital World" (6 capability cards)
 3. AI Solutions - "AI Solutions That Drive Results" (8 solution preview cards)
 4. Social Proof - "Trusted by innovative companies" carousel
