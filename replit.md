@@ -38,7 +38,8 @@ A professional AI consulting website for Vektar AI Solutions featuring multi-pag
 - **Work** (`/work`) - Filterable case studies with Problem-Process-Payoff structure
 - **About** (`/about`) - Mission, Vision, Values, Team expertise, Vektar Approach
 - **Industries** (`/industries`) - 10 industry-specific challenges and solutions
-- **Contact** (`/contact`) - Contact form, phone, email, location details
+- **Contact** (`/contact`) - Contact form, phone, email, AI conversation CTA
+- **Call** (`/call`) - AI-first engagement page with Vektar AI voice assistant (primary CTA destination)
 
 ## Directory Structure
 - `src/` - Source code
