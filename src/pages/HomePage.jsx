@@ -234,12 +234,10 @@ const HomePage = () => {
             {capabilities.map((cap, index) => (
               <Card key={index} className="glass-card hover-glow group">
                 <CardHeader className="pb-3 sm:pb-4">
-                  <div className="flex items-center justify-center gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <cap.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                    </div>
-                    <CardTitle className="text-lg sm:text-xl font-bold">{cap.title}</CardTitle>
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 mb-3">
+                    <cap.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
+                  <CardTitle className="text-lg sm:text-xl font-bold text-center">{cap.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
                   <ul className="space-y-2">
