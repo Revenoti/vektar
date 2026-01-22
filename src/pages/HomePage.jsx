@@ -30,7 +30,6 @@ import {
   Thermometer,
   Droplets
 } from 'lucide-react'
-import vectorikLogo from '@/assets/vectorik-logo.png'
 import DemoModal from '@/components/DemoModal.jsx'
 
 const HomePage = () => {
@@ -163,19 +162,30 @@ const HomePage = () => {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-6 sm:pt-10 pb-8 sm:pb-12 circuit-pattern">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+      {/* Hero Section with Background Image */}
+      <section 
+        className="relative pt-8 sm:pt-12 pb-10 sm:pb-16 min-h-[500px] sm:min-h-[600px] flex items-center"
+        style={{
+          backgroundImage: 'url(/hero-background.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center right',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-transparent"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
             <div className="space-y-4 sm:space-y-6">
               <div className="space-y-4">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
                   Unlock Real ROI with{' '}
-                  <span className="text-primary">AI Solutions.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">AI Solutions.</span>
                   <br />
-                  <span className="text-foreground">Built Faster. Deployed Securely.</span>
+                  <span className="text-white">Built Faster. Deployed Securely.</span>
                 </h1>
-                <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">
+                <p className="text-lg sm:text-xl text-white/80 max-w-2xl">
                   Vektar designs, builds, and scales AI systems that automate business processes, 
                   cut drudge-work, and unlock insights—without risking your data.
                 </p>
@@ -194,7 +204,7 @@ const HomePage = () => {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-primary text-primary hover:bg-primary/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 w-full sm:w-auto"
+                  className="border-white/50 text-white hover:bg-white/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 w-full sm:w-auto"
                   onClick={() => setIsDemoModalOpen(true)}
                 >
                   See Live Demos
@@ -204,30 +214,18 @@ const HomePage = () => {
 
               <div className="flex items-center justify-start gap-6 sm:gap-8 pt-2 sm:pt-4">
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-primary">150+</div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">AI Projects</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-cyan-400">150+</div>
+                  <div className="text-xs sm:text-sm text-white/70">AI Projects</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-primary">95%</div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">Client Satisfaction</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-cyan-400">95%</div>
+                  <div className="text-xs sm:text-sm text-white/70">Client Satisfaction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-primary">30</div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">Day Pilots</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-cyan-400">30</div>
+                  <div className="text-xs sm:text-sm text-white/70">Day Pilots</div>
                 </div>
               </div>
-            </div>
-
-            <div className="relative hidden lg:block">
-              <div className="relative z-10 animate-float">
-                <img 
-                  src={vectorikLogo} 
-                  alt="Vektar AI" 
-                  className="w-48 h-auto mx-auto animate-glow rounded-full"
-                  loading="eager"
-                />
-              </div>
-              <div className="absolute inset-0 vektar-gradient opacity-20 blur-3xl animate-pulse"></div>
             </div>
           </div>
         </div>
