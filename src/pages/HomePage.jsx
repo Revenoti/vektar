@@ -107,20 +107,12 @@ const HomePage = () => {
   const solutions = [
     { icon: MessageSquare, title: 'AI Sales Chatbot', impact: '+40% conversion', description: 'Convert visitors 24/7', color: 'from-violet-500 to-purple-600' },
     { icon: Brain, title: 'Voice Receptionist', impact: '95% satisfaction', description: 'Never miss a call', color: 'from-pink-500 to-rose-600' },
-    { icon: Eye, title: 'RAG Knowledge Hub', impact: '99% accuracy', description: 'Instant answers from docs', color: 'from-cyan-500 to-blue-600' },
-    { icon: FileText, title: 'Document Intelligence', impact: '99% extraction', description: 'Process docs in seconds', color: 'from-orange-500 to-red-600' },
-    { icon: Mic, title: 'Meeting Transcription', impact: '10x faster notes', description: 'AI-powered summaries', color: 'from-emerald-500 to-teal-600' },
-    { icon: HeadphonesIcon, title: 'Customer Support Bot', impact: '-60% tickets', description: 'Resolve issues instantly', color: 'from-blue-500 to-indigo-600' },
-    { icon: Database, title: 'Data Enrichment', impact: '+85% quality', description: 'Clean & enrich data', color: 'from-amber-500 to-orange-600' },
     { icon: TrendingUp, title: 'Predictive Analytics', impact: '+25% forecast', description: 'Data-driven decisions', color: 'from-fuchsia-500 to-purple-600' },
     { icon: Cog, title: 'Business Automation', impact: '85% time saved', description: 'Automate workflows', color: 'from-violet-500 to-purple-600' },
-    { icon: Truck, title: 'AI Dispatch & Logistics', impact: '+30% efficiency', description: 'Smart route planning', color: 'from-emerald-500 to-teal-600' },
-    { icon: Heart, title: 'Healthcare Receptionist', impact: '24/7 available', description: 'Patient care AI', color: 'from-rose-500 to-pink-600' },
-    { icon: GraduationCap, title: 'Education Counselor', impact: '95% satisfaction', description: 'Student guidance AI', color: 'from-blue-500 to-indigo-600' },
-    { icon: Car, title: 'Mobile Auto Mechanic', impact: '97% on-time', description: 'Vehicle service AI', color: 'from-orange-500 to-red-600' },
-    { icon: Laptop, title: 'Mobile Tech Service', impact: '94% first-fix', description: 'Device repair AI', color: 'from-cyan-500 to-blue-600' },
-    { icon: Thermometer, title: 'Mobile HVAC Service', impact: '28 min response', description: 'Climate service AI', color: 'from-sky-500 to-indigo-600' },
-    { icon: Droplets, title: 'Plumber & Landscaping', impact: '2,847 jobs', description: 'Home service AI', color: 'from-blue-500 to-cyan-600' }
+    { icon: Truck, title: 'AI Agent Dispatch & Logistics', impact: '+30% efficiency', description: 'Smart route planning', color: 'from-emerald-500 to-teal-600' },
+    { icon: Heart, title: '24/7 Healthcare Receptionist', impact: '24/7 available', description: 'Patient care AI', color: 'from-rose-500 to-pink-600' },
+    { icon: GraduationCap, title: '24/7 Education Counselor', impact: '95% satisfaction', description: 'Student guidance AI', color: 'from-blue-500 to-indigo-600' },
+    { icon: Droplets, title: '24/7 Plumber & Landscaping', impact: '2,847 jobs', description: 'Home service AI', color: 'from-blue-500 to-cyan-600' }
   ]
 
   const testimonials = [
@@ -278,9 +270,9 @@ const HomePage = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-6 sm:mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4 sm:mb-6">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Live AI Demos</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600 mb-4 sm:mb-6">
+              <Sparkles className="w-4 h-4 text-white" />
+              <span className="text-sm font-medium text-white">Live AI Demos</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
               <span className="text-foreground">AI Solutions</span> That Drive Results
@@ -422,7 +414,7 @@ const HomePage = () => {
               </Button>
             </Link>
             <Link to="/work" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 w-full">
+              <Button size="lg" className="bg-white/20 backdrop-blur-sm border border-white/40 text-white hover:bg-white/30 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 w-full">
                 View Case Studies
               </Button>
             </Link>

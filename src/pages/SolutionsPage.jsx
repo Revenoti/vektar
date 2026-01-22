@@ -64,56 +64,6 @@ const SolutionsPage = () => {
       color: 'from-pink-500 to-rose-600'
     },
     { 
-      id: 'rag',
-      icon: Eye, 
-      title: 'RAG Knowledge Hub', 
-      impact: '99% accuracy rate', 
-      demoId: 'rag',
-      description: 'Enterprise knowledge management powered by Retrieval Augmented Generation for accurate, context-aware responses.',
-      features: ['Document ingestion', 'Semantic search', 'Source citations', 'Access control'],
-      color: 'from-cyan-500 to-blue-600'
-    },
-    { 
-      id: 'document',
-      icon: FileText, 
-      title: 'Document Intelligence', 
-      impact: '99% data extraction', 
-      demoId: 'document',
-      description: 'Extract, classify, and process documents automatically with high accuracy and compliance.',
-      features: ['OCR + AI extraction', 'Document classification', 'Validation rules', 'Audit trails'],
-      color: 'from-orange-500 to-red-600'
-    },
-    { 
-      id: 'transcription',
-      icon: Mic, 
-      title: 'Meeting Transcription', 
-      impact: '10x faster notes', 
-      demoId: 'transcription',
-      description: 'AI-powered meeting transcription that captures every word, generates summaries, and extracts action items automatically.',
-      features: ['Real-time transcription', 'Speaker identification', 'Action item extraction', 'Searchable archives'],
-      color: 'from-emerald-500 to-teal-600'
-    },
-    { 
-      id: 'support',
-      icon: HeadphonesIcon, 
-      title: 'Customer Support Bot', 
-      impact: '-60% ticket volume', 
-      demoId: 'support',
-      description: 'Resolve customer issues instantly with AI that understands context, sentiment, and knows when to escalate.',
-      features: ['Smart FAQ', 'Issue classification', 'Sentiment analysis', 'Escalation logic'],
-      color: 'from-blue-500 to-indigo-600'
-    },
-    { 
-      id: 'enrichment',
-      icon: Database, 
-      title: 'Data Enrichment', 
-      impact: '+85% data quality', 
-      demoId: 'enrichment',
-      description: 'Clean, enrich, and validate your data automatically with AI-powered pipelines that ensure accuracy.',
-      features: ['Data cleaning', 'Auto-enrichment', 'Duplicate detection', 'Quality scoring'],
-      color: 'from-amber-500 to-orange-600'
-    },
-    { 
       id: 'analytics',
       icon: TrendingUp, 
       title: 'Predictive Analytics', 
@@ -136,7 +86,7 @@ const SolutionsPage = () => {
     { 
       id: 'dispatch',
       icon: Truck, 
-      title: 'AI Dispatch & Logistics', 
+      title: 'AI Agent Dispatch & Logistics', 
       impact: '+30% efficiency', 
       demoId: 'dispatch',
       description: 'Optimize semi-truck dispatching with AI-powered route planning, driver management, and real-time GPS tracking.',
@@ -164,36 +114,6 @@ const SolutionsPage = () => {
       color: 'from-blue-500 to-indigo-600'
     },
     { 
-      id: 'automechanic',
-      icon: Car, 
-      title: '24/7 Mobile Auto Mechanic', 
-      impact: '97% on-time arrival', 
-      demoId: 'automechanic',
-      description: 'Vektar AI Agent for mobile auto repair services with vehicle diagnostics, scheduling, and technician tracking.',
-      features: ['Service scheduling', 'Vehicle diagnostics', 'Pricing estimates', 'Technician tracking'],
-      color: 'from-orange-500 to-red-600'
-    },
-    { 
-      id: 'techservice',
-      icon: Laptop, 
-      title: '24/7 Mobile Tech Service', 
-      impact: '94% first-time fix', 
-      demoId: 'techservice',
-      description: 'Vektar AI Agent for mobile tech support with device diagnostics, repair booking, and status tracking.',
-      features: ['Device diagnostics', 'Repair booking', 'Status tracking', 'Pricing info'],
-      color: 'from-cyan-500 to-blue-600'
-    },
-    { 
-      id: 'hvac',
-      icon: Thermometer, 
-      title: '24/7 Mobile HVAC Service', 
-      impact: '28 min response', 
-      demoId: 'hvac',
-      description: 'Vektar AI Agent for HVAC services with emergency dispatch, maintenance scheduling, and technician tracking.',
-      features: ['Service scheduling', 'Emergency dispatch', 'Maintenance reminders', 'Technician tracking'],
-      color: 'from-sky-500 to-indigo-600'
-    },
-    { 
       id: 'plumbing',
       icon: Droplets, 
       title: '24/7 Plumber & Landscaping', 
@@ -217,9 +137,9 @@ const SolutionsPage = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-8 sm:mb-10 lg:mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Live AI Demos</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600 mb-4">
+              <Sparkles className="w-4 h-4 text-white" />
+              <span className="text-sm font-medium text-white">Live AI Demos</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4">
               <span className="text-foreground">AI Solutions</span> That Drive Results

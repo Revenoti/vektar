@@ -230,12 +230,12 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
         <div className="sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border p-4 md:p-6 flex items-center justify-between pad-safe-top z-10">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
-                <Sparkles className="w-3 h-3 text-primary" />
-                <span className="text-xs font-medium text-primary">Interactive</span>
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-purple-600">
+                <Sparkles className="w-3 h-3 text-white" />
+                <span className="text-xs font-medium text-white">Interactive</span>
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold">
+            <h2 className="text-2xl md:text-3xl font-bold text-purple-600">
               Live AI Demos
             </h2>
             <p className="text-muted-foreground mt-1 text-sm md:text-base">
