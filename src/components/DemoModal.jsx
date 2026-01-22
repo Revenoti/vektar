@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
@@ -8,34 +8,27 @@ import {
   MessageSquare, 
   Brain, 
   FileText, 
-  BarChart3, 
-  Users, 
   Eye,
   ArrowRight,
-  ExternalLink,
-  Calculator,
-  Wrench,
-  Cloud,
-  Cog,
-  Headphones,
-  Database
+  Mic,
+  HeadphonesIcon,
+  Database,
+  TrendingUp,
+  Sparkles,
+  Zap
 } from 'lucide-react'
 import { requestDemo } from '../api/contact.js'
 import ChatbotDemo from './demos/ChatbotDemo.jsx'
 import VoiceDemo from './demos/VoiceDemo.jsx'
 import RAGDemo from './demos/RAGDemo.jsx'
 import DocumentDemo from './demos/DocumentDemo.jsx'
-import KPIDemo from './demos/KPIDemo.jsx'
-import TicketDemo from './demos/TicketDemo.jsx'
-import QuoteDemo from './demos/QuoteDemo.jsx'
-import FieldTechDemo from './demos/FieldTechDemo.jsx'
-import SaaSDemo from './demos/SaaSDemo.jsx'
-import AutomationDemo from './demos/AutomationDemo.jsx'
-import CallCenterDemo from './demos/CallCenterDemo.jsx'
-import CRMDemo from './demos/CRMDemo.jsx'
+import TranscriptionDemo from './demos/TranscriptionDemo.jsx'
+import SupportBotDemo from './demos/SupportBotDemo.jsx'
+import DataEnrichmentDemo from './demos/DataEnrichmentDemo.jsx'
+import PredictiveAnalyticsDemo from './demos/PredictiveAnalyticsDemo.jsx'
 
 const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
-  const [selectedDemo, setSelectedDemo] = useState(initialDemo)
+  const [selectedDemo, setSelectedDemo] = useState(null)
   const [isRequestingDemo, setIsRequestingDemo] = useState(false)
   const [demoRequestForm, setDemoRequestForm] = useState({
     name: '',
@@ -44,6 +37,15 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
     message: ''
   })
 
+  useEffect(() => {
+    if (initialDemo && isOpen) {
+      const demo = demos.find(d => d.id === initialDemo)
+      if (demo) {
+        setSelectedDemo(demo)
+      }
+    }
+  }, [initialDemo, isOpen])
+
   const demos = [
     {
       id: 'chatbot',
@@ -51,9 +53,9 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
       description: 'See how our AI chatbot converts visitors into qualified leads with natural conversations',
       icon: MessageSquare,
       features: ['Natural language processing', 'Lead qualification', 'CRM integration', 'Multi-language support'],
-      metrics: '+40% conversion rate',
+      metrics: '+40% lead conversion',
       component: ChatbotDemo,
-      color: 'from-cyan-500 to-blue-500'
+      color: 'from-violet-500 to-purple-600'
     },
     {
       id: 'voice',
@@ -63,17 +65,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
       features: ['Natural voice synthesis', '24/7 availability', 'Call routing', 'Appointment booking'],
       metrics: '95% customer satisfaction',
       component: VoiceDemo,
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      id: 'quote',
-      title: 'Quote Copilot',
-      description: 'Watch AI generate accurate project quotes in seconds with intelligent pricing analysis',
-      icon: Calculator,
-      features: ['Intelligent pricing', 'ROI analysis', 'Custom proposals', 'Instant generation'],
-      metrics: '-60% response time',
-      component: QuoteDemo,
-      color: 'from-emerald-500 to-cyan-500'
+      color: 'from-pink-500 to-rose-600'
     },
     {
       id: 'rag',
@@ -83,27 +75,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
       features: ['Document ingestion', 'Semantic search', 'Source attribution', 'Real-time updates'],
       metrics: '99% accuracy rate',
       component: RAGDemo,
-      color: 'from-green-500 to-teal-500'
-    },
-    {
-      id: 'support',
-      title: 'Ticket Deflection System',
-      description: 'Experience how AI handles customer support tickets before they reach your team',
-      icon: Users,
-      features: ['Auto-categorization', 'Smart routing', 'Response templates', 'Escalation rules'],
-      metrics: '-50% support load',
-      component: TicketDemo,
-      color: 'from-pink-500 to-rose-500'
-    },
-    {
-      id: 'fieldtech',
-      title: 'Field Tech Copilot',
-      description: 'See how AI assists field technicians with intelligent guidance and real-time support',
-      icon: Wrench,
-      features: ['Route optimization', 'Smart checklists', 'Real-time guidance', 'Performance tracking'],
-      metrics: '+30% efficiency',
-      component: FieldTechDemo,
-      color: 'from-amber-500 to-orange-500'
+      color: 'from-cyan-500 to-blue-600'
     },
     {
       id: 'document',
@@ -113,57 +85,47 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
       features: ['OCR processing', 'Data extraction', 'Format conversion', 'Validation rules'],
       metrics: '99% data extraction',
       component: DocumentDemo,
-      color: 'from-orange-500 to-red-500'
+      color: 'from-orange-500 to-red-600'
     },
     {
-      id: 'kpi',
-      title: 'Executive KPI Copilot',
-      description: 'See real-time business insights and automated reporting in action',
-      icon: BarChart3,
-      features: ['Real-time dashboards', 'Automated reports', 'Trend analysis', 'Alert system'],
-      metrics: 'Real-time insights',
-      component: KPIDemo,
-      color: 'from-indigo-500 to-purple-500'
-    },
-    {
-      id: 'saas',
-      title: 'SaaS AI Application Development',
-      description: 'Build custom AI-powered SaaS applications with intelligent features and scalable architecture',
-      icon: Cloud,
-      features: ['AI Feature Builder', 'Tech Stack Config', 'Timeline Planning', 'Cost Calculator'],
-      metrics: 'Custom SaaS solutions',
-      component: SaaSDemo,
-      color: 'from-sky-500 to-indigo-600'
-    },
-    {
-      id: 'automation',
-      title: 'Custom AI Business Automation',
-      description: 'Watch intelligent workflows automate complex business processes in real-time',
-      icon: Cog,
-      features: ['Visual Workflow Builder', 'AI Decision Nodes', '200+ Integrations', 'Live Execution'],
-      metrics: 'Tailored automation',
-      component: AutomationDemo,
-      color: 'from-violet-500 to-purple-600'
-    },
-    {
-      id: 'callcenter',
-      title: 'AI Call Center',
-      description: 'Experience real-time AI-powered call center with sentiment analysis and live transcription',
-      icon: Headphones,
-      features: ['Live Call Monitoring', 'Sentiment Analysis', 'AI vs Human Metrics', 'Smart Routing'],
-      metrics: '24/7 AI support',
-      component: CallCenterDemo,
+      id: 'transcription',
+      title: 'Meeting Transcription',
+      description: 'Watch AI transcribe meetings in real-time with speaker identification and summaries',
+      icon: Mic,
+      features: ['Real-time transcription', 'Speaker identification', 'Action item extraction', 'Searchable archives'],
+      metrics: '10x faster notes',
+      component: TranscriptionDemo,
       color: 'from-emerald-500 to-teal-600'
     },
     {
-      id: 'crm',
-      title: 'CRM Development',
-      description: 'AI-enhanced CRM with predictive lead scoring, pipeline analytics, and smart automation',
+      id: 'support',
+      title: 'Customer Support Bot',
+      description: 'Experience AI-powered customer support that resolves issues before they become tickets',
+      icon: HeadphonesIcon,
+      features: ['Smart FAQ', 'Issue classification', 'Sentiment analysis', 'Escalation logic'],
+      metrics: '-60% ticket volume',
+      component: SupportBotDemo,
+      color: 'from-blue-500 to-indigo-600'
+    },
+    {
+      id: 'enrichment',
+      title: 'Data Enrichment',
+      description: 'See AI clean, validate, and enrich your data automatically with high accuracy',
       icon: Database,
-      features: ['AI Lead Scoring', 'Deal Pipeline', 'Revenue Forecast', 'Smart Insights'],
-      metrics: 'Unified customer data',
-      component: CRMDemo,
+      features: ['Data cleaning', 'Auto-enrichment', 'Duplicate detection', 'Quality scoring'],
+      metrics: '+85% data quality',
+      component: DataEnrichmentDemo,
       color: 'from-amber-500 to-orange-600'
+    },
+    {
+      id: 'analytics',
+      title: 'Predictive Analytics',
+      description: 'Experience AI-powered forecasting and business intelligence with actionable insights',
+      icon: TrendingUp,
+      features: ['Trend prediction', 'Anomaly detection', 'What-if scenarios', 'Automated reports'],
+      metrics: '+25% forecast accuracy',
+      component: PredictiveAnalyticsDemo,
+      color: 'from-fuchsia-500 to-purple-600'
     }
   ]
 
@@ -203,97 +165,111 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
     }))
   }
 
+  const handleClose = () => {
+    setSelectedDemo(null)
+    onClose()
+  }
+
   if (!isOpen) return null
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-0 md:p-4">
       <div className="bg-background border-0 md:border border-border rounded-none md:rounded-2xl max-w-7xl w-full h-full md:h-auto md:max-h-[95vh] overflow-y-auto">
-        {/* Header */}
-        <div className="sticky top-0 bg-background border-b border-border p-4 md:p-6 flex items-center justify-between pad-safe-top">
+        <div className="sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border p-4 md:p-6 flex items-center justify-between pad-safe-top z-10">
           <div>
+            <div className="flex items-center gap-3 mb-2">
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+                <Sparkles className="w-3 h-3 text-primary" />
+                <span className="text-xs font-medium text-primary">Interactive</span>
+              </div>
+            </div>
             <h2 className="text-2xl md:text-3xl font-bold">
               Live <span className="vektar-gradient-text">AI Demos</span>
             </h2>
-            <p className="text-muted-foreground mt-2 text-sm md:text-base">
-              Experience our AI solutions in action. Click on any demo to see how it works.
+            <p className="text-muted-foreground mt-1 text-sm md:text-base">
+              Experience our AI solutions in action. Click on any demo to try it.
             </p>
           </div>
           <Button
             variant="ghost"
             size="icon"
-            onClick={onClose}
+            onClick={handleClose}
             className="hover:bg-secondary tap-target min-w-[44px] min-h-[44px] md:min-w-[40px] md:min-h-[40px]"
           >
             <X className="w-6 h-6" />
           </Button>
         </div>
 
-        {/* Demo Content */}
         <div className="p-4 md:p-6">
           {!selectedDemo ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
               {demos.map((demo) => (
-                <Card 
+                <div 
                   key={demo.id} 
                   data-demo-id={demo.id}
-                  className="glass-card hover-glow cursor-pointer group transition-all duration-300"
+                  className="group relative cursor-pointer"
                   onClick={() => setSelectedDemo(demo)}
                 >
-                  <CardHeader className="pb-4">
-                    <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br ${demo.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                      <demo.icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500 group-hover:duration-200"></div>
+                  
+                  <div className="relative h-full bg-card/95 backdrop-blur-xl rounded-2xl border border-border/50 p-5 transition-all duration-500 group-hover:border-transparent group-hover:shadow-2xl group-hover:-translate-y-1">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className={`relative w-12 h-12 bg-gradient-to-br ${demo.color} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
+                        <demo.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <Badge className={`bg-gradient-to-r ${demo.color} text-white border-0 text-xs font-semibold px-2 py-1 shadow-md`}>
+                        <Zap className="w-3 h-3 mr-1 inline-block" />
+                        {demo.metrics}
+                      </Badge>
                     </div>
-                    <CardTitle className="text-lg md:text-xl group-hover:text-primary transition-colors">
+                    
+                    <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
                       {demo.title}
-                    </CardTitle>
-                    <Badge variant="secondary" className="w-fit text-xs md:text-sm">
-                      {demo.metrics}
-                    </Badge>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4 text-sm md:text-base">
+                    </h3>
+                    
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
                       {demo.description}
                     </p>
-                    <div className="flex items-center text-primary text-sm font-medium">
-                      <Play className="w-4 h-4 mr-2" />
-                      <span className="hidden sm:inline">Try Interactive Demo</span>
-                      <span className="sm:hidden">Try Demo</span>
+                    
+                    <div className="flex items-center text-primary text-sm font-semibold group-hover:gap-2 transition-all duration-300">
+                      <Play className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                      <span>Try Demo</span>
+                      <ArrowRight className="w-4 h-4 ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
           ) : (
-            /* Selected Demo View */
             <div className="space-y-4 md:space-y-6">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between flex-wrap gap-4">
                 <Button
                   variant="ghost"
                   onClick={() => setSelectedDemo(null)}
                   className="hover:bg-secondary min-h-[44px] px-3 md:px-4"
                 >
-                  ← <span className="hidden sm:inline">Back to Demos</span><span className="sm:hidden">Back</span>
+                  ← <span className="hidden sm:inline ml-1">Back to Demos</span><span className="sm:hidden ml-1">Back</span>
                 </Button>
-                <div className="flex items-center space-x-2 md:space-x-4">
-                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br ${selectedDemo.color} flex items-center justify-center`}>
+                <div className="flex items-center space-x-3 md:space-x-4">
+                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br ${selectedDemo.color} flex items-center justify-center shadow-lg`}>
                     <selectedDemo.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg md:text-2xl font-bold">{selectedDemo.title}</h3>
-                    <Badge variant="secondary" className="text-xs md:text-sm">{selectedDemo.metrics}</Badge>
+                    <Badge className={`bg-gradient-to-r ${selectedDemo.color} text-white border-0 text-xs`}>
+                      {selectedDemo.metrics}
+                    </Badge>
                   </div>
                 </div>
               </div>
 
-              {/* Interactive Demo Component */}
-              <Card className="glass-card">
-                <CardContent className="p-6">
+              <Card className="bg-secondary/20 border-border/50">
+                <CardContent className="p-4 md:p-6">
                   <selectedDemo.component />
                 </CardContent>
               </Card>
 
-              {/* Demo Request Form */}
-              <Card className="glass-card">
+              <Card className="bg-gradient-to-br from-primary/5 to-purple-500/5 border-primary/20">
                 <CardHeader>
                   <CardTitle className="text-lg md:text-xl">Request Personal Demo</CardTitle>
                   <p className="text-muted-foreground text-sm md:text-base">
@@ -309,7 +285,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
                       value={demoRequestForm.name}
                       onChange={handleInputChange}
                       autoComplete="name"
-                      className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
+                      className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
                     />
                     <input
                       type="email"
@@ -319,7 +295,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
                       onChange={handleInputChange}
                       autoComplete="email"
                       inputMode="email"
-                      className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
+                      className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
                     />
                   </div>
                   <input
@@ -329,7 +305,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
                     value={demoRequestForm.company}
                     onChange={handleInputChange}
                     autoComplete="organization"
-                    className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
+                    className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent tap-target min-h-[44px]"
                   />
                   <textarea
                     name="message"
@@ -337,11 +313,11 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
                     value={demoRequestForm.message}
                     onChange={handleInputChange}
                     rows="3"
-                    className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none tap-target min-h-[120px]"
+                    className="w-full p-4 md:p-3 text-base bg-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent resize-none tap-target min-h-[120px]"
                   />
                   <Button
                     onClick={() => handleDemoRequest(selectedDemo.title)}
-                    className="vektar-gradient hover-glow w-full md:w-auto tap-target min-h-[44px] text-base"
+                    className="vektar-gradient hover-glow w-full md:w-auto tap-target min-h-[44px] text-base font-semibold"
                     disabled={isRequestingDemo}
                   >
                     {isRequestingDemo ? 'Requesting...' : 'Request Personal Demo'}

@@ -18,9 +18,9 @@ import {
   Users,
   FileText,
   Mic,
-  Bot,
+  HeadphonesIcon,
   Database,
-  BarChart3
+  Sparkles
 } from 'lucide-react'
 import vectorikLogo from '@/assets/vectorik-logo.png'
 import DemoModal from '@/components/DemoModal.jsx'
@@ -62,14 +62,14 @@ const HomePage = () => {
   ]
 
   const solutions = [
-    { icon: MessageSquare, title: 'AI Sales Chatbot', impact: '+40% lead conversion', description: 'Convert visitors 24/7' },
-    { icon: Brain, title: 'Voice Receptionist', impact: '95% satisfaction', description: 'Never miss a call' },
-    { icon: Eye, title: 'RAG Knowledge Hub', impact: '99% accuracy', description: 'Instant answers from docs' },
-    { icon: Shield, title: 'Document Intelligence', impact: '99% extraction', description: 'Process docs in seconds' },
-    { icon: Mic, title: 'Meeting Transcription', impact: '10x faster notes', description: 'AI-powered summaries' },
-    { icon: Bot, title: 'Customer Support Bot', impact: '-60% ticket volume', description: 'Resolve issues instantly' },
-    { icon: Database, title: 'Data Enrichment', impact: '+85% data quality', description: 'Clean & enrich data' },
-    { icon: BarChart3, title: 'Predictive Analytics', impact: '+25% forecast accuracy', description: 'Data-driven decisions' }
+    { icon: MessageSquare, title: 'AI Sales Chatbot', impact: '+40% lead conversion', description: 'Convert visitors 24/7', color: 'from-violet-500 to-purple-600' },
+    { icon: Brain, title: 'Voice Receptionist', impact: '95% satisfaction', description: 'Never miss a call', color: 'from-pink-500 to-rose-600' },
+    { icon: Eye, title: 'RAG Knowledge Hub', impact: '99% accuracy', description: 'Instant answers from docs', color: 'from-cyan-500 to-blue-600' },
+    { icon: FileText, title: 'Document Intelligence', impact: '99% extraction', description: 'Process docs in seconds', color: 'from-orange-500 to-red-600' },
+    { icon: Mic, title: 'Meeting Transcription', impact: '10x faster notes', description: 'AI-powered summaries', color: 'from-emerald-500 to-teal-600' },
+    { icon: HeadphonesIcon, title: 'Customer Support Bot', impact: '-60% ticket volume', description: 'Resolve issues instantly', color: 'from-blue-500 to-indigo-600' },
+    { icon: Database, title: 'Data Enrichment', impact: '+85% data quality', description: 'Clean & enrich data', color: 'from-amber-500 to-orange-600' },
+    { icon: TrendingUp, title: 'Predictive Analytics', impact: '+25% forecast accuracy', description: 'Data-driven decisions', color: 'from-fuchsia-500 to-purple-600' }
   ]
 
   const testimonials = [
@@ -215,9 +215,15 @@ const HomePage = () => {
       </section>
 
       {/* AI Solutions Section - Now shows 8 cards */}
-      <section className="py-12 sm:py-16 bg-secondary/20">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-16 lg:py-20 bg-secondary/20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4 sm:mb-6">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-primary">Live AI Demos</span>
+            </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
               <span className="text-foreground">AI Solutions</span> That Drive Results
             </h2>
@@ -227,33 +233,51 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 mb-8 sm:mb-10">
             {solutions.map((solution, index) => (
-              <Card 
+              <div 
                 key={index} 
-                className="glass-card hover-glow cursor-pointer group transition-all duration-300"
+                className="group relative cursor-pointer"
                 onClick={() => setIsDemoModalOpen(true)}
               >
-                <CardContent className="p-3 sm:p-4 lg:p-6 text-center">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-lg flex items-center justify-center mx-auto mb-2 sm:mb-4 group-hover:scale-110 transition-transform">
-                    <solution.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500 group-hover:duration-200"></div>
+                
+                <div className="relative h-full bg-card/95 backdrop-blur-xl rounded-2xl border border-border/50 p-3 sm:p-4 lg:p-5 transition-all duration-500 group-hover:border-transparent group-hover:shadow-2xl group-hover:shadow-primary/20 group-hover:-translate-y-1">
+                  <div className="flex flex-col items-center text-center">
+                    <div className={`relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${solution.color} rounded-xl flex items-center justify-center shadow-lg mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
+                      <solution.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                      <div className="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    
+                    <h3 className="font-bold text-sm sm:text-base mb-1 sm:mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
+                      {solution.title}
+                    </h3>
+                    
+                    <p className="text-xs text-muted-foreground mb-2 sm:mb-3 hidden sm:block line-clamp-2">
+                      {solution.description}
+                    </p>
+                    
+                    <div className="relative mb-2 sm:mb-3">
+                      <Badge className={`bg-gradient-to-r ${solution.color} text-white border-0 text-xs font-semibold px-2 py-1 shadow-md group-hover:scale-105 transition-transform duration-300`}>
+                        <Zap className="w-3 h-3 mr-1 inline-block" />
+                        {solution.impact}
+                      </Badge>
+                    </div>
+                    
+                    <div className="flex items-center text-primary text-xs sm:text-sm font-semibold group-hover:gap-1 transition-all duration-300">
+                      <Play className="w-3 h-3 sm:w-4 sm:h-4 mr-1 group-hover:scale-110 transition-transform" />
+                      <span>Try Demo</span>
+                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                    </div>
                   </div>
-                  <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">{solution.title}</h3>
-                  <p className="text-xs text-muted-foreground mb-2 hidden sm:block">{solution.description}</p>
-                  <Badge className="vektar-gradient text-white border-0 mb-2 sm:mb-3 text-xs">
-                    {solution.impact}
-                  </Badge>
-                  <div className="flex items-center justify-center text-primary text-xs sm:text-sm font-medium">
-                    Try Demo <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4" />
-                  </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
 
           <div className="text-center">
             <Link to="/solutions">
-              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/10">
+              <Button size="lg" className="vektar-gradient hover:opacity-90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                 View All Solutions
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
