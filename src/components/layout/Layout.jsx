@@ -143,10 +143,12 @@ const Layout = ({ children }) => {
             <div>
               <h4 className="font-semibold mb-4">Solutions</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link to="/solutions" className="hover:text-foreground transition-colors">AI Chatbots</Link></li>
-                <li><Link to="/solutions" className="hover:text-foreground transition-colors">Voice Assistants</Link></li>
-                <li><Link to="/solutions" className="hover:text-foreground transition-colors">Document Intelligence</Link></li>
-                <li><Link to="/solutions" className="hover:text-foreground transition-colors">Business Automation</Link></li>
+                <li><Link to="/solutions#chatbot" className="hover:text-foreground transition-colors">AI Sales Chatbot</Link></li>
+                <li><Link to="/solutions#voice" className="hover:text-foreground transition-colors">Voice Receptionist</Link></li>
+                <li><Link to="/solutions#document" className="hover:text-foreground transition-colors">Document Intelligence</Link></li>
+                <li><Link to="/solutions#automation" className="hover:text-foreground transition-colors">Business Automation</Link></li>
+                <li><Link to="/solutions#dispatch" className="hover:text-foreground transition-colors">AI Dispatch & Logistics</Link></li>
+                <li><Link to="/solutions#healthcare" className="hover:text-foreground transition-colors">Healthcare Receptionist</Link></li>
               </ul>
             </div>
             

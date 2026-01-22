@@ -20,7 +20,15 @@ import {
   Mic,
   HeadphonesIcon,
   Database,
-  Sparkles
+  Sparkles,
+  Cog,
+  Truck,
+  Heart,
+  GraduationCap,
+  Car,
+  Laptop,
+  Thermometer,
+  Droplets
 } from 'lucide-react'
 import vectorikLogo from '@/assets/vectorik-logo.png'
 import DemoModal from '@/components/DemoModal.jsx'
@@ -98,14 +106,22 @@ const HomePage = () => {
   ]
 
   const solutions = [
-    { icon: MessageSquare, title: 'AI Sales Chatbot', impact: '+40% lead conversion', description: 'Convert visitors 24/7', color: 'from-violet-500 to-purple-600' },
+    { icon: MessageSquare, title: 'AI Sales Chatbot', impact: '+40% conversion', description: 'Convert visitors 24/7', color: 'from-violet-500 to-purple-600' },
     { icon: Brain, title: 'Voice Receptionist', impact: '95% satisfaction', description: 'Never miss a call', color: 'from-pink-500 to-rose-600' },
     { icon: Eye, title: 'RAG Knowledge Hub', impact: '99% accuracy', description: 'Instant answers from docs', color: 'from-cyan-500 to-blue-600' },
     { icon: FileText, title: 'Document Intelligence', impact: '99% extraction', description: 'Process docs in seconds', color: 'from-orange-500 to-red-600' },
     { icon: Mic, title: 'Meeting Transcription', impact: '10x faster notes', description: 'AI-powered summaries', color: 'from-emerald-500 to-teal-600' },
-    { icon: HeadphonesIcon, title: 'Customer Support Bot', impact: '-60% ticket volume', description: 'Resolve issues instantly', color: 'from-blue-500 to-indigo-600' },
-    { icon: Database, title: 'Data Enrichment', impact: '+85% data quality', description: 'Clean & enrich data', color: 'from-amber-500 to-orange-600' },
-    { icon: TrendingUp, title: 'Predictive Analytics', impact: '+25% forecast accuracy', description: 'Data-driven decisions', color: 'from-fuchsia-500 to-purple-600' }
+    { icon: HeadphonesIcon, title: 'Customer Support Bot', impact: '-60% tickets', description: 'Resolve issues instantly', color: 'from-blue-500 to-indigo-600' },
+    { icon: Database, title: 'Data Enrichment', impact: '+85% quality', description: 'Clean & enrich data', color: 'from-amber-500 to-orange-600' },
+    { icon: TrendingUp, title: 'Predictive Analytics', impact: '+25% forecast', description: 'Data-driven decisions', color: 'from-fuchsia-500 to-purple-600' },
+    { icon: Cog, title: 'Business Automation', impact: '85% time saved', description: 'Automate workflows', color: 'from-violet-500 to-purple-600' },
+    { icon: Truck, title: 'AI Dispatch & Logistics', impact: '+30% efficiency', description: 'Smart route planning', color: 'from-emerald-500 to-teal-600' },
+    { icon: Heart, title: 'Healthcare Receptionist', impact: '24/7 available', description: 'Patient care AI', color: 'from-rose-500 to-pink-600' },
+    { icon: GraduationCap, title: 'Education Counselor', impact: '95% satisfaction', description: 'Student guidance AI', color: 'from-blue-500 to-indigo-600' },
+    { icon: Car, title: 'Mobile Auto Mechanic', impact: '97% on-time', description: 'Vehicle service AI', color: 'from-orange-500 to-red-600' },
+    { icon: Laptop, title: 'Mobile Tech Service', impact: '94% first-fix', description: 'Device repair AI', color: 'from-cyan-500 to-blue-600' },
+    { icon: Thermometer, title: 'Mobile HVAC Service', impact: '28 min response', description: 'Climate service AI', color: 'from-sky-500 to-indigo-600' },
+    { icon: Droplets, title: 'Plumber & Landscaping', impact: '2,847 jobs', description: 'Home service AI', color: 'from-blue-500 to-cyan-600' }
   ]
 
   const testimonials = [

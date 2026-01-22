@@ -15,7 +15,15 @@ import {
   Database,
   TrendingUp,
   Sparkles,
-  Zap
+  Zap,
+  Cog,
+  Truck,
+  Heart,
+  GraduationCap,
+  Car,
+  Laptop,
+  Thermometer,
+  Droplets
 } from 'lucide-react'
 import { requestDemo } from '../api/contact.js'
 import ChatbotDemo from './demos/ChatbotDemo.jsx'
@@ -26,6 +34,14 @@ import TranscriptionDemo from './demos/TranscriptionDemo.jsx'
 import SupportBotDemo from './demos/SupportBotDemo.jsx'
 import DataEnrichmentDemo from './demos/DataEnrichmentDemo.jsx'
 import PredictiveAnalyticsDemo from './demos/PredictiveAnalyticsDemo.jsx'
+import BusinessAutomationDemo from './demos/BusinessAutomationDemo.jsx'
+import DispatchLogisticsDemo from './demos/DispatchLogisticsDemo.jsx'
+import HealthcareReceptionistDemo from './demos/HealthcareReceptionistDemo.jsx'
+import EducationCounselorDemo from './demos/EducationCounselorDemo.jsx'
+import AutoMechanicDemo from './demos/AutoMechanicDemo.jsx'
+import TechServiceDemo from './demos/TechServiceDemo.jsx'
+import HVACServiceDemo from './demos/HVACServiceDemo.jsx'
+import PlumberLandscapingDemo from './demos/PlumberLandscapingDemo.jsx'
 
 const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
   const [selectedDemo, setSelectedDemo] = useState(null)
@@ -126,6 +142,86 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
       metrics: '+25% forecast accuracy',
       component: PredictiveAnalyticsDemo,
       color: 'from-fuchsia-500 to-purple-600'
+    },
+    {
+      id: 'automation',
+      title: 'Business Automation',
+      description: 'Build powerful workflows that automate repetitive tasks and connect your business tools',
+      icon: Cog,
+      features: ['Visual workflow builder', 'App integrations', 'Trigger-based actions', 'Real-time monitoring'],
+      metrics: '85% time savings',
+      component: BusinessAutomationDemo,
+      color: 'from-violet-500 to-purple-600'
+    },
+    {
+      id: 'dispatch',
+      title: 'AI Dispatch & Logistics',
+      description: 'Optimize semi-truck dispatching with AI-powered route planning and driver management',
+      icon: Truck,
+      features: ['Route optimization', 'Load matching', 'Driver scheduling', 'Real-time GPS tracking'],
+      metrics: '+30% efficiency',
+      component: DispatchLogisticsDemo,
+      color: 'from-emerald-500 to-teal-600'
+    },
+    {
+      id: 'healthcare',
+      title: '24/7 Healthcare Receptionist',
+      description: 'AI-powered clinic receptionist handling appointments, triage, and patient inquiries',
+      icon: Heart,
+      features: ['Appointment booking', 'Symptom triage', 'Insurance verification', 'Patient queue'],
+      metrics: '24/7 availability',
+      component: HealthcareReceptionistDemo,
+      color: 'from-rose-500 to-pink-600'
+    },
+    {
+      id: 'education',
+      title: '24/7 Education Counselor',
+      description: 'AI academic advisor helping students with course selection and enrollment',
+      icon: GraduationCap,
+      features: ['Course recommendations', 'Enrollment assistance', 'Schedule planning', 'Academic tracking'],
+      metrics: '95% satisfaction',
+      component: EducationCounselorDemo,
+      color: 'from-blue-500 to-indigo-600'
+    },
+    {
+      id: 'automechanic',
+      title: '24/7 Mobile Auto Mechanic',
+      description: 'AI assistant for mobile auto repair services with diagnostics and scheduling',
+      icon: Car,
+      features: ['Service scheduling', 'Vehicle diagnostics', 'Pricing estimates', 'Technician tracking'],
+      metrics: '97% on-time arrival',
+      component: AutoMechanicDemo,
+      color: 'from-orange-500 to-red-600'
+    },
+    {
+      id: 'techservice',
+      title: '24/7 Mobile Tech Service',
+      description: 'AI assistant for mobile tech support with device diagnostics and repair booking',
+      icon: Laptop,
+      features: ['Device diagnostics', 'Repair booking', 'Status tracking', 'Pricing info'],
+      metrics: '94% first-time fix',
+      component: TechServiceDemo,
+      color: 'from-cyan-500 to-blue-600'
+    },
+    {
+      id: 'hvac',
+      title: '24/7 Mobile HVAC Service',
+      description: 'AI assistant for HVAC services with emergency dispatch and maintenance scheduling',
+      icon: Thermometer,
+      features: ['Service scheduling', 'Emergency dispatch', 'Maintenance reminders', 'Technician tracking'],
+      metrics: '28 min response',
+      component: HVACServiceDemo,
+      color: 'from-sky-500 to-indigo-600'
+    },
+    {
+      id: 'plumbing',
+      title: '24/7 Plumber & Landscaping',
+      description: 'AI assistant for plumbing and landscaping services with project estimates',
+      icon: Droplets,
+      features: ['Service booking', 'Emergency plumbing', 'Project quotes', 'Seasonal offers'],
+      metrics: '2,847 jobs done',
+      component: PlumberLandscapingDemo,
+      color: 'from-blue-500 to-cyan-600'
     }
   ]
 

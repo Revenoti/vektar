@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { 
@@ -14,16 +14,37 @@ import {
   TrendingUp,
   Play,
   Sparkles,
-  Zap
+  Zap,
+  Cog,
+  Truck,
+  Heart,
+  GraduationCap,
+  Car,
+  Laptop,
+  Thermometer,
+  Droplets
 } from 'lucide-react'
 import DemoModal from '@/components/DemoModal.jsx'
 
 const SolutionsPage = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const [selectedDemo, setSelectedDemo] = useState(null)
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.slice(1))
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 100)
+      }
+    }
+  }, [location.hash])
 
   const solutions = [
     { 
+      id: 'chatbot',
       icon: MessageSquare, 
       title: 'AI Sales Chatbot', 
       impact: '+40% lead conversion', 
@@ -33,6 +54,7 @@ const SolutionsPage = () => {
       color: 'from-violet-500 to-purple-600'
     },
     { 
+      id: 'voice',
       icon: Brain, 
       title: 'Voice Receptionist', 
       impact: '95% customer satisfaction', 
@@ -42,6 +64,7 @@ const SolutionsPage = () => {
       color: 'from-pink-500 to-rose-600'
     },
     { 
+      id: 'rag',
       icon: Eye, 
       title: 'RAG Knowledge Hub', 
       impact: '99% accuracy rate', 
@@ -51,6 +74,7 @@ const SolutionsPage = () => {
       color: 'from-cyan-500 to-blue-600'
     },
     { 
+      id: 'document',
       icon: FileText, 
       title: 'Document Intelligence', 
       impact: '99% data extraction', 
@@ -60,6 +84,7 @@ const SolutionsPage = () => {
       color: 'from-orange-500 to-red-600'
     },
     { 
+      id: 'transcription',
       icon: Mic, 
       title: 'Meeting Transcription', 
       impact: '10x faster notes', 
@@ -69,6 +94,7 @@ const SolutionsPage = () => {
       color: 'from-emerald-500 to-teal-600'
     },
     { 
+      id: 'support',
       icon: HeadphonesIcon, 
       title: 'Customer Support Bot', 
       impact: '-60% ticket volume', 
@@ -78,6 +104,7 @@ const SolutionsPage = () => {
       color: 'from-blue-500 to-indigo-600'
     },
     { 
+      id: 'enrichment',
       icon: Database, 
       title: 'Data Enrichment', 
       impact: '+85% data quality', 
@@ -87,6 +114,7 @@ const SolutionsPage = () => {
       color: 'from-amber-500 to-orange-600'
     },
     { 
+      id: 'analytics',
       icon: TrendingUp, 
       title: 'Predictive Analytics', 
       impact: '+25% forecast accuracy', 
@@ -94,6 +122,86 @@ const SolutionsPage = () => {
       description: 'Data-driven decisions powered by AI that predicts trends, identifies opportunities, and forecasts outcomes.',
       features: ['Trend prediction', 'Anomaly detection', 'What-if scenarios', 'Automated reports'],
       color: 'from-fuchsia-500 to-purple-600'
+    },
+    { 
+      id: 'automation',
+      icon: Cog, 
+      title: 'Business Automation', 
+      impact: '85% time savings', 
+      demoId: 'automation',
+      description: 'Build powerful workflows that automate repetitive tasks and connect your business tools seamlessly.',
+      features: ['Visual workflow builder', 'App integrations', 'Trigger-based actions', 'Real-time monitoring'],
+      color: 'from-violet-500 to-purple-600'
+    },
+    { 
+      id: 'dispatch',
+      icon: Truck, 
+      title: 'AI Dispatch & Logistics', 
+      impact: '+30% efficiency', 
+      demoId: 'dispatch',
+      description: 'Optimize semi-truck dispatching with AI-powered route planning, driver management, and real-time GPS tracking.',
+      features: ['Route optimization', 'Load matching', 'Driver scheduling', 'Real-time GPS'],
+      color: 'from-emerald-500 to-teal-600'
+    },
+    { 
+      id: 'healthcare',
+      icon: Heart, 
+      title: '24/7 Healthcare Receptionist', 
+      impact: '24/7 availability', 
+      demoId: 'healthcare',
+      description: 'AI-powered clinic receptionist handling appointments, symptom triage, and patient inquiries around the clock.',
+      features: ['Appointment booking', 'Symptom triage', 'Insurance verification', 'Patient queue'],
+      color: 'from-rose-500 to-pink-600'
+    },
+    { 
+      id: 'education',
+      icon: GraduationCap, 
+      title: '24/7 Education Counselor', 
+      impact: '95% satisfaction', 
+      demoId: 'education',
+      description: 'AI academic advisor helping students with course selection, enrollment assistance, and schedule planning.',
+      features: ['Course recommendations', 'Enrollment assistance', 'Schedule planning', 'Academic tracking'],
+      color: 'from-blue-500 to-indigo-600'
+    },
+    { 
+      id: 'automechanic',
+      icon: Car, 
+      title: '24/7 Mobile Auto Mechanic', 
+      impact: '97% on-time arrival', 
+      demoId: 'automechanic',
+      description: 'AI assistant for mobile auto repair services with vehicle diagnostics, scheduling, and technician tracking.',
+      features: ['Service scheduling', 'Vehicle diagnostics', 'Pricing estimates', 'Technician tracking'],
+      color: 'from-orange-500 to-red-600'
+    },
+    { 
+      id: 'techservice',
+      icon: Laptop, 
+      title: '24/7 Mobile Tech Service', 
+      impact: '94% first-time fix', 
+      demoId: 'techservice',
+      description: 'AI assistant for mobile tech support with device diagnostics, repair booking, and status tracking.',
+      features: ['Device diagnostics', 'Repair booking', 'Status tracking', 'Pricing info'],
+      color: 'from-cyan-500 to-blue-600'
+    },
+    { 
+      id: 'hvac',
+      icon: Thermometer, 
+      title: '24/7 Mobile HVAC Service', 
+      impact: '28 min response', 
+      demoId: 'hvac',
+      description: 'AI assistant for HVAC services with emergency dispatch, maintenance scheduling, and technician tracking.',
+      features: ['Service scheduling', 'Emergency dispatch', 'Maintenance reminders', 'Technician tracking'],
+      color: 'from-sky-500 to-indigo-600'
+    },
+    { 
+      id: 'plumbing',
+      icon: Droplets, 
+      title: '24/7 Plumber & Landscaping', 
+      impact: '2,847 jobs done', 
+      demoId: 'plumbing',
+      description: 'AI assistant for plumbing and landscaping services with project estimates and emergency dispatch.',
+      features: ['Service booking', 'Emergency plumbing', 'Project quotes', 'Seasonal offers'],
+      color: 'from-blue-500 to-cyan-600'
     }
   ]
 
@@ -125,8 +233,9 @@ const SolutionsPage = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 lg:gap-7">
             {solutions.map((solution, index) => (
               <div 
-                key={index} 
-                className="group relative"
+                key={index}
+                id={solution.id}
+                className="group relative scroll-mt-24"
               >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500 group-hover:duration-200"></div>
                 
