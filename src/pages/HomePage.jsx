@@ -113,7 +113,19 @@ const HomePage = () => {
     { icon: Truck, title: 'AI Agent Dispatch & Logistics', impact: '+30% efficiency', description: 'Smart route planning', color: 'from-emerald-500 to-teal-600' },
     { icon: Heart, title: '24/7 Healthcare Receptionist', impact: '24/7 available', description: 'Patient care AI', color: 'from-rose-500 to-pink-600' },
     { icon: GraduationCap, title: '24/7 Education Counselor', impact: '95% satisfaction', description: 'Student guidance AI', color: 'from-blue-500 to-indigo-600' },
-    { icon: Droplets, title: '24/7 Plumber & Landscaping', impact: '2,847 jobs', description: 'Home service AI', color: 'from-blue-500 to-cyan-600' }
+    { icon: Droplets, title: '24/7 Plumber & Landscaping', impact: '2,847 jobs', description: 'Home service AI', color: 'from-blue-500 to-cyan-600' },
+    { icon: Laptop, title: 'SaaS AI Application Development', impact: '3x faster launch', description: 'Custom AI-powered SaaS', color: 'from-indigo-500 to-violet-600' },
+    { icon: HeadphonesIcon, title: 'AI Call Center', impact: '-45% handle time', description: 'Real-time AI call center', color: 'from-teal-500 to-emerald-600' },
+    { icon: Database, title: 'CRM Development', impact: '+35% close rate', description: 'AI-enhanced CRM', color: 'from-amber-500 to-orange-600' },
+    { icon: Eye, title: 'RAG Knowledge Hub', impact: '99% accuracy', description: 'Smart knowledge base', color: 'from-cyan-500 to-blue-600' },
+    { icon: FileText, title: 'Document Intelligence', impact: '99% extraction', description: 'AI document processing', color: 'from-orange-500 to-red-600' },
+    { icon: Mic, title: 'Meeting Transcription', impact: '10x faster notes', description: 'Real-time transcription', color: 'from-emerald-500 to-teal-600' },
+    { icon: HeadphonesIcon, title: 'Customer Support Bot', impact: '-60% tickets', description: 'AI-powered support', color: 'from-blue-500 to-indigo-600' },
+    { icon: Database, title: 'Data Enrichment', impact: '+85% data quality', description: 'Smart data cleaning', color: 'from-amber-500 to-orange-600' },
+    { icon: Car, title: '24/7 Mobile Auto Mechanic', impact: '97% on-time', description: 'Mobile auto repair AI', color: 'from-orange-500 to-red-600' },
+    { icon: Laptop, title: '24/7 Mobile Tech Service', impact: '94% first-fix', description: 'Tech support AI', color: 'from-cyan-500 to-blue-600' },
+    { icon: Thermometer, title: '24/7 Mobile HVAC Service', impact: '28 min response', description: 'HVAC service AI', color: 'from-sky-500 to-indigo-600' },
+    { icon: FileText, title: 'Quote Copilot', impact: '90% faster quotes', description: 'AI-powered proposals', color: 'from-lime-500 to-green-600' }
   ]
 
   const testimonials = [

@@ -41,6 +41,13 @@ import AutoMechanicDemo from './demos/AutoMechanicDemo.jsx'
 import TechServiceDemo from './demos/TechServiceDemo.jsx'
 import HVACServiceDemo from './demos/HVACServiceDemo.jsx'
 import PlumberLandscapingDemo from './demos/PlumberLandscapingDemo.jsx'
+import SaaSDemo from './demos/SaaSDemo.jsx'
+import CallCenterDemo from './demos/CallCenterDemo.jsx'
+import CRMDemo from './demos/CRMDemo.jsx'
+import QuoteDemo from './demos/QuoteDemo.jsx'
+import TicketDemo from './demos/TicketDemo.jsx'
+import FieldTechDemo from './demos/FieldTechDemo.jsx'
+import KPIDemo from './demos/KPIDemo.jsx'
 
 const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
   const [selectedDemo, setSelectedDemo] = useState(null)
@@ -214,6 +221,76 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
       metrics: '2,847 jobs done',
       component: PlumberLandscapingDemo,
       color: 'from-blue-500 to-cyan-600'
+    },
+    {
+      id: 'saas',
+      title: 'SaaS AI Application Development',
+      description: 'Build custom AI-powered SaaS applications with intelligent features and scalable architecture',
+      icon: Laptop,
+      features: ['AI feature builder', 'Tech stack configuration', 'Timeline planning', 'Cost calculator'],
+      metrics: '3x faster launch',
+      component: SaaSDemo,
+      color: 'from-indigo-500 to-violet-600'
+    },
+    {
+      id: 'callcenter',
+      title: 'AI Call Center',
+      description: 'Real-time AI-powered call center with sentiment analysis and live transcription',
+      icon: HeadphonesIcon,
+      features: ['Live call monitoring', 'AI vs human metrics', 'Smart routing', 'Performance analytics'],
+      metrics: '-45% handle time',
+      component: CallCenterDemo,
+      color: 'from-teal-500 to-emerald-600'
+    },
+    {
+      id: 'crm',
+      title: 'CRM Development',
+      description: 'AI-enhanced CRM with predictive lead scoring, pipeline analytics, and smart automation',
+      icon: Database,
+      features: ['AI lead scoring', 'Deal pipeline', 'Revenue forecasting', 'Smart insights'],
+      metrics: '+35% close rate',
+      component: CRMDemo,
+      color: 'from-amber-500 to-orange-600'
+    },
+    {
+      id: 'quote',
+      title: 'Quote Copilot',
+      description: 'AI-powered quote generation that creates professional proposals in seconds',
+      icon: FileText,
+      features: ['Smart templates', 'Dynamic pricing', 'Auto-formatting', 'Approval workflows'],
+      metrics: '90% faster quotes',
+      component: QuoteDemo,
+      color: 'from-lime-500 to-green-600'
+    },
+    {
+      id: 'ticket',
+      title: 'Ticket Deflection System',
+      description: 'Reduce support tickets by automatically resolving common issues with AI',
+      icon: MessageSquare,
+      features: ['Smart FAQ', 'Auto-resolution', 'Escalation logic', 'Knowledge mining'],
+      metrics: '-60% tickets',
+      component: TicketDemo,
+      color: 'from-purple-500 to-violet-600'
+    },
+    {
+      id: 'fieldtech',
+      title: 'Field Tech Copilot',
+      description: 'AI assistant for field technicians with diagnostics and repair guidance',
+      icon: Cog,
+      features: ['Diagnostics', 'Repair guides', 'Parts lookup', 'Customer history'],
+      metrics: '+40% efficiency',
+      component: FieldTechDemo,
+      color: 'from-orange-500 to-red-600'
+    },
+    {
+      id: 'kpi',
+      title: 'Executive KPI Copilot',
+      description: 'Real-time business intelligence dashboard with AI-powered insights for executives',
+      icon: TrendingUp,
+      features: ['KPI tracking', 'Trend analysis', 'Anomaly alerts', 'Board reports'],
+      metrics: 'Real-time insights',
+      component: KPIDemo,
+      color: 'from-cyan-500 to-blue-600'
     }
   ]
 

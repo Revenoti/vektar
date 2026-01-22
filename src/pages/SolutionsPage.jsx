@@ -123,6 +123,156 @@ const SolutionsPage = () => {
       description: 'Vektar AI Agent for plumbing and landscaping services with project estimates and emergency dispatch.',
       features: ['Service booking', 'Emergency plumbing', 'Project quotes', 'Seasonal offers'],
       color: 'from-blue-500 to-cyan-600'
+    },
+    { 
+      id: 'saas',
+      icon: Laptop, 
+      title: 'SaaS AI Application Development', 
+      impact: '3x faster launch', 
+      demoId: 'saas',
+      description: 'Build custom AI-powered SaaS applications with intelligent features and scalable architecture.',
+      features: ['AI feature builder', 'Tech stack configuration', 'Timeline planning', 'Cost calculator'],
+      color: 'from-indigo-500 to-violet-600'
+    },
+    { 
+      id: 'callcenter',
+      icon: HeadphonesIcon, 
+      title: 'AI Call Center', 
+      impact: '-45% handle time', 
+      demoId: 'callcenter',
+      description: 'Real-time AI-powered call center with sentiment analysis and live transcription.',
+      features: ['Live call monitoring', 'AI vs human metrics', 'Smart routing', 'Performance analytics'],
+      color: 'from-teal-500 to-emerald-600'
+    },
+    { 
+      id: 'crm',
+      icon: Database, 
+      title: 'CRM Development', 
+      impact: '+35% close rate', 
+      demoId: 'crm',
+      description: 'AI-enhanced CRM with predictive lead scoring, pipeline analytics, and smart automation.',
+      features: ['AI lead scoring', 'Deal pipeline', 'Revenue forecasting', 'Smart insights'],
+      color: 'from-amber-500 to-orange-600'
+    },
+    { 
+      id: 'rag',
+      icon: Eye, 
+      title: 'RAG Knowledge Hub', 
+      impact: '99% accuracy rate', 
+      demoId: 'rag',
+      description: 'Explore how our RAG system provides accurate answers from your company knowledge base.',
+      features: ['Document ingestion', 'Semantic search', 'Source attribution', 'Real-time updates'],
+      color: 'from-cyan-500 to-blue-600'
+    },
+    { 
+      id: 'document',
+      icon: FileText, 
+      title: 'Document Intelligence', 
+      impact: '99% data extraction', 
+      demoId: 'document',
+      description: 'Watch AI extract and process information from complex documents automatically.',
+      features: ['OCR processing', 'Data extraction', 'Format conversion', 'Validation rules'],
+      color: 'from-orange-500 to-red-600'
+    },
+    { 
+      id: 'transcription',
+      icon: Mic, 
+      title: 'Meeting Transcription', 
+      impact: '10x faster notes', 
+      demoId: 'transcription',
+      description: 'Watch AI transcribe meetings in real-time with speaker identification and summaries.',
+      features: ['Real-time transcription', 'Speaker identification', 'Action item extraction', 'Searchable archives'],
+      color: 'from-emerald-500 to-teal-600'
+    },
+    { 
+      id: 'support',
+      icon: HeadphonesIcon, 
+      title: 'Customer Support Bot', 
+      impact: '-60% ticket volume', 
+      demoId: 'support',
+      description: 'Experience AI-powered customer support that resolves issues before they become tickets.',
+      features: ['Smart FAQ', 'Issue classification', 'Sentiment analysis', 'Escalation logic'],
+      color: 'from-blue-500 to-indigo-600'
+    },
+    { 
+      id: 'enrichment',
+      icon: Database, 
+      title: 'Data Enrichment', 
+      impact: '+85% data quality', 
+      demoId: 'enrichment',
+      description: 'See AI clean, validate, and enrich your data automatically with high accuracy.',
+      features: ['Data cleaning', 'Auto-enrichment', 'Duplicate detection', 'Quality scoring'],
+      color: 'from-amber-500 to-orange-600'
+    },
+    { 
+      id: 'automechanic',
+      icon: Car, 
+      title: '24/7 Mobile Auto Mechanic', 
+      impact: '97% on-time arrival', 
+      demoId: 'automechanic',
+      description: 'Vektar AI Agent for mobile auto repair services with diagnostics and scheduling.',
+      features: ['Service scheduling', 'Vehicle diagnostics', 'Pricing estimates', 'Technician tracking'],
+      color: 'from-orange-500 to-red-600'
+    },
+    { 
+      id: 'techservice',
+      icon: Laptop, 
+      title: '24/7 Mobile Tech Service', 
+      impact: '94% first-time fix', 
+      demoId: 'techservice',
+      description: 'Vektar AI Agent for mobile tech support with device diagnostics and repair booking.',
+      features: ['Device diagnostics', 'Repair booking', 'Status tracking', 'Pricing info'],
+      color: 'from-cyan-500 to-blue-600'
+    },
+    { 
+      id: 'hvac',
+      icon: Thermometer, 
+      title: '24/7 Mobile HVAC Service', 
+      impact: '28 min response', 
+      demoId: 'hvac',
+      description: 'Vektar AI Agent for HVAC services with emergency dispatch and maintenance scheduling.',
+      features: ['Service scheduling', 'Emergency dispatch', 'Maintenance reminders', 'Technician tracking'],
+      color: 'from-sky-500 to-indigo-600'
+    },
+    { 
+      id: 'quote',
+      icon: FileText, 
+      title: 'Quote Copilot', 
+      impact: '90% faster quotes', 
+      demoId: 'quote',
+      description: 'AI-powered quote generation that creates professional proposals in seconds.',
+      features: ['Smart templates', 'Dynamic pricing', 'Auto-formatting', 'Approval workflows'],
+      color: 'from-lime-500 to-green-600'
+    },
+    { 
+      id: 'ticket',
+      icon: MessageSquare, 
+      title: 'Ticket Deflection System', 
+      impact: '-60% tickets', 
+      demoId: 'ticket',
+      description: 'Reduce support tickets by automatically resolving common issues with AI.',
+      features: ['Smart FAQ', 'Auto-resolution', 'Escalation logic', 'Knowledge mining'],
+      color: 'from-purple-500 to-violet-600'
+    },
+    { 
+      id: 'fieldtech',
+      icon: Cog, 
+      title: 'Field Tech Copilot', 
+      impact: '+40% efficiency', 
+      demoId: 'fieldtech',
+      description: 'AI assistant for field technicians with diagnostics and repair guidance.',
+      features: ['Diagnostics', 'Repair guides', 'Parts lookup', 'Customer history'],
+      color: 'from-orange-500 to-red-600'
+    },
+    { 
+      id: 'kpi',
+      icon: TrendingUp, 
+      title: 'Executive KPI Copilot', 
+      impact: 'Real-time insights', 
+      demoId: 'kpi',
+      description: 'Real-time business intelligence dashboard with AI-powered insights for executives.',
+      features: ['KPI tracking', 'Trend analysis', 'Anomaly alerts', 'Board reports'],
+      color: 'from-cyan-500 to-blue-600'
     }
   ]
 
@@ -134,8 +284,8 @@ const SolutionsPage = () => {
   return (
     <>
       <SEO 
-        title="AI Solutions - Chatbots, Voice Agents, Analytics & Automation"
-        description="Explore 8 AI solutions: Sales Chatbots, Voice Receptionists, Predictive Analytics, Business Automation, and industry-specific AI agents. Live demos available."
+        title="AI Solutions - 23 Live Demos | Chatbots, Voice Agents, Analytics & Automation"
+        description="Explore 23 AI solutions with live demos: Sales Chatbots, Voice Receptionists, Predictive Analytics, Business Automation, CRM, Call Center, SaaS Development, and industry-specific AI agents."
         canonical="https://vektar.io/solutions"
       />
       <section className="py-8 sm:py-12 lg:py-16 circuit-pattern relative overflow-hidden">
