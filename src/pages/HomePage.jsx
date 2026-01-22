@@ -172,8 +172,8 @@ const HomePage = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-transparent"></div>
+        {/* Gradient overlay for text readability - fades at 50% to keep right side bright */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 via-40% to-transparent to-60%"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl">
@@ -203,8 +203,7 @@ const HomePage = () => {
                 </Link>
                 <Button 
                   size="lg" 
-                  variant="outline" 
-                  className="border-white/50 text-white hover:bg-white/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 w-full sm:w-auto"
+                  className="bg-white/20 backdrop-blur-sm border border-white/40 text-white hover:bg-white/30 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 w-full sm:w-auto"
                   onClick={() => setIsDemoModalOpen(true)}
                 >
                   See Live Demos
