@@ -40,9 +40,9 @@ export default defineConfig({
   },
   // Server configuration for development
   server: {
-    port: 5173,
-    host: true,
-    open: true
+    port: 5000,
+    host: '0.0.0.0',
+    allowedHosts: true
   },
   // Preview server configuration
   preview: {

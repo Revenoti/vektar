@@ -7,8 +7,8 @@ export const useTheme = () => {
       const stored = localStorage.getItem('vektar-theme')
       if (stored) return stored
     }
-    // Default to dark theme
-    return 'dark'
+    // Default to light theme per redesign requirements
+    return 'light'
   })
 
   useEffect(() => {
