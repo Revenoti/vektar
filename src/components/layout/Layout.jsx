@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
               <NavLink to="/">Home</NavLink>
               <NavLink to="/solutions">Solutions</NavLink>
               <NavLink to="/industries">Industries</NavLink>
-              <NavLink to="/work">Work</NavLink>
+              <NavLink to="/work">Our Work</NavLink>
               <NavLink to="/about">About</NavLink>
               
               <a 
@@ -92,7 +92,7 @@ const Layout = ({ children }) => {
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/solutions">Solutions</NavLink>
                 <NavLink to="/industries">Industries</NavLink>
-                <NavLink to="/work">Work</NavLink>
+                <NavLink to="/work">Our Work</NavLink>
                 <NavLink to="/about">About</NavLink>
                 
                 <button
