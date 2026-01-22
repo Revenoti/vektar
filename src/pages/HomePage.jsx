@@ -181,8 +181,7 @@ const HomePage = () => {
               <div className="space-y-4">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
                   Unlock Real ROI with{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">AI</span>{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Solutions.</span>
+                  <span className="text-cyan-400">AI Solutions.</span>
                   <br />
                   <span className="text-white">Built Faster.</span>
                   <br />
