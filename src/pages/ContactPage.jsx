@@ -4,7 +4,6 @@ import { Card } from '@/components/ui/card.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Phone, Mail, MapPin, Clock, Sparkles, MessageSquare, ArrowRight } from 'lucide-react'
-import ContactForm from '@/components/ContactForm.jsx'
 
 const ContactPage = () => {
   return (
@@ -25,19 +24,19 @@ const ContactPage = () => {
             <div className="p-6 sm:p-8 text-center">
               <Badge className="bg-green-500/20 text-green-400 border-green-500/30 mb-4">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-                AI Agent Online
+                Vektar AI Agent Online
               </Badge>
               <h2 className="text-xl sm:text-2xl font-bold mb-3">
                 <Sparkles className="w-5 h-5 inline-block mr-2 text-primary" />
-                Talk to Vektar AI Instantly
+                Talk to Vektar AI Agent Instantly
               </h2>
               <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-                Skip the wait! Get instant answers about our AI solutions through a real-time voice conversation with our AI assistant.
+                Skip the wait! Get instant answers about our AI solutions through a real-time voice conversation with your Vektar AI Agent.
               </p>
               <Link to="/call">
                 <Button className="vektar-gradient hover-glow px-8 py-6 text-lg font-semibold">
                   <MessageSquare className="w-5 h-5 mr-2" />
-                  Start AI Conversation
+                  Start Conversation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
@@ -47,84 +46,75 @@ const ContactPage = () => {
             </div>
           </Card>
 
-          <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
-            <div className="lg:col-span-2 order-2 lg:order-1">
-              <Card className="glass-card p-4 sm:p-8">
-                <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Send Us a Message</h2>
-                <ContactForm />
-              </Card>
-            </div>
-
-            <div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
-              <Card className="glass-card p-4 sm:p-6">
-                <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1 text-sm sm:text-base">Call Us</h3>
-                    <a 
-                      href="tel:+13215995514" 
-                      className="text-primary hover:underline text-base sm:text-lg font-medium"
-                    >
-                      321-599-5514
-                    </a>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-                      Available Mon-Fri, 9am-6pm EST
-                    </p>
-                  </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
+            <Card className="glass-card p-4 sm:p-6">
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-              </Card>
-
-              <Card className="glass-card p-4 sm:p-6">
-                <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1 text-sm sm:text-base">Email Us</h3>
-                    <a 
-                      href="mailto:info@vektar.io" 
-                      className="text-primary hover:underline text-sm sm:text-base"
-                    >
-                      info@vektar.io
-                    </a>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-                      We respond within 24 hours
-                    </p>
-                  </div>
+                <div>
+                  <h3 className="font-semibold mb-1 text-sm sm:text-base">Call Us</h3>
+                  <a 
+                    href="tel:+13215995514" 
+                    className="text-primary hover:underline text-base sm:text-lg font-medium"
+                  >
+                    321-599-5514
+                  </a>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                    Mon-Fri, 9am-6pm EST
+                  </p>
                 </div>
-              </Card>
+              </div>
+            </Card>
 
-              <Card className="glass-card p-4 sm:p-6">
-                <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1 text-sm sm:text-base">Location</h3>
-                    <p className="text-muted-foreground text-sm sm:text-base">
-                      Orlando, Florida<br />
-                      United States
-                    </p>
-                  </div>
+            <Card className="glass-card p-4 sm:p-6">
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-              </Card>
+                <div>
+                  <h3 className="font-semibold mb-1 text-sm sm:text-base">Email Us</h3>
+                  <a 
+                    href="mailto:info@vektar.io" 
+                    className="text-primary hover:underline text-sm sm:text-base"
+                  >
+                    info@vektar.io
+                  </a>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                    Response within 24 hours
+                  </p>
+                </div>
+              </div>
+            </Card>
 
-              <Card className="glass-card p-4 sm:p-6">
-                <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1 text-sm sm:text-base">Response Time</h3>
-                    <p className="text-muted-foreground text-xs sm:text-sm">
-                      We typically respond to inquiries within 24 hours during business days.
-                    </p>
-                  </div>
+            <Card className="glass-card p-4 sm:p-6">
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-              </Card>
-            </div>
+                <div>
+                  <h3 className="font-semibold mb-1 text-sm sm:text-base">Location</h3>
+                  <p className="text-muted-foreground text-sm sm:text-base">
+                    Orlando, Florida<br />
+                    United States
+                  </p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="glass-card p-4 sm:p-6">
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1 text-sm sm:text-base">Response Time</h3>
+                  <p className="text-muted-foreground text-xs sm:text-sm">
+                    24 hours during business days
+                  </p>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>

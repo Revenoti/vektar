@@ -58,7 +58,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
     {
       id: 'chatbot',
       title: 'AI Sales Chatbot',
-      description: 'See how our AI chatbot converts visitors into qualified leads with natural conversations',
+      description: 'See how your Vektar AI Agent converts visitors into qualified leads with natural conversations',
       icon: MessageSquare,
       features: ['Natural language processing', 'Lead qualification', 'CRM integration', 'Multi-language support'],
       metrics: '+40% lead conversion',
@@ -68,7 +68,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
     {
       id: 'voice',
       title: 'Voice Receptionist',
-      description: 'Experience our AI voice agent handling customer calls with human-like interactions',
+      description: 'Experience your Vektar AI Agent handling customer calls with human-like interactions',
       icon: Brain,
       features: ['Natural voice synthesis', '24/7 availability', 'Call routing', 'Appointment booking'],
       metrics: '95% customer satisfaction',
@@ -178,7 +178,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
     {
       id: 'automechanic',
       title: '24/7 Mobile Auto Mechanic',
-      description: 'AI assistant for mobile auto repair services with diagnostics and scheduling',
+      description: 'Vektar AI Agent for mobile auto repair services with diagnostics and scheduling',
       icon: Car,
       features: ['Service scheduling', 'Vehicle diagnostics', 'Pricing estimates', 'Technician tracking'],
       metrics: '97% on-time arrival',
@@ -188,7 +188,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
     {
       id: 'techservice',
       title: '24/7 Mobile Tech Service',
-      description: 'AI assistant for mobile tech support with device diagnostics and repair booking',
+      description: 'Vektar AI Agent for mobile tech support with device diagnostics and repair booking',
       icon: Laptop,
       features: ['Device diagnostics', 'Repair booking', 'Status tracking', 'Pricing info'],
       metrics: '94% first-time fix',
@@ -198,7 +198,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
     {
       id: 'hvac',
       title: '24/7 Mobile HVAC Service',
-      description: 'AI assistant for HVAC services with emergency dispatch and maintenance scheduling',
+      description: 'Vektar AI Agent for HVAC services with emergency dispatch and maintenance scheduling',
       icon: Thermometer,
       features: ['Service scheduling', 'Emergency dispatch', 'Maintenance reminders', 'Technician tracking'],
       metrics: '28 min response',
@@ -208,7 +208,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
     {
       id: 'plumbing',
       title: '24/7 Plumber & Landscaping',
-      description: 'AI assistant for plumbing and landscaping services with project estimates',
+      description: 'Vektar AI Agent for plumbing and landscaping services with project estimates',
       icon: Droplets,
       features: ['Service booking', 'Emergency plumbing', 'Project quotes', 'Seasonal offers'],
       metrics: '2,847 jobs done',
@@ -236,7 +236,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
               </div>
             </div>
             <h2 className="text-2xl md:text-3xl font-bold">
-              Live <span className="vektar-gradient-text">AI Demos</span>
+              Live AI Demos
             </h2>
             <p className="text-muted-foreground mt-1 text-sm md:text-base">
               Experience our AI solutions in action. Click on any demo to try it.
@@ -328,7 +328,7 @@ const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
                     Want a Personal Demo?
                   </CardTitle>
                   <p className="text-muted-foreground text-sm md:text-base">
-                    Skip the forms! Talk directly to our AI assistant to discuss how this solution can work for your business.
+                    Skip the forms! Talk directly to your Vektar AI Agent to discuss how this solution can work for your business.
                   </p>
                 </CardHeader>
                 <CardContent>

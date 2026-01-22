@@ -38,7 +38,7 @@ const CallPage = () => {
     {
       icon: Brain,
       title: 'AI-Powered Insights',
-      description: 'Our AI understands your business needs and provides tailored recommendations.'
+      description: 'Your Vektar AI Agent understands your business needs and provides tailored recommendations.'
     },
     {
       icon: Shield,
@@ -74,20 +74,19 @@ const CallPage = () => {
               <span className="text-sm font-medium text-primary">AI-Powered Conversations</span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
-              <span className="text-foreground">Talk to</span>{' '}
-              <span className="vektar-gradient-text">Vektar AI</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-foreground">
+              Talk to Vektar AI Agent
             </h1>
             
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8">
-              Skip the forms and long wait times. Have a real-time conversation with our AI assistant 
+              Skip the forms and long wait times. Have a real-time conversation with your Vektar AI Agent 
               to explore how we can transform your business with AI solutions.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               {stats.map((stat, index) => (
                 <div key={index} className="flex items-center gap-2 px-4 py-2 bg-secondary/50 rounded-full">
-                  <span className="text-xl font-bold vektar-gradient-text">{stat.value}</span>
+                  <span className="text-xl font-bold text-primary">{stat.value}</span>
                   <span className="text-sm text-muted-foreground">{stat.label}</span>
                 </div>
               ))}
@@ -152,10 +151,10 @@ const CallPage = () => {
 
                   <Badge className="bg-green-500/20 text-green-400 border-green-500/30 mb-4">
                     <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-                    AI Agent Online
+                    Vektar AI Agent Online
                   </Badge>
 
-                  <h3 className="text-2xl font-bold mb-2">Vektar AI Assistant</h3>
+                  <h3 className="text-2xl font-bold mb-2">Vektar AI Agent</h3>
                   <p className="text-muted-foreground mb-8">
                     Ready to help you explore AI solutions for your business
                   </p>
@@ -178,7 +177,7 @@ const CallPage = () => {
                     </div>
 
                     <p className="text-xs text-muted-foreground">
-                      Click to start a voice conversation with our AI assistant.
+                      Click to start a voice conversation with your Vektar AI Agent.
                       <br />
                       Average call duration: 3-5 minutes
                     </p>
@@ -231,7 +230,7 @@ const CallPage = () => {
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-secondary/50 rounded-full border border-border/50">
               <HeadphonesIcon className="w-5 h-5 text-primary" />
               <span className="text-sm text-muted-foreground">
-                Our AI is trained on Vektar's complete knowledge base and can answer any question about our services
+                Your Vektar AI Agent is trained on our complete knowledge base and can answer any question about our services
               </span>
             </div>
           </div>
