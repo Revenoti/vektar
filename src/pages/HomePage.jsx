@@ -183,7 +183,9 @@ const HomePage = () => {
                   Unlock Real ROI with{' '}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">AI Solutions.</span>
                   <br />
-                  <span className="text-white">Built Faster. Deployed Securely.</span>
+                  <span className="text-white">Built Faster.</span>
+                  <br />
+                  <span className="text-white">Deployed Securely.</span>
                 </h1>
                 <p className="text-lg sm:text-xl text-white/80 max-w-2xl">
                   Vektar designs, builds, and scales AI systems that automate business processes, 
