@@ -32,32 +32,68 @@ const HomePage = () => {
     { 
       icon: Zap, 
       title: 'Strategy First', 
-      description: 'Roadmaps with measurable ROI. We start with your business objectives and work backwards to create AI solutions that deliver real value.'
+      bullets: [
+        'Start with your business goals, not tech',
+        'Roadmaps with measurable ROI targets',
+        'Work backwards from desired outcomes',
+        'Align AI initiatives to revenue impact',
+        'Clear milestones and success metrics'
+      ]
     },
     { 
       icon: Rocket, 
       title: 'Build Fast', 
-      description: 'Modern stack, enterprise guardrails. Rapid prototyping with production-ready architecture from day one.'
+      bullets: [
+        '30-day pilot programs available',
+        'Production-ready from day one',
+        'Modern stack, enterprise guardrails',
+        'Rapid prototyping & iteration',
+        'Go live in weeks, not months'
+      ]
     },
     { 
       icon: Shield, 
       title: 'Scale Securely', 
-      description: 'PII-aware, audit-ready. Security and compliance built into every solution with enterprise-grade monitoring.'
+      bullets: [
+        'SOC 2 compliant infrastructure',
+        'PII-aware data handling',
+        'Audit-ready logging & monitoring',
+        'Enterprise-grade encryption',
+        'GDPR & HIPAA compatible'
+      ]
     },
     { 
       icon: Target, 
       title: 'Precision AI', 
-      description: 'Custom-trained models that understand your business context, delivering 99%+ accuracy on domain-specific tasks.'
+      bullets: [
+        '99%+ accuracy on domain tasks',
+        'Custom-trained on your data',
+        'Understands your business context',
+        'Continuous learning & improvement',
+        'Reduces errors, not just automates'
+      ]
     },
     { 
       icon: TrendingUp, 
       title: 'Measurable Impact', 
-      description: 'Every solution comes with built-in analytics and KPI tracking so you can prove ROI to stakeholders.'
+      bullets: [
+        'Built-in analytics dashboards',
+        'Real-time KPI tracking',
+        'Prove ROI to stakeholders',
+        'A/B testing frameworks included',
+        'Data-driven optimization loops'
+      ]
     },
     { 
       icon: Users, 
       title: 'Human-in-the-Loop', 
-      description: 'AI that augments your team, not replaces them. Seamless handoffs and escalation paths built in.'
+      bullets: [
+        'AI augments, never replaces',
+        'Seamless handoff to humans',
+        'Escalation paths built in',
+        'Review & approval workflows',
+        'Your team stays in control'
+      ]
     }
   ]
 
@@ -196,17 +232,24 @@ const HomePage = () => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {capabilities.map((cap, index) => (
-              <Card key={index} className="glass-card hover-glow">
-                <CardHeader className="pb-2 sm:pb-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-lg flex items-center justify-center mb-3 sm:mb-4">
-                    <cap.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              <Card key={index} className="glass-card hover-glow group">
+                <CardHeader className="pb-3 sm:pb-4">
+                  <div className="flex items-center justify-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 vektar-gradient rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <cap.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    </div>
+                    <CardTitle className="text-lg sm:text-xl font-bold">{cap.title}</CardTitle>
                   </div>
-                  <CardTitle className="text-lg sm:text-xl">{cap.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm sm:text-base text-muted-foreground">
-                    {cap.description}
-                  </p>
+                <CardContent className="pt-0">
+                  <ul className="space-y-2">
+                    {cap.bullets.map((bullet, bulletIndex) => (
+                      <li key={bulletIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </CardContent>
               </Card>
             ))}
