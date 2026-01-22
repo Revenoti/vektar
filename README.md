@@ -1,185 +1,139 @@
-# Vektar — AI Solutions That Deliver Real ROI
+# Vektar AI Solutions
 
-Vektar is a modern, responsive marketing site showcasing AI solutions, live demos, and a streamlined contact flow. It is built for performance, accessibility, and mobile-first usability.
+A professional AI consulting website featuring 7 pages, 8 curated AI demos, and RetellAI voice integration. Built for performance, mobile-first usability, and SEO optimization.
 
-## Key Highlights
+## Key Features
 
-- **🎙️ Live AI Voice Assistant** — RetellAI-powered "Vektar" assistant with stunning native design and live marketing features
-- **🎨 Light/Dark Theme Toggle** — Beautiful dual-theme system with comprehensive light mode support
-- **🔥 Premium Live Experience** — Animated "LIVE" indicators, pulse effects, and compelling "Talk to AI Expert" messaging
-- **🎯 12 Interactive Demos** — Including SaaS AI, Business Automation, AI Call Center, and CRM Development
-- **🚀 Multi-Tier Reliability** — Phone calls, custom callbacks, and email fallbacks ensure no leads are lost
-- Responsive design with professional, balanced layout and beautiful Vektar gradient animations
-- Mobile UX optimizations (safe-area support, tap targets, modal sheet behavior)
-- Contact form with client-side validation and enhanced mobile typing experience
-- **📊 Revenue Analytics** — Comprehensive tracking for voice assistant conversions and ROI optimization
-- **🚄 Railway Deployment Ready** — Production-optimized configuration for Railway deployment
+- **7-Page Architecture** — Home, Solutions, Work, About, Industries, Contact, Call
+- **8 Interactive AI Demos** — Live demos showcasing AI capabilities
+- **AI-First Engagement** — All CTAs direct to /call page for real-time AI conversation
+- **RetellAI Voice Assistant** — 24/7 AI voice agent available on the Call page
+- **Light Theme Default** — Clean, professional appearance with dark mode option
+- **Mobile-First Design** — Responsive layouts with compact spacing
+- **Comprehensive SEO** — Sitemap, page-specific meta tags, FAQ rich snippets
 
 ## Tech Stack
 
-- **Vite + React** — Fast development and optimized builds
-- **Tailwind CSS** — Utility-first styling framework
-- **shadcn/ui components** — High-quality UI primitives
-- **Lucide icons** — Beautiful, consistent iconography
-- **RetellAI** — Voice AI assistant with real-time conversation capabilities
-- **Cal.com Integration** — Automated appointment booking through voice commands
-- **Custom Theme System** — Light/dark mode with localStorage persistence
+- **React 19.1 + Vite 6.3** — Fast development and optimized builds
+- **Tailwind CSS 4.1** — Utility-first styling with Radix UI components
+- **React Router DOM** — Multi-page routing
+- **Framer Motion** — Smooth animations
+- **Recharts** — Data visualization for demos
+- **React Helmet Async** — Dynamic SEO meta tags
+- **RetellAI** — Voice AI assistant integration
 
-## 🎨 Theme System (v3.3 - Latest)
+## Pages
 
-### Features
-- **🌙 Dark Mode (Default)** — Stunning dark theme with electric cyan accents and glow effects
-- **☀️ Light Mode** — Comprehensive light theme with purple accents and soft shadows
-- **🔄 Seamless Toggle** — Sun/Moon icon in navigation for easy switching
-- **💾 Persistent Preference** — Theme choice saved in localStorage
-- **📱 Mobile Support** — Theme toggle available in mobile navigation menu
+| Page | Route | Description |
+|------|-------|-------------|
+| Home | `/` | Hero section, stats, solutions preview, testimonials, social proof |
+| Solutions | `/solutions` | 8 AI solutions with interactive live demos |
+| Work | `/work` | Filterable case studies with Problem-Process-Payoff structure |
+| About | `/about` | Mission, Vision, Values, Team expertise, Vektar Approach |
+| Industries | `/industries` | 10 industry-specific challenges and solutions |
+| Contact | `/contact` | Contact info, phone, email, AI conversation CTA |
+| Call | `/call` | AI-first engagement page with Vektar AI voice assistant |
 
-### Technical Implementation
-```
-src/hooks/useTheme.js     # Theme state management and persistence
-src/App.css               # Comprehensive CSS variables for both themes
-```
+## AI Solutions (8 Curated Demos)
 
-### CSS Variables
-```css
-/* Dark Theme (Default) */
---background: #0B1021 (Midnight Navy)
---primary: #00E5FF (Electric Cyan)
---accent: #7A5CFF (Hyper Purple)
+### Core Business Solutions
+1. **AI Sales Chatbot** — Lead qualification, CRM integration
+2. **Voice Receptionist** — Call routing, appointment booking
+3. **Predictive Analytics** — AI forecasting, trend analysis
+4. **Business Automation** — Visual workflow builder, app integrations
 
-/* Light Theme */
---background: #F8FAFD (Soft Off-White)
---primary: #6B4EE6 (Light Purple)
---accent: #00B8C4 (Teal Cyan)
-```
-
-## 🎙️ Voice Assistant Feature
-
-### Overview
-The Vektar website includes a sophisticated AI voice assistant powered by RetellAI. The assistant provides instant consultation, answers questions about AI solutions, and can book appointments directly through voice interaction or callback requests.
-
-### Key Features v2.0
-- **🔥 Live AI Expert Button** — Stunning floating button with pulse animations and "Live AI Expert Available" tooltip
-- **💬 Premium Live Experience** — "Talk to Vektar AI Expert - Live Now!" with animated LIVE indicators
-- **🚀 Multi-Tier Callback System** — RetellAI phone calls, custom callbacks, and email fallbacks
-- **📞 Instant Voice Conversations** — Real-time audio communication with AI assistant
-- **📅 Appointment Booking** — Direct integration with Cal.com for consultation scheduling
-- **📱 Mobile Optimized** — Perfect responsive design with touch-friendly interactions
-- **📊 Advanced Analytics** — Comprehensive conversion tracking and revenue optimization
-- **🎨 Native Vektar Design** — Seamlessly integrated with brand colors, gradients, and animations
-- **✨ Premium Visual Effects** — Pulse rings, bounce animations, and gradient effects
-- **💎 Enterprise Reliability** — Robust error handling and fallback mechanisms
-
-### How It Works
-1. **Visitors see the floating voice button** in the bottom-right corner of any page
-2. **Click to start conversation** — Connects instantly to "Vekta" AI assistant
-3. **Natural voice interaction** — Ask questions about AI solutions, pricing, implementation
-4. **Appointment booking** — Voice assistant can schedule consultations through Cal.com
-5. **Revenue tracking** — All interactions are tracked for conversion optimization
-
-### Components
-```
-src/components/VoiceAssistant/
-├── FloatingVoiceButton.jsx    # Main floating button with animations
-├── VoiceCallInterface.jsx     # Full-screen call interface
-└── RetellWebCall.js          # API integration and analytics
-```
-
-## Recent Changes
-
-### 🎨 Theme System & New Demos (v3.3 - January 2026)
-
-#### Light/Dark Theme Toggle
-- **Comprehensive Light Theme** — Full CSS variable system for light mode with custom colors, shadows, and effects
-- **Theme Toggle Button** — Sun/Moon icon in desktop and mobile navigation
-- **Dark Mode Default** — App defaults to dark theme for new visitors
-- **Persistent Preference** — User's theme choice saved in localStorage
-- **Smooth Transitions** — 300ms transitions between theme changes
-- **Light Mode Enhancements**:
-  - Frosted white glass-card effect with soft shadows
-  - Purple-tinted hover effects instead of cyan glow
-  - Custom scrollbar colors for light mode
-  - Adjusted chart and stat colors for readability
-
-#### 4 New Interactive Demos
-1. **SaaS AI Application Development Demo** — Build custom AI-powered SaaS applications with intelligent features and scalable architecture. Features AI feature builder, tech stack configuration, timeline planning, and cost calculator.
-2. **Custom AI Business Automation Demo** — Watch intelligent workflows automate complex business processes in real-time. Features visual workflow builder, AI decision nodes, 200+ integrations, and live execution visualization.
-3. **AI Call Center Demo** — Experience real-time AI-powered call center with sentiment analysis and live transcription. Features live call monitoring, AI vs human metrics comparison, smart routing, and performance analytics.
-4. **CRM Development Demo** — AI-enhanced CRM with predictive lead scoring, pipeline analytics, and smart automation. Features AI lead scoring, deal pipeline visualization, revenue forecasting, and smart insights.
-
-#### Railway Deployment Configuration
-- **New `railway.toml`** — Complete Railway deployment configuration
-- **Production Vite Config** — Code splitting, esbuild minification, chunk optimization
-- **`.npmrc` Configuration** — Consistent dependency resolution with legacy-peer-deps
-- **`.env.example` Template** — Documentation for required environment variables
-
-#### Footer Update
-- **Copyright Year** — Updated to © 2026 Vektar. All rights reserved.
-
-### 📝 Contact Form Enhancement (v3.2)
-- **💰 Expanded Budget Range Options** — Added new "$500 - $5k" budget range option
-- **🎯 Improved Lead Qualification** — Budget ranges from $500 to $100k+
-- **📊 Better User Experience** — Granular budget options for accurate project scoping
-
-### 🎙️ Voice Assistant Updates (v3.1)
-- **🎯 CTA Title Enhancement** — "One on One Call With Vektar" messaging
-- **📱 Mobile LIVE Badge Optimization** — Fixed positioning and sizing
-- **🔧 Responsive Design Improvements** — Enhanced mobile experience
-
-### 🎙️ Voice Assistant Major Enhancements (v3.0)
-- **🎯 Native Vektar Design Integration** — Stunning brand colors and animations
-- **🔥 Live Marketing Features** — Enhanced "Chat with Vektar Live!" messaging
-- **✨ Premium Visual Effects** — Pulse rings, bounce animations, gradient effects
-- **📱 Mobile-First Responsive Design** — Optimized for all screen sizes
-- **🚀 Multi-Tier Callback System** — RetellAI, custom callbacks, and email fallbacks
-- **📊 Advanced Analytics** — Comprehensive conversion tracking
+### Industry-Specific Solutions
+5. **AI Agent Dispatch & Logistics** — Route optimization, GPS tracking, driver scheduling
+6. **24/7 Healthcare Receptionist** — Appointment booking, symptom triage, insurance verification
+7. **24/7 Education Counselor** — Course recommendations, enrollment, schedule planning
+8. **24/7 Plumber & Landscaping** — Service booking, project quotes, emergency dispatch
 
 ## Project Structure
 
 ```
-├── .env.example              # Environment variable template
-├── .npmrc                    # NPM configuration for consistent builds
-├── railway.toml              # Railway deployment configuration
-├── vite.config.js            # Vite configuration with production optimizations
-├── package.json              # Dependencies and scripts
-└── src/
-    ├── App.jsx               # Main page layout (includes theme toggle)
-    ├── App.css               # Theme variables, light/dark mode styles
-    ├── hooks/
-    │   ├── use-mobile.js     # Mobile detection hook
-    │   └── useTheme.js       # 🎨 Theme management hook
-    ├── components/
-    │   ├── DemoModal.jsx     # Demo modal with 12 interactive demos
-    │   ├── ContactForm.jsx   # Enhanced mobile-optimized form
-    │   ├── VoiceAssistant/   # RetellAI Voice Assistant Components
-    │   │   ├── FloatingVoiceButton.jsx
-    │   │   ├── VoiceCallInterface.jsx
-    │   │   └── RetellWebCall.js
-    │   ├── demos/            # 12 Demo components
-    │   │   ├── ChatbotDemo.jsx
-    │   │   ├── VoiceDemo.jsx
-    │   │   ├── QuoteDemo.jsx
-    │   │   ├── RAGDemo.jsx
-    │   │   ├── TicketDemo.jsx
-    │   │   ├── FieldTechDemo.jsx
-    │   │   ├── DocumentDemo.jsx
-    │   │   ├── KPIDemo.jsx
-    │   │   ├── SaaSDemo.jsx        # 🆕 NEW
-    │   │   ├── AutomationDemo.jsx  # 🆕 NEW
-    │   │   ├── CallCenterDemo.jsx  # 🆕 NEW
-    │   │   └── CRMDemo.jsx         # 🆕 NEW
-    │   └── ui/               # shadcn/ui primitives
-    ├── api/
-    │   └── contact.js        # API functions
-    └── assets/
-        └── vectorik-logo.png # Brand assets
+├── index.html                    # Entry point with SEO meta tags and structured data
+├── public/
+│   ├── sitemap.xml              # XML sitemap for all 7 pages
+│   ├── robots.txt               # Search engine crawling rules
+│   ├── og-image.png             # Social sharing preview image
+│   └── hero-background.png      # Hero section background
+├── railway.toml                  # Railway deployment config
+├── netlify.toml                  # Netlify deployment config
+├── nixpacks.toml                 # Nixpacks build config
+├── src/
+│   ├── main.jsx                 # App entry with HelmetProvider
+│   ├── App.jsx                  # Router configuration
+│   ├── App.css                  # Global styles and theme variables
+│   ├── components/
+│   │   ├── SEO.jsx              # Reusable SEO component
+│   │   ├── layout/
+│   │   │   └── Layout.jsx       # Shared header/footer layout
+│   │   ├── demos/               # Demo components (8 active, legacy files present)
+│   │   │   ├── ChatbotDemo.jsx           # Active
+│   │   │   ├── VoiceDemo.jsx             # Active
+│   │   │   ├── PredictiveAnalyticsDemo.jsx  # Active
+│   │   │   ├── BusinessAutomationDemo.jsx   # Active
+│   │   │   ├── DispatchLogisticsDemo.jsx    # Active
+│   │   │   ├── HealthcareReceptionistDemo.jsx  # Active
+│   │   │   ├── EducationCounselorDemo.jsx   # Active
+│   │   │   ├── PlumberLandscapingDemo.jsx   # Active
+│   │   │   └── (+ legacy demo files)
+│   │   ├── VoiceAssistant/      # RetellAI integration
+│   │   │   ├── FloatingVoiceButton.jsx
+│   │   │   ├── VoiceCallInterface.jsx
+│   │   │   └── RetellWebCall.js
+│   │   └── ui/                  # shadcn/ui primitives
+│   └── pages/                   # 7 page components
+│       ├── HomePage.jsx
+│       ├── SolutionsPage.jsx
+│       ├── WorkPage.jsx
+│       ├── AboutPage.jsx
+│       ├── IndustriesPage.jsx
+│       ├── ContactPage.jsx
+│       └── CallPage.jsx
+└── dist/                        # Production build output
 ```
+
+## SEO Features
+
+### Implemented
+- **Sitemap.xml** — All 7 pages with priority levels and update frequency
+- **robots.txt** — Allows all crawlers, points to sitemap
+- **Page-Specific Meta Tags** — Unique titles and descriptions per page via react-helmet-async
+- **Open Graph Tags** — Optimized social sharing with og-image.png (776KB)
+- **Twitter Cards** — Large image summary cards
+- **Structured Data** — Organization, BreadcrumbList, and FAQPage schemas
+- **Canonical URLs** — Prevents duplicate content issues
+
+### Meta Tag Examples
+- Home: "Vektar - AI Solutions That Deliver Real ROI"
+- Solutions: "AI Solutions - Chatbots, Voice Agents, Analytics & Automation"
+- Work: "Case Studies - AI Project Success Stories"
+- Call: "Talk to Vektar AI Agent - Free Strategy Call"
+
+## Design System
+
+### Theme
+- **Light theme as default** — Clean, professional appearance
+- **Dark mode available** — Toggle in navigation
+
+### Design Choices
+- **Gradient colors** on buttons, icons, and badges only (not on text)
+- **Glass-morphism buttons** — Semi-transparent with backdrop blur
+- **"Live AI Demos" badge** — Purple (bg-purple-600) with white text
+- **Compact spacing** — Reduced whitespace for better mobile engagement
+- **Hero background** — Professional AI team collaboration scene
+
+### Color Palette
+- Primary accent: Cyan-400
+- Badge color: Purple-600
+- Text on dark: White
 
 ## Getting Started
 
 ### Prerequisites
-- Node 18+
-- npm or pnpm
+- Node.js 18+
+- npm
 
 ### Installation
 ```bash
@@ -190,41 +144,32 @@ npm install
 ```bash
 npm run dev
 ```
-Vite will start on http://localhost:5173
+Server runs on port 5000 (configured for Replit)
 
 ### Build
 ```bash
 npm run build
 ```
 
-### Preview (after build)
-```bash
-npm run preview
-```
-
-### Start Production Server
-```bash
-npm run start
-```
-
-## Environment Configuration
-
-### Required Environment Variables
-Create a `.env` file in the project root (see `.env.example`):
+## Environment Variables
 
 ```bash
-# RetellAI Voice Assistant Configuration
-VITE_RETELL_API_KEY=your_retell_api_key_here
-VITE_RETELL_AGENT_ID=your_agent_id_here
-VITE_RETELL_LLM_ID=your_llm_id_here
+# RetellAI Voice Assistant
+VITE_RETELL_API_KEY=your_retell_api_key
+VITE_RETELL_AGENT_ID=your_agent_id
+VITE_RETELL_LLM_ID=your_llm_id
 ```
 
 ## Deployment
 
-### Railway Deployment (Recommended)
+### Replit (Primary)
+- **Build command**: `npm run build`
+- **Public directory**: `dist`
+- **Static deployment** ready
+- Development server runs on port 5000
 
-Railway is configured with `railway.toml` for automatic deployment:
-
+### Railway
+Configured via `railway.toml`:
 ```toml
 [build]
 builder = "nixpacks"
@@ -232,74 +177,38 @@ buildCommand = "npm ci && npm run build"
 
 [deploy]
 startCommand = "npx serve -s dist -l $PORT"
-healthcheckPath = "/"
 ```
 
-**Deploy to Railway:**
-1. Push code to GitHub repository
-2. Go to [Railway.app](https://railway.app) and create new project
-3. Select "Deploy from GitHub repo"
-4. Add environment variables in Railway dashboard:
-   - `VITE_RETELL_API_KEY`
-   - `VITE_RETELL_AGENT_ID`
-   - `VITE_RETELL_LLM_ID`
-5. Deploy automatically on push
-
-### Netlify Deployment
-
-1. **Connect Repository**: Link your GitHub repository to Netlify
-2. **Set Environment Variables**: Add RetellAI keys in Site Settings
-3. **Build Settings**: Use default Vite build settings
-4. **Deploy**: Automatic deployment on push to main branch
+### Netlify
+Configured via `netlify.toml` for automatic deployment.
 
 ### Other Platforms
-
 The static build (`dist/`) works with:
 - Vercel
 - Cloudflare Pages
 - Any static hosting provider
 
-## Demos Included (12 Total)
+## Recent Updates (January 2026)
 
-### Core AI Solutions
-- **AI Sales Chatbot** — Lead conversion and qualification
-- **Voice Receptionist** — 24/7 customer service automation
-- **Quote Copilot** — Automated proposal generation
-- **RAG Knowledge Hub** — Document-based question answering
+### SEO Optimization
+- Added sitemap.xml with all 7 pages
+- Implemented react-helmet-async for dynamic meta tags
+- Created reusable SEO component for page-specific metadata
+- Added FAQ structured data schema for rich snippets
+- Updated BreadcrumbList schema with correct page URLs
 
-### Operations & Support
-- **Ticket Deflection System** — Support automation
-- **Field Tech Copilot** — Technician assistance and optimization
-- **Document Intelligence** — Automated document processing
-- **Executive KPI Copilot** — Real-time business insights
+### Design Updates
+- Reduced AI Solutions from 16 to 8 curated demos
+- Updated "Live AI Demos" badge to purple (bg-purple-600)
+- Refactored footer to 2-column mobile layout
+- Added Industries column to footer
+- Optimized OG image from 5MB to 776KB
 
-### Enterprise Solutions (🆕 New in v3.3)
-- **SaaS AI Application Development** — Custom AI-powered SaaS builder
-- **Custom AI Business Automation** — Visual workflow automation
-- **AI Call Center** — Real-time AI-powered call center
-- **CRM Development** — AI-enhanced customer relationship management
-
-## Available Scripts
-
-- `npm run dev` — Start development server
-- `npm run build` — Build for production
-- `npm run preview` — Preview production build
-- `npm run start` — Start production server (using serve)
-- `npm run lint` — Run ESLint
-
-## Accessibility & Performance
-
-- **Reduced motion support** (`prefers-reduced-motion`)
-- **44px minimum tap targets** for interactive elements
-- **Safe-area padding** for iOS notch devices
-- **Responsive images** with proper attributes
-- **Semantic HTML** with ARIA labels
-- **Theme persistence** for user preference
-
-## Support
-
-For questions or issues, please refer to the contact form on the site or check the project documentation.
+### Architecture
+- Multi-page routing with React Router
+- AI-first engagement strategy (CTAs → /call page)
+- Mobile-first responsive design with compact spacing
 
 ---
 
-© 2026 Vektar. All rights reserved.
+© 2026 Vektar AI Solutions. All rights reserved.
