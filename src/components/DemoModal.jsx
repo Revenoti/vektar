@@ -34,8 +34,8 @@ import AutomationDemo from './demos/AutomationDemo.jsx'
 import CallCenterDemo from './demos/CallCenterDemo.jsx'
 import CRMDemo from './demos/CRMDemo.jsx'
 
-const DemoModal = ({ isOpen, onClose }) => {
-  const [selectedDemo, setSelectedDemo] = useState(null)
+const DemoModal = ({ isOpen, onClose, initialDemo = null }) => {
+  const [selectedDemo, setSelectedDemo] = useState(initialDemo)
   const [isRequestingDemo, setIsRequestingDemo] = useState(false)
   const [demoRequestForm, setDemoRequestForm] = useState({
     name: '',
