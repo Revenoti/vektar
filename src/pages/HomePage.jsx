@@ -24,7 +24,8 @@ import {
   Heart,
   GraduationCap,
   Laptop,
-  Droplets
+  Droplets,
+  LifeBuoy
 } from 'lucide-react'
 import DemoModal from '@/components/DemoModal.jsx'
 
@@ -111,7 +112,8 @@ const HomePage = () => {
     { icon: Droplets, title: '24/7 Plumber & Landscaping', impact: '2,847 jobs', description: 'Home service AI', color: 'from-blue-500 to-cyan-600' },
     { icon: MessageSquare, title: 'AI Sales Chatbot', impact: '+40% conversion', description: 'Convert visitors 24/7', color: 'from-violet-500 to-purple-600' },
     { icon: Database, title: 'CRM Development', impact: '+35% close rate', description: 'AI-enhanced CRM', color: 'from-amber-500 to-orange-600' },
-    { icon: HeadphonesIcon, title: 'AI Call Center', impact: '-45% handle time', description: 'Real-time AI call center', color: 'from-teal-500 to-emerald-600' }
+    { icon: HeadphonesIcon, title: 'AI Call Center', impact: '-45% handle time', description: 'Real-time AI call center', color: 'from-teal-500 to-emerald-600' },
+    { icon: LifeBuoy, title: 'Customer Support Bot', impact: '-60% tickets', description: 'AI-powered support', color: 'from-blue-500 to-indigo-600' }
   ]
 
   const testimonials = [
