@@ -11,6 +11,16 @@ A professional AI consulting website for Vektar AI Solutions featuring multi-pag
 - **Charts**: Recharts
 - **Voice Assistant**: RetellAI integration
 
+## AI Solutions (8 Total - Synced Between HomePage & SolutionsPage)
+1. AI Sales Chatbot (violet-purple) - Lead qualification, CRM integration
+2. Voice Receptionist (pink-rose) - Call routing, appointment booking
+3. RAG Knowledge Hub (cyan-blue) - Document ingestion, semantic search
+4. Document Intelligence (orange-red) - OCR + AI extraction
+5. Meeting Transcription (emerald-teal) - Real-time transcription, action items
+6. Customer Support Bot (blue-indigo) - Ticket deflection, multi-channel
+7. Data Enrichment (amber-orange) - Data cleaning, quality improvement
+8. Predictive Analytics (fuchsia-purple) - AI forecasting, trend analysis
+
 ## Pages (Multi-Page Architecture)
 - **Home** (`/`) - Hero, stats, solutions preview, testimonials, social proof
 - **Solutions** (`/solutions`) - 12 AI solutions with interactive demos
@@ -23,7 +33,7 @@ A professional AI consulting website for Vektar AI Solutions featuring multi-pag
 - `src/` - Source code
   - `src/pages/` - Page components (HomePage, SolutionsPage, WorkPage, AboutPage, IndustriesPage, ContactPage)
   - `src/components/layout/` - Shared Layout component with header/footer
-  - `src/components/demos/` - 12 interactive AI demo components
+  - `src/components/demos/` - 8 interactive AI demo components (ChatbotDemo, VoiceDemo, RAGDemo, DocumentDemo, TranscriptionDemo, SupportBotDemo, DataEnrichmentDemo, PredictiveAnalyticsDemo)
   - `src/components/VoiceAssistant/` - RetellAI voice integration
 - `public/` - Static assets
 - `dist/` - Production build output
