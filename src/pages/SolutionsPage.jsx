@@ -169,7 +169,7 @@ const SolutionsPage = () => {
       title: '24/7 Mobile Auto Mechanic', 
       impact: '97% on-time arrival', 
       demoId: 'automechanic',
-      description: 'AI assistant for mobile auto repair services with vehicle diagnostics, scheduling, and technician tracking.',
+      description: 'Vektar AI Agent for mobile auto repair services with vehicle diagnostics, scheduling, and technician tracking.',
       features: ['Service scheduling', 'Vehicle diagnostics', 'Pricing estimates', 'Technician tracking'],
       color: 'from-orange-500 to-red-600'
     },
@@ -179,7 +179,7 @@ const SolutionsPage = () => {
       title: '24/7 Mobile Tech Service', 
       impact: '94% first-time fix', 
       demoId: 'techservice',
-      description: 'AI assistant for mobile tech support with device diagnostics, repair booking, and status tracking.',
+      description: 'Vektar AI Agent for mobile tech support with device diagnostics, repair booking, and status tracking.',
       features: ['Device diagnostics', 'Repair booking', 'Status tracking', 'Pricing info'],
       color: 'from-cyan-500 to-blue-600'
     },
@@ -189,7 +189,7 @@ const SolutionsPage = () => {
       title: '24/7 Mobile HVAC Service', 
       impact: '28 min response', 
       demoId: 'hvac',
-      description: 'AI assistant for HVAC services with emergency dispatch, maintenance scheduling, and technician tracking.',
+      description: 'Vektar AI Agent for HVAC services with emergency dispatch, maintenance scheduling, and technician tracking.',
       features: ['Service scheduling', 'Emergency dispatch', 'Maintenance reminders', 'Technician tracking'],
       color: 'from-sky-500 to-indigo-600'
     },
@@ -199,7 +199,7 @@ const SolutionsPage = () => {
       title: '24/7 Plumber & Landscaping', 
       impact: '2,847 jobs done', 
       demoId: 'plumbing',
-      description: 'AI assistant for plumbing and landscaping services with project estimates and emergency dispatch.',
+      description: 'Vektar AI Agent for plumbing and landscaping services with project estimates and emergency dispatch.',
       features: ['Service booking', 'Emergency plumbing', 'Project quotes', 'Seasonal offers'],
       color: 'from-blue-500 to-cyan-600'
     }
