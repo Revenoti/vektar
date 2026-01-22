@@ -45,6 +45,7 @@ const Layout = ({ children }) => {
             </Link>
 
             <div className="hidden md:flex items-center space-x-4">
+              <NavLink to="/">Home</NavLink>
               <NavLink to="/solutions">Solutions</NavLink>
               <NavLink to="/industries">Industries</NavLink>
               <NavLink to="/work">Work</NavLink>
@@ -88,6 +89,7 @@ const Layout = ({ children }) => {
           {isMenuOpen && (
             <div className="md:hidden mt-4 pb-4 border-t border-border">
               <div className="flex flex-col space-y-2 pt-4">
+                <NavLink to="/">Home</NavLink>
                 <NavLink to="/solutions">Solutions</NavLink>
                 <NavLink to="/industries">Industries</NavLink>
                 <NavLink to="/work">Work</NavLink>
