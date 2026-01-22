@@ -43,7 +43,7 @@ A professional AI consulting website for Vektar AI Solutions featuring multi-pag
 
 ## Directory Structure
 - `src/` - Source code
-  - `src/pages/` - Page components (HomePage, SolutionsPage, WorkPage, AboutPage, IndustriesPage, ContactPage)
+  - `src/pages/` - Page components (HomePage, SolutionsPage, WorkPage, AboutPage, IndustriesPage, ContactPage, CallPage)
   - `src/components/layout/` - Shared Layout component with header/footer
   - `src/components/demos/` - 16 interactive AI demo components (ChatbotDemo, VoiceDemo, RAGDemo, DocumentDemo, TranscriptionDemo, SupportBotDemo, DataEnrichmentDemo, PredictiveAnalyticsDemo, BusinessAutomationDemo, DispatchLogisticsDemo, HealthcareReceptionistDemo, EducationCounselorDemo, AutoMechanicDemo, TechServiceDemo, HVACServiceDemo, PlumberLandscapingDemo)
   - `src/components/VoiceAssistant/` - RetellAI voice integration
