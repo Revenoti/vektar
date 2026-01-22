@@ -26,7 +26,7 @@ A professional AI consulting website featuring 7 pages, 23 interactive AI demos,
 
 | Page | Route | Description |
 |------|-------|-------------|
-| Home | `/` | Hero section, stats, solutions preview, testimonials, social proof |
+| Home | `/` | Hero section, stats, 12 featured solutions preview, testimonials, social proof |
 | Solutions | `/solutions` | 23 AI solutions with interactive live demos |
 | Work | `/work` | Filterable case studies with Problem-Process-Payoff structure |
 | About | `/about` | Mission, Vision, Values, Team expertise, Vektar Approach |
@@ -211,6 +211,11 @@ The static build (`dist/`) works with:
 
 ## Recent Updates (January 2026)
 
+### AI Solutions Expansion
+- Expanded to 23 interactive AI demos across all categories
+- Homepage features 12 curated solutions as preview
+- Solutions page displays full catalog of 23 demos with live interactive components
+
 ### SEO Optimization
 - Added sitemap.xml with all 7 pages
 - Implemented react-helmet-async for dynamic meta tags
@@ -219,7 +224,6 @@ The static build (`dist/`) works with:
 - Updated BreadcrumbList schema with correct page URLs
 
 ### Design Updates
-- Reduced AI Solutions from 16 to 8 curated demos
 - Updated "Live AI Demos" badge to purple (bg-purple-600)
 - Refactored footer to 2-column mobile layout
 - Added Industries column to footer
