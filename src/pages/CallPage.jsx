@@ -215,11 +215,11 @@ const CallPage = () => {
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
                   <a 
-                    href="tel:+13215995514"
+                    href="tel:+13215993514"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 hover:bg-secondary rounded-lg transition-colors text-sm"
                   >
                     <Phone className="w-4 h-4" />
-                    321-599-5514
+                    321-599-3514
                   </a>
                   <a 
                     href="mailto:info@vektar.io"

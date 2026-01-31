@@ -53,11 +53,11 @@ const Layout = ({ children }) => {
               <NavLink to="/about">About</NavLink>
               
               <a 
-                href="tel:+13215995514" 
+                href="tel:+13215993514" 
                 className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-secondary/50 transition-colors"
               >
                 <Phone className="w-4 h-4 text-primary" />
-                <span className="text-sm font-semibold text-primary">321-599-5514</span>
+                <span className="text-sm font-semibold text-primary">321-599-3514</span>
               </a>
               
               <button
@@ -177,9 +177,9 @@ const Layout = ({ children }) => {
               <h4 className="font-semibold mb-3">Contact</h4>
               <ul className="space-y-1.5 text-sm text-muted-foreground">
                 <li>
-                  <a href="tel:+13215995514" className="hover:text-foreground transition-colors flex items-center space-x-2">
+                  <a href="tel:+13215993514" className="hover:text-foreground transition-colors flex items-center space-x-2">
                     <Phone className="w-4 h-4" />
-                    <span>321-599-5514</span>
+                    <span>321-599-3514</span>
                   </a>
                 </li>
                 <li>
