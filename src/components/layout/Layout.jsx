@@ -49,6 +49,7 @@ const Layout = ({ children }) => {
               <NavLink to="/solutions">Solutions</NavLink>
               <NavLink to="/industries">Industries</NavLink>
               <NavLink to="/work">Our Work</NavLink>
+              <NavLink to="/blog">Blog</NavLink>
               <NavLink to="/about">About</NavLink>
               
               <a 
@@ -93,6 +94,7 @@ const Layout = ({ children }) => {
                 <NavLink to="/solutions">Solutions</NavLink>
                 <NavLink to="/industries">Industries</NavLink>
                 <NavLink to="/work">Our Work</NavLink>
+                <NavLink to="/blog">Blog</NavLink>
                 <NavLink to="/about">About</NavLink>
                 
                 <button
@@ -155,6 +157,7 @@ const Layout = ({ children }) => {
               <ul className="space-y-1.5 text-sm text-muted-foreground">
                 <li><Link to="/about" className="hover:text-foreground transition-colors">About Us</Link></li>
                 <li><Link to="/work" className="hover:text-foreground transition-colors">Case Studies</Link></li>
+                <li><Link to="/blog" className="hover:text-foreground transition-colors">Blog</Link></li>
                 <li><Link to="/industries" className="hover:text-foreground transition-colors">Industries</Link></li>
                 <li><Link to="/contact" className="hover:text-foreground transition-colors">Contact</Link></li>
               </ul>
