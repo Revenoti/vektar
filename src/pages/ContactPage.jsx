@@ -11,7 +11,7 @@ const ContactPage = () => {
     <>
       <SEO 
         title="Contact Vektar - Let's Talk AI"
-        description="Ready to transform your business with AI? Contact Vektar for a free strategy call. Phone: 321-599-5514 or talk to our AI agent instantly."
+        description="Ready to transform your business with AI? Contact Vektar for a free strategy call. Phone: 321-599-3514 or talk to our AI agent instantly."
         canonical="https://vektar.io/contact"
       />
       <section className="py-8 sm:py-12 circuit-pattern">
@@ -61,10 +61,10 @@ const ContactPage = () => {
                 <div>
                   <h3 className="font-semibold mb-1 text-sm sm:text-base">Call Us</h3>
                   <a 
-                    href="tel:+13215995514" 
+                    href="tel:+13215993514" 
                     className="text-primary hover:underline text-base sm:text-lg font-medium"
                   >
-                    321-599-5514
+                    321-599-3514
                   </a>
                   <p className="text-xs sm:text-sm text-muted-foreground mt-1">
                     Mon-Fri, 9am-6pm EST
