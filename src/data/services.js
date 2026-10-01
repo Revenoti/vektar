@@ -1,0 +1,41 @@
+export const services = [
+  {
+    slug: 'agentic-applications', number: '01', icon: 'app', title: 'Agentic Applications',
+    short: 'Software that understands the task. And knows its limits.',
+    description: 'Purpose-built AI applications that work with your information, connect to your tools, and turn intent into useful, reviewable action.',
+    headline: 'From a good conversation to useful work.',
+    intro: 'Build an application around the job your people need to do. Give it the right context, clearly scoped tools, and a thoughtful interface for staying in control.',
+    examples: ['A knowledge assistant that shows its sources', 'A service copilot that prepares a response for review', 'An operations workspace that guides the next action'],
+    deliverables: ['A focused user experience and working application', 'Data retrieval with access-aware boundaries', 'Tool use with explicit permissions and approvals', 'Evaluation cases, failure states, and a handover plan'],
+    questions: ['Who uses the application, and what can it act on?', 'Which information is authoritative and who may access it?', 'Where should a person review or take over?'],
+    outcome: 'A working product with a defined purpose, clear boundaries, and an evidence-based path to improvement.',
+  },
+  {
+    slug: 'workflow-automation', number: '02', icon: 'workflow', title: 'Agentic Workflow Automation',
+    short: 'Connect the steps. Keep people in control.',
+    description: 'Connected workflows that move work across your systems, handle exceptions, and bring the right decisions back to your team.',
+    headline: 'Make the handoffs work as hard as you do.',
+    intro: 'The valuable work is often between your tools. We map those handoffs, define the rules, and build automation that can stop, recover, and ask for help.',
+    examples: ['Document intake with validation and exception routing', 'Lead qualification with a reviewed CRM update', 'Service requests connected to the right next step'],
+    deliverables: ['A mapped workflow and system integration plan', 'Deterministic rules around AI-assisted decisions', 'Approval gates, retries, and duplicate protection', 'Run history, alerts, and operating documentation'],
+    questions: ['Which systems own the source records?', 'What must never happen without approval?', 'What should happen when a dependency fails?'],
+    outcome: 'Less avoidable coordination, with visible decisions and recoverable operations. Success criteria are agreed before implementation.',
+  },
+  {
+    slug: 'software-engineering', number: '03', icon: 'code', title: 'Advanced Software Engineering',
+    short: 'Strong foundations for what comes next.',
+    description: 'Custom applications, APIs, and modern platforms engineered to make your AI ambitions practical, maintainable, and ready to evolve.',
+    headline: 'Ambitious software. Thoughtfully engineered.',
+    intro: 'AI is one part of a larger system. Reliable interfaces, well-designed APIs, useful tests, and clear ownership make the whole product work.',
+    examples: ['Custom web applications and internal tools', 'APIs and integrations around existing platforms', 'Modernization that creates room for new capabilities'],
+    deliverables: ['Architecture matched to the actual constraints', 'Responsive, accessible product interfaces', 'Automated checks and deployment documentation', 'Observability and a maintainable code handover'],
+    questions: ['What needs to integrate with the systems you already use?', 'What are the real performance and reliability requirements?', 'Who will own and operate the software after launch?'],
+    outcome: 'Software your team can understand, operate, and extend, with technical choices tied to the job at hand.',
+  },
+]
+export const process = [
+  ['Find the useful work', 'Map the people, systems, constraints, and decisions. Choose a focused use case and agree what success would look like.'],
+  ['Build the smallest real version', 'Connect a bounded workflow or product slice. Test assumptions with representative data and people who will use it.'],
+  ['Test the edges', 'Evaluate quality, permissions, exceptions, accessibility, and recovery before expanding the system’s responsibilities.'],
+  ['Put it into practice', 'Roll out deliberately, document ownership, and agree how the system will be monitored and improved.'],
+]
