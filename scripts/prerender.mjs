@@ -20,6 +20,8 @@ const routes = ['/', '/services', ...services.map(service => `/services/${servic
 try {
   for (const route of [...routes, '/404']) {
     const html = await renderPage(route, { script, styles })
+    const count = pattern => (html.match(pattern) || []).length
+    if (count(/<!doctype\s+html>/gi) !== 1 || count(/<title[ >]/gi) !== 1 || count(/<h1[ >]/gi) !== 1 || count(/rel="canonical"/gi) !== 1) throw new Error(`Invalid document structure for ${route}`)
     const destination = route === '/' ? resolve(root, 'index.html') : route === '/404' ? resolve(root, '404.html') : resolve(root, `.${route}`, 'index.html')
     await mkdir(dirname(destination), { recursive: true })
     await writeFile(destination, html)
