@@ -1,39 +1,9 @@
-modules = ["nodejs-20", "web"]
-[agent]
-expertMode = true
-
-[nix]
-channel = "stable-25_05"
-
-[workflows]
-runButton = "Project"
-
-[[workflows.workflow]]
-name = "Project"
-mode = "parallel"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "Frontend"
-
-[[workflows.workflow]]
-name = "Frontend"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npm run dev"
-waitForPort = 5000
-
-[workflows.workflow.metadata]
-outputType = "webview"
-
+modules = ["nodejs-22", "web"]
+run = "npm run build && npm start"
 [[ports]]
-localPort = 5000
+localPort = 3001
 externalPort = 80
-
 [deployment]
-deploymentTarget = "static"
+deploymentTarget = "vm"
 build = ["npm", "run", "build"]
-publicDir = "dist"
+run = ["npm", "start"]

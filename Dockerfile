@@ -1,35 +1,17 @@
-# Vektar Production Dockerfile
-# Uses npm instead of pnpm
-
-FROM node:20-alpine AS builder
-
+FROM node:22-bookworm-slim AS builder
 WORKDIR /app
-
-# Copy package files
-COPY package.json package-lock.json ./
-
-# Install dependencies with npm (--legacy-peer-deps for date-fns/react-day-picker conflict)
-RUN npm ci --legacy-peer-deps
-
-# Copy source code
+COPY package.json package-lock.json .npmrc ./
+RUN npm ci --ignore-scripts
 COPY . .
-
-# Build the application
 RUN npm run build
 
-# Production stage
-FROM node:20-alpine AS runner
-
+FROM node:22-bookworm-slim AS runner
+ENV NODE_ENV=production PORT=3001 HOST=0.0.0.0
 WORKDIR /app
-
-# Install serve globally
-RUN npm install -g serve
-
-# Copy built assets from builder
-COPY --from=builder /app/dist ./dist
-
-# Expose port (Railway uses dynamic $PORT)
-EXPOSE ${PORT:-3000}
-
-# Start the server using Railway's PORT or default to 3000
-CMD ["sh", "-c", "serve -s dist -l ${PORT:-3000}"]
+COPY --from=builder --chown=node:node /app/dist ./dist
+COPY --from=builder --chown=node:node /app/server ./server
+COPY --from=builder --chown=node:node /app/package.json ./package.json
+RUN mkdir -p /app/.data && chown node:node /app/.data
+USER node
+EXPOSE 3001
+CMD ["node", "server/index.js"]

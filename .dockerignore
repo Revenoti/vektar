@@ -1,0 +1,13 @@
+.git
+.env
+.env.*
+!.env.example
+node_modules
+dist
+.data
+qa
+playwright-report
+test-results
+coverage
+attached_assets
+*.log

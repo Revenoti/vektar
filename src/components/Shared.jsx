@@ -1,0 +1,8 @@
+import { Link } from 'react-router-dom'
+import { ArrowUpRight, ArrowRight, Layers3, GitBranch, Code2 } from 'lucide-react'
+import { services } from '../data/services.js'
+const icons = { app: Layers3, workflow: GitBranch, code: Code2 }
+export function ServiceCards() { return <div className="service-grid">{services.map(service => { const Icon = icons[service.icon]; return <Link className="service-card" to={`/services/${service.slug}`} key={service.slug}><div className="card-top"><Icon size={28} strokeWidth={1.35}/><span>{service.number} /</span></div><h3>{service.title}</h3><p>{service.description}</p><span className="text-link">Explore the service <ArrowUpRight size={19}/></span></Link> })}</div> }
+export function ClosingCTA() { return <section className="closing-section"><div className="container closing-inner"><div><span className="eyebrow">A useful place to start</span><h2>Bring the challenge.<br/>Let’s find the next step.</h2></div><div><p>Talk with Vektar AI about the work, your systems, and what you’re hoping to change.</p><Link className="button button-primary" to="/call">Talk to Vektar AI <ArrowUpRight size={19}/></Link><span className="cta-note">An AI conversation. You choose when to begin.</span></div></div></section> }
+export function PageIntro({ eyebrow, title, description, children }) { return <section className="page-intro"><div className="container"><span className="eyebrow">{eyebrow}</span><h1>{title}</h1><p className="intro-copy">{description}</p>{children}</div></section> }
+export function InlineLink({ to, children }) { return <Link className="text-link" to={to}>{children}<ArrowRight size={18}/></Link> }
